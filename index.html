@@ -61,29 +61,25 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .hs-mic svg{width:100%;height:100%;fill:none}
 .hs-results{margin-top:0;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s,margin-top .4s;background:#202124;border-radius:0 0 16px 16px;border:1px solid #5f6368;border-top:none}
 .hs-results.hs-show{max-height:600px;opacity:1;margin-top:-16px;padding-top:16px}
-.hs-tabs{display:flex;gap:0;padding:8px 16px 0;border-bottom:1px solid #3c4043}
+.hs-tabs{display:flex;gap:0;padding:8px 16px 0;border-bottom:1px solid #3c4043;justify-content:flex-start}
 .hs-tab{font-size:.7rem;color:#969ba1;padding:8px 12px;position:relative;font-weight:500}
 .hs-tab--active{color:#8ab4f8;font-weight:600}
 .hs-tab--active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:3px;background:#8ab4f8;border-radius:3px 3px 0 0}
-.hs-stats{font-size:.65rem;color:#9aa0a6;padding:10px 16px 0}
-.hs-result{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
+.hs-stats{font-size:.65rem;color:#9aa0a6;padding:10px 16px 6px;text-align:left}
+.hs-result{padding:10px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.04)}
 .hs-result:last-child{border:none;padding-bottom:16px}
-.hs-result-site{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-.hs-result-favicon{width:26px;height:26px;border-radius:50%;background:#303134;display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#8ab4f8;flex-shrink:0;border:1px solid #3c4043}
-.hs-result-domain{display:flex;flex-direction:column}
+.hs-result-domain{margin-bottom:2px}
 .hs-result-domain-name{font-size:.72rem;color:#bdc1c6;font-weight:500}
 .hs-result-domain-url{font-size:.6rem;color:#969ba1}
 .hs-result-title{font-size:.92rem;font-weight:400;color:#8ab4f8;line-height:1.35;margin-bottom:4px;display:flex;align-items:center;gap:6px}
 .hs-result-desc{font-size:.75rem;color:#bdc1c6;line-height:1.5}
-.hs-result--first{background:rgba(123,60,255,.06);border:1px solid rgba(123,60,255,.12);border-radius:12px;margin:8px 12px;padding:14px 16px}
+.hs-result--first{background:rgba(123,60,255,.06);border:1px solid rgba(123,60,255,.12);border-radius:12px;margin:8px 12px;padding:12px 16px}
 .hs-result--first .hs-result-title{color:#c58aff;font-weight:500}
-.hs-result--first .hs-result-favicon{background:rgba(123,60,255,.15);border-color:rgba(123,60,255,.25);color:#c58aff}
 .hs-rank{font-size:.5rem;font-weight:800;background:linear-gradient(135deg,#7b3cff,#9b5cff);color:#fff;border-radius:4px;padding:2px 6px;flex-shrink:0}
 .hs-result--dim .hs-result-title{color:rgba(138,180,248,.35)}
 .hs-result--dim .hs-result-desc{color:rgba(189,193,198,.25)}
 .hs-result--dim .hs-result-domain-name{color:rgba(189,193,198,.3)}
 .hs-result--dim .hs-result-domain-url{color:rgba(150,154,161,.25)}
-.hs-result--dim .hs-result-favicon{opacity:.3}
 .hs-loading{display:flex;justify-content:center;padding:20px 0;gap:6px}
 .hs-loading span{width:8px;height:8px;border-radius:50%;animation:hsLoad 1.2s ease-in-out infinite}
 .hs-loading span:nth-child(1){background:#4285f4;animation-delay:0s}
@@ -397,17 +393,17 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 <div class="hs-tabs"><div class="hs-tab hs-tab--active">Tudo</div><div class="hs-tab">Imagens</div><div class="hs-tab">Maps</div><div class="hs-tab">Noticias</div></div>
 <div class="hs-stats">Aproximadamente 567 resultados (0,38 s)</div>
 <div class="hs-result hs-result--first">
-<div class="hs-result-site"><div class="hs-result-favicon">SE</div><div class="hs-result-domain"><span class="hs-result-domain-name">Sua Empresa</span><span class="hs-result-domain-url">www.suaempresa.com.br</span></div></div>
+<div class="hs-result-domain"><span class="hs-result-domain-name">Sua Empresa</span><span class="hs-result-domain-url"> › www.suaempresa.com.br</span></div>
 <div class="hs-result-title"><span class="hs-rank">#1</span> Sua Empresa — Imoveis em Sao Paulo</div>
 <div class="hs-result-desc">A imobiliaria mais bem avaliada de SP. Apartamentos, casas e comerciais com atendimento personalizado. Fale conosco.</div>
 </div>
 <div class="hs-result hs-result--dim">
-<div class="hs-result-site"><div class="hs-result-favicon">C</div><div class="hs-result-domain"><span class="hs-result-domain-name">Concorrente A</span><span class="hs-result-domain-url">www.concorrente-a.com.br</span></div></div>
+<div class="hs-result-domain"><span class="hs-result-domain-name">Concorrente A</span><span class="hs-result-domain-url"> › www.concorrente-a.com.br</span></div>
 <div class="hs-result-title">Concorrente A — Imoveis na regiao</div>
 <div class="hs-result-desc">Servicos imobiliarios diversos na regiao...</div>
 </div>
 <div class="hs-result hs-result--dim">
-<div class="hs-result-site"><div class="hs-result-favicon">C</div><div class="hs-result-domain"><span class="hs-result-domain-name">Concorrente B</span><span class="hs-result-domain-url">www.concorrente-b.com.br</span></div></div>
+<div class="hs-result-domain"><span class="hs-result-domain-name">Concorrente B</span><span class="hs-result-domain-url"> › www.concorrente-b.com.br</span></div>
 <div class="hs-result-title">Concorrente B — Servicos gerais</div>
 <div class="hs-result-desc">Empresa local com servicos variados...</div>
 </div>
