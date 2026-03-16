@@ -688,9 +688,35 @@ const waChats=[
 let waStarted=false,userInteracted=false;
 document.addEventListener('click',()=>{userInteracted=true},{once:true});
 document.addEventListener('scroll',()=>{userInteracted=true},{once:true,passive:true});
+let waAudioCtx=null;
 function playWaNotif(){
 if(!userInteracted)return;
-try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=1200;o.type='sine';g.gain.value=0.08;g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.15);o.start(ctx.currentTime);o.stop(ctx.currentTime+0.15)}catch(e){}
+try{
+if(!waAudioCtx)waAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+const ctx=waAudioCtx;
+const t=ctx.currentTime;
+const notes=[1046.5,1318.5,1568];
+const dur=0.08,gap=0.06,vol=0.09;
+notes.forEach((freq,i)=>{
+const osc=ctx.createOscillator();
+const gain=ctx.createGain();
+const filter=ctx.createBiquadFilter();
+osc.type='sine';
+osc.frequency.value=freq;
+filter.type='lowpass';
+filter.frequency.value=3000;
+osc.connect(filter);
+filter.connect(gain);
+gain.connect(ctx.destination);
+const start=t+i*(dur+gap);
+gain.gain.setValueAtTime(0,start);
+gain.gain.linearRampToValueAtTime(vol,start+0.005);
+gain.gain.setValueAtTime(vol,start+dur*0.6);
+gain.gain.exponentialRampToValueAtTime(0.001,start+dur);
+osc.start(start);
+osc.stop(start+dur+0.01);
+});
+}catch(e){}
 }
 function getWaTime(){const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')}
 function addWaChat(chat){
