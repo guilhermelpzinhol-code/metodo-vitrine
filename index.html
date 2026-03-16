@@ -58,9 +58,14 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .results-header h2{font-size:clamp(1.5rem,7vw,2.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;line-height:1.1}
 .results-header p{font-size:clamp(.82rem,3.2vw,1rem);color:rgba(255,255,255,.4);font-weight:500;max-width:420px;margin:0 auto;line-height:1.7}
 .results-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:1}
-.result-slide{position:absolute;width:calc(100% - 40px);max-width:480px;opacity:0;transform:translateY(60px) scale(.95);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
-.result-slide.rs-active{opacity:1;transform:translateY(0) scale(1)}
-.result-slide.rs-done{opacity:0;transform:translateY(-40px) scale(.97)}
+.result-slide{position:absolute;width:calc(100% - 40px);max-width:480px;opacity:0;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.result-slide[data-rs="0"]{transform:translateX(100px) scale(.95)}
+.result-slide[data-rs="1"]{transform:translateX(-100px) scale(.95)}
+.result-slide[data-rs="2"]{transform:translateY(100px) scale(.95)}
+.result-slide.rs-active{opacity:1;transform:translateX(0) translateY(0) scale(1)}
+.result-slide[data-rs="0"].rs-done{opacity:0;transform:translateX(-60px) scale(.97)}
+.result-slide[data-rs="1"].rs-done{opacity:0;transform:translateX(60px) scale(.97)}
+.result-slide[data-rs="2"].rs-done{opacity:0;transform:translateY(-60px) scale(.97)}
 .result-slide-frame{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(123,60,255,.2);box-shadow:0 0 40px rgba(123,60,255,.12),0 20px 60px rgba(0,0,0,.5)}
 .result-slide-frame::before{content:'';position:absolute;inset:-1px;border-radius:16px;padding:1.5px;background:conic-gradient(from var(--rs-angle,0deg),transparent 0%,rgba(155,92,255,.5) 10%,transparent 20%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rsOrbit 4s linear infinite;pointer-events:none;z-index:1}
 @property --rs-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
@@ -69,9 +74,6 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .result-slide-caption{margin-top:16px;text-align:center}
 .result-slide-caption h3{font-size:clamp(1rem,4vw,1.3rem);font-weight:700;color:#fff;margin-bottom:4px}
 .result-slide-caption p{font-size:.78rem;color:rgba(255,255,255,.4);font-weight:500}
-.results-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;z-index:3}
-.rs-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);transition:all .3s}
-.rs-dot.active{background:#7b3cff;width:24px;border-radius:3px}
 .niches{padding:64px 0;text-align:center}
 .niches-header{margin-bottom:32px}
 .niches-header h2{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
@@ -350,7 +352,6 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 <div class="result-slide-frame"><img src="img/resultado3.png" alt="763 Interações no Perfil da Empresa — +23,6%"></div>
 <div class="result-slide-caption"><h3>763 Interações</h3><p>+23,6% comparado ao mês anterior</p></div>
 </div>
-<div class="results-counter" id="rsDots"></div>
 </div>
 </section>
 
@@ -569,10 +570,7 @@ window.addEventListener('scroll',()=>{if(!pT){requestAnimationFrame(()=>{pEls.fo
 /* Sticky scroll results */
 const rsSection=document.getElementById('resultsSection');
 const rsSlides=rsSection?rsSection.querySelectorAll('.result-slide'):[];
-const rsDotsWrap=document.getElementById('rsDots');
-if(rsSlides.length&&rsDotsWrap){
-rsSlides.forEach((_,i)=>{const d=document.createElement('span');d.className='rs-dot';rsDotsWrap.appendChild(d)});
-const rsDots=rsDotsWrap.querySelectorAll('.rs-dot');
+if(rsSlides.length){
 function updateRS(){
 const rect=rsSection.getBoundingClientRect();
 const sH=rsSection.offsetHeight;
@@ -581,8 +579,7 @@ const scrolled=-rect.top;
 const progress=Math.max(0,Math.min(1,scrolled/(sH-wH)));
 const total=rsSlides.length;
 const idx=Math.min(Math.floor(progress*total),total-1);
-rsSlides.forEach((c,i)=>{c.classList.remove('rs-active','rs-done');if(i===idx)c.classList.add('rs-active');else if(i<idx)c.classList.add('rs-done')});
-rsDots.forEach((d,i)=>d.classList.toggle('active',i===idx))}
+rsSlides.forEach((c,i)=>{c.classList.remove('rs-active','rs-done');if(i===idx)c.classList.add('rs-active');else if(i<idx)c.classList.add('rs-done')})}
 window.addEventListener('scroll',updateRS,{passive:true});
 updateRS()}
 
