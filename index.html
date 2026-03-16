@@ -683,18 +683,26 @@ const waChats=[
 {name:'Luciana Reis',photo:'https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=100&h=100&fit=crop&crop=face',msg:'Oi, encontrei vocês pesquisando conserto de iPhone. Meu celular não liga mais, atendem hoje?'},
 {name:'Paulo Henrique',photo:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',msg:'Boa tarde, achei a escola pelo Google. Minha filha tem 4 anos, como funciona a matrícula?'}
 ];
-let waStarted=false,userInteracted=false;
-document.addEventListener('click',()=>{userInteracted=true},{once:true});
-document.addEventListener('scroll',()=>{userInteracted=true},{once:true,passive:true});
-let waAudioCtx=null;
-function playWaNotif(){
-if(!userInteracted)return;
+let waStarted=false,waAudioCtx=null,waAudioReady=false;
+function initWaAudio(){
+if(waAudioReady)return;
 try{
-if(!waAudioCtx)waAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+waAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+if(waAudioCtx.state==='suspended')waAudioCtx.resume();
+waAudioReady=true;
+}catch(e){}
+}
+['click','touchstart','touchend','keydown'].forEach(ev=>{
+document.addEventListener(ev,initWaAudio,{once:false,passive:true});
+});
+function playWaNotif(){
+if(!waAudioCtx)return;
+try{
+if(waAudioCtx.state==='suspended')waAudioCtx.resume();
 const ctx=waAudioCtx;
 const t=ctx.currentTime;
 const notes=[1046.5,1318.5,1568];
-const dur=0.08,gap=0.06,vol=0.09;
+const dur=0.08,gap=0.06,vol=0.12;
 notes.forEach((freq,i)=>{
 const osc=ctx.createOscillator();
 const gain=ctx.createGain();
