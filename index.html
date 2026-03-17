@@ -67,12 +67,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 /* Google-style sponsored result outside search bar */
 .hs-sponsored{margin-top:24px;width:100%;max-width:540px;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .6s .3s,transform .6s .3s}
 .hs-sponsored.hs-show{opacity:1;transform:translateY(0)}
-.hs-sponsored-tag{display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;color:#9aa0a6;margin-bottom:8px;letter-spacing:.02em}
-.hs-sponsored-tag span{font-size:.5rem;color:#9aa0a6;border:1px solid #5f6368;border-radius:3px;padding:1px 4px;font-weight:600}
 .hs-sp-card{background:#1a1a2e;border:1px solid rgba(123,60,255,.15);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
 .hs-sp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7b3cff,#9b5cff,#7b3cff);border-radius:14px 14px 0 0}
 .hs-sp-domain{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.hs-sp-favicon{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7b3cff,#9b5cff);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:800;color:#fff}
 .hs-sp-site{font-size:.72rem;color:#bdc1c6;font-weight:500}
 .hs-sp-url{font-size:.58rem;color:#969ba1;display:block}
 .hs-sp-title{font-size:1rem;font-weight:500;color:#c58aff;line-height:1.35;margin-bottom:6px}
@@ -360,9 +357,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="hs-results" id="hsResults"></div>
 </div>
 <div class="hs-sponsored" id="hsSponsored">
-<div class="hs-sponsored-tag"><span>Patrocinado</span> Resultado orgânico</div>
 <div class="hs-sp-card">
-<div class="hs-sp-domain"><div class="hs-sp-favicon">SE</div><div><span class="hs-sp-site">Sua Empresa</span><span class="hs-sp-url">www.suaempresa.com.br</span></div></div>
+<div class="hs-sp-domain"><div><span class="hs-sp-site">Sua Empresa</span><span class="hs-sp-url">www.suaempresa.com.br</span></div></div>
 <div class="hs-sp-title">Sua Empresa — Imóveis em São Paulo</div>
 <div class="hs-sp-desc">A imobiliária mais bem avaliada de SP. Apartamentos, casas e comerciais com atendimento personalizado.</div>
 <div class="hs-sp-extras"><span class="hs-sp-extra">Fale conosco</span><span class="hs-sp-extra">Ver imóveis</span><span class="hs-sp-extra">Avaliações</span></div>
@@ -371,7 +367,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente A › www.concorrente-a.com.br</div><div class="hs-dim-res-title">Concorrente A — Imóveis na região</div><div class="hs-dim-res-desc">Serviços imobiliários diversos na região...</div></div>
 <div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente B › www.concorrente-b.com.br</div><div class="hs-dim-res-title">Concorrente B — Serviços gerais</div><div class="hs-dim-res-desc">Empresa local com serviços variados...</div></div>
 </div>
-<a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+<a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4" style="margin-top:20px">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </section>
 
 <section class="highlight-section" id="highlightSection">
