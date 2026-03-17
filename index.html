@@ -43,6 +43,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .header .cta-btn{font-size:.75rem;padding:10px 20px;min-height:auto;width:auto;max-width:none;margin:0}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(123,60,255,.06) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent 0%,#000 70%);pointer-events:none;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:6px;padding:6px 14px;font-size:.6rem;font-weight:600;color:rgba(255,255,255,.45);margin:0 auto 28px;background:rgba(255,255,255,.03);letter-spacing:.08em;text-transform:uppercase;position:relative;overflow:hidden}
 .hero-badge::before{content:'';position:absolute;inset:0;border-radius:6px;padding:1px;background:linear-gradient(135deg,rgba(123,60,255,.35),transparent 50%,rgba(155,92,255,.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .hero-badge svg{width:11px;height:11px;stroke:#9b5cff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
@@ -65,7 +66,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hs-mic svg{width:100%;height:100%;fill:none}
 .hs-results{display:none}
 /* Google-style sponsored result outside search bar */
-.hs-sponsored{margin-top:24px;width:100%;max-width:540px;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .6s .3s,transform .6s .3s}
+.hs-sponsored{margin:24px auto 0;width:100%;max-width:540px;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .6s .3s,transform .6s .3s}
 .hs-sponsored.hs-show{opacity:1;transform:translateY(0)}
 .hs-sp-card{background:#1a1a2e;border:1px solid rgba(123,60,255,.15);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
 .hs-sp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7b3cff,#9b5cff,#7b3cff);border-radius:14px 14px 0 0}
@@ -367,7 +368,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente A › www.concorrente-a.com.br</div><div class="hs-dim-res-title">Concorrente A — Imóveis na região</div><div class="hs-dim-res-desc">Serviços imobiliários diversos na região...</div></div>
 <div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente B › www.concorrente-b.com.br</div><div class="hs-dim-res-title">Concorrente B — Serviços gerais</div><div class="hs-dim-res-desc">Empresa local com serviços variados...</div></div>
 </div>
-<a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4" style="margin-top:20px">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+<a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4" style="margin-top:20px;position:relative;z-index:3">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </section>
 
 <section class="highlight-section" id="highlightSection">
