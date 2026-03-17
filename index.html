@@ -231,25 +231,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .method-bonus-sub span{font-family:'Horizon',sans-serif;font-size:clamp(1.4rem,6vw,2rem);display:block;margin-bottom:2px;background:linear-gradient(90deg,#7b3cff,#c084fc,#7b3cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.01em}
 .method-bonus-sub .mbs-line{display:block;width:60px;height:2px;margin:8px auto 10px;background:linear-gradient(90deg,transparent,#7b3cff,transparent);border-radius:2px}
 .method-bonus-sub.mbl-show{opacity:1;transform:translateY(0)}
-.compare{padding:64px 0;text-align:center}
-.compare-header{margin-bottom:40px}
-.compare-header h2{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
-.compare-grid{display:flex;flex-direction:column;gap:16px;max-width:480px;margin:0 auto}
-.compare-card{border-radius:16px;padding:28px 20px;text-align:left}
-.compare-card--before{background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)}
-.compare-card--after{background:rgba(123,60,255,.04);border:1px solid rgba(123,60,255,.15);box-shadow:0 0 30px rgba(123,60,255,.08);transition:transform .3s,box-shadow .3s}
-.compare-card--after:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(123,60,255,.15)}
-.compare-card-title{font-size:.85rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
-.compare-card--before .compare-card-title{color:rgba(239,68,68,.6)}
-.compare-card--after .compare-card-title{color:#9b5cff}
-.compare-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.compare-list li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;font-weight:500;line-height:1.5}
-.compare-card--before .compare-list li{color:rgba(255,255,255,.35)}
-.compare-card--after .compare-list li{color:rgba(255,255,255,.75)}
-.compare-icon{flex-shrink:0;width:18px;height:18px;margin-top:2px}
-.compare-icon svg{width:100%;height:100%;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
-.compare-card--before .compare-icon svg{stroke:rgba(239,68,68,.5)}
-.compare-card--after .compare-icon svg{stroke:#9b5cff}
 /* Sticky scroll testimonials */
 .testimonials{position:relative;text-align:center;height:350vh}
 .testimonials-header{padding:64px 20px 40px;position:sticky;top:0;z-index:2;background:linear-gradient(180deg,#000 0%,#000 70%,transparent 100%)}
@@ -350,7 +331,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:769px){
 .container{padding:0 80px}
 .hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-result-title{font-size:1rem}.hs-result-desc{font-size:.8rem}
-.niches,.method,.compare,.testimonials,.faq,.final-cta{padding:120px 0}
+.niches,.method,.testimonials,.faq,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
 .method-steps{gap:120px}
 .method-step{display:grid;grid-template-columns:1fr 1fr;gap:80px;text-align:left}
@@ -367,13 +348,12 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vis-g-result--dim-mobile{display:block}
 .vis-gmb{padding:16px 20px 20px}.vis-gmb-card{padding:16px;border-radius:12px}.vis-gmb-name{font-size:1rem}.vis-gmb-category{font-size:.65rem}.vis-gmb-stars svg{width:14px;height:14px}.vis-gmb-score{font-size:.8rem}.vis-gmb-count{font-size:.65rem}.vis-gmb-row{font-size:.7rem;gap:8px}.vis-gmb-row svg{width:14px;height:14px}.vis-gmb-btn{font-size:.65rem;padding:8px 4px;border-radius:20px}.vis-gmb-review{padding:10px;border-radius:8px}.vis-gmb-review-avatar{width:24px;height:24px;font-size:.55rem}.vis-gmb-review-name{font-size:.65rem}.vis-gmb-review-stars svg{width:11px;height:11px}.vis-gmb-review-text{font-size:.65rem}
 .vis-gsc{padding:16px 20px 20px}.vis-gsc-header{margin-bottom:16px;padding-bottom:12px}.vis-gsc-title{font-size:.85rem}.vis-gsc-period{font-size:.65rem;padding:3px 10px}.vis-gsc-metrics{grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}.vis-gsc-metric{padding:12px 8px;border-radius:8px}.vis-gsc-metric-label{font-size:.55rem;margin-bottom:4px}.vis-gsc-metric-value{font-size:1.15rem}.vis-gsc-chart{padding:16px 12px 8px;margin-bottom:16px;border-radius:8px}.vis-gsc-queries-title{font-size:.7rem;padding:10px 14px}.vis-gsc-query{padding:8px 14px;font-size:.7rem}.vis-gsc-query-text{font-size:.68rem}.vis-gsc-query-clicks{font-size:.62rem;min-width:65px}.vis-gsc-query-pos{font-size:.65rem;min-width:24px}
-.compare-grid{flex-direction:row;max-width:100%;gap:20px}.compare-card{flex:1}
 .testimonial-card{max-width:480px}
 .cta-btn{width:auto;max-width:none;margin:0 auto}.header .cta-btn{margin:0}
 .method-step-visual{position:relative}.method-step-visual::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(123,60,255,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
 }
-@media(min-width:1024px){.wa-section-header h2,.method-header h2,.compare-header h2,.testimonials-header h2,.faq-header h2{font-size:2.6rem}}</style>
+@media(min-width:1024px){.wa-section-header h2,.method-header h2,.testimonials-header h2,.faq-header h2{font-size:2.6rem}}</style>
 </head>
 <body>
 <canvas id="bgCanvas"></canvas>
@@ -539,22 +519,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 
 </div></div></section>
 
-<section class="compare"><div class="container">
-<div class="compare-header" data-anim><h2 class="grad-text" data-tw="O que muda quando você aparece primeiro"></h2></div>
-<div class="compare-grid">
-<div class="compare-card compare-card--before" data-anim data-anim-delay="1"><div class="compare-card-title">Antes</div><ul class="compare-list">
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Invisível no Google</li>
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Concorrentes aparecem primeiro</li>
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Zero ligações orgânicas</li>
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Dependência total de indicação</li>
-</ul></div>
-<div class="compare-card compare-card--after" data-anim data-anim-delay="2"><div class="compare-card-title">Depois</div><ul class="compare-list">
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> 1ª posição no Google</li>
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Ligações todos os dias</li>
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Google Meu Negócio otimizado</li>
-<li><span class="compare-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Autoridade acima dos concorrentes</li>
-</ul></div>
-</div></div></section>
 
 <section class="testimonials" id="testimonialsSection">
 <div class="testimonials-header"><div class="container" data-anim><h2 class="grad-text" data-tw="Quem aplicou, comprova"></h2></div></div>
