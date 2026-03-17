@@ -12,10 +12,16 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hidden;line-height:1.6;position:relative}
-.bg-dots{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.7) .5px,transparent .5px);background-size:18px 18px;opacity:.12}
+.bg-dots{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background:radial-gradient(at 20% 80%,#fff 1px,transparent 0);background-size:3px 3px;opacity:.07;mix-blend-mode:plus-lighter}
 .bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.bg-glow-1{position:absolute;top:5%;right:0;width:50%;height:50%;background:radial-gradient(circle,rgba(123,60,255,.15) 0%,transparent 65%);filter:blur(60px)}
-.bg-glow-2{position:absolute;bottom:10%;left:0;width:45%;height:45%;background:radial-gradient(circle,rgba(123,60,255,.1) 0%,transparent 65%);filter:blur(60px)}
+.bg-glow>div{position:absolute;border-radius:50%}
+.bg-glow-1{top:-10%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(123,60,255,.18) 0%,transparent 70%);filter:blur(40px);animation:glowDrift1 20s ease-in-out infinite}
+.bg-glow-2{bottom:5%;left:-8%;width:500px;height:500px;background:radial-gradient(circle,rgba(90,40,220,.14) 0%,transparent 70%);filter:blur(50px);animation:glowDrift2 25s ease-in-out infinite}
+.bg-glow-3{top:35%;left:50%;width:400px;height:400px;background:radial-gradient(circle,rgba(160,80,255,.1) 0%,transparent 70%);filter:blur(60px);animation:glowDrift3 18s ease-in-out infinite}
+.bg-glow-4{bottom:30%;right:10%;width:350px;height:350px;background:radial-gradient(circle,rgba(100,50,255,.08) 0%,transparent 65%);filter:blur(45px);animation:glowDrift2 22s ease-in-out infinite reverse}
+@keyframes glowDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,25px)}}
+@keyframes glowDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,-20px)}}
+@keyframes glowDrift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,-30px)}}
 body>*:not(.bg-dots):not(.bg-glow){position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
@@ -342,7 +348,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 </head>
 <body>
 <div class="bg-dots"></div>
-<div class="bg-glow"><div class="bg-glow-1"></div><div class="bg-glow-2"></div></div>
+<div class="bg-glow"><div class="bg-glow-1"></div><div class="bg-glow-2"></div><div class="bg-glow-3"></div><div class="bg-glow-4"></div></div>
 <div class="progress-bar" id="progressBar"></div>
 <header class="header" id="header">
 <div class="logo"><img src="https://i.ibb.co/PvRHwvLb/image.png" alt="Método Vitrine"></div>
