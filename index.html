@@ -11,8 +11,8 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden;line-height:1.6;position:relative}
-#bgCanvas{position:absolute;top:0;left:0;z-index:0;pointer-events:none}
+body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hidden;line-height:1.6;position:relative}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 body>*{position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
@@ -809,76 +809,123 @@ mbObs.observe(mbSection);
 /* CTA hover glow */
 document.querySelectorAll('.cta-btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.boxShadow=(e.clientX-r.left-r.width/2)+'px '+(e.clientY-r.top-r.height/2)+'px 40px rgba(123,60,255,.2)'});b.addEventListener('mouseleave',()=>{b.style.boxShadow=''})});
 
-/* Purple mesh background canvas */
+/* Animated wireframe spheres background */
 (function(){
 const cv=document.getElementById('bgCanvas');
 if(!cv)return;
 const ctx=cv.getContext('2d');
 let W,H,dpr;
+
 function resize(){
 dpr=Math.min(window.devicePixelRatio||1,2);
-W=window.innerWidth;H=document.documentElement.scrollHeight;
-cv.width=W*dpr;cv.height=H*dpr;
-cv.style.width=W+'px';cv.style.height=H+'px';
+W=window.innerWidth;
+H=window.innerHeight;
+cv.width=W*dpr;
+cv.height=H*dpr;
+cv.style.width=W+'px';
+cv.style.height=H+'px';
 ctx.setTransform(dpr,0,0,dpr,0,0);
-draw();
 }
-function drawOrganicMesh(cx,cy,scaleX,scaleY,rotation,numLines,color,twist,spread){
-ctx.save();
-ctx.translate(cx,cy);
-ctx.rotate(rotation);
-ctx.strokeStyle=color;
-ctx.lineWidth=0.5;
-for(let i=0;i<numLines;i++){
-const t=i/numLines;
-const angle=t*Math.PI*2;
+
+/* Draw a wireframe sphere: concentric ellipses rotated around center */
+function drawSphere(cx,cy,radius,rotation,breathScale){
+const r=radius*breathScale;
+const numRings=28;
+const segments=90;
+
+for(let i=0;i<numRings;i++){
+const t=i/numRings;
+const ringAngle=t*Math.PI;
+/* Each ring is an ellipse tilted at a different angle */
+const tilt=ringAngle+rotation;
+const ry=r;
+const rx=r*Math.sin(ringAngle);
+
+/* Color gradient from deep to bright purple */
+const colorT=t;
+const red=Math.floor(61+62*colorT);
+const green=Math.floor(0+47*colorT);
+const blue=Math.floor(112+78*colorT);
+const alpha=0.3+0.25*Math.sin(t*Math.PI);
+
+ctx.strokeStyle='rgba('+red+','+green+','+blue+','+alpha+')';
+ctx.lineWidth=0.7;
 ctx.beginPath();
-const steps=180;
-for(let s=0;s<=steps;s++){
-const p=s/steps;
-const baseAngle=angle+p*Math.PI*twist;
-const envelope=Math.sin(p*Math.PI);
-const r=envelope*(0.6+0.4*Math.sin(t*12+p*4));
-const warp=Math.sin(p*Math.PI*3+t*8)*spread*envelope;
-const x=Math.cos(baseAngle)*r*scaleX+warp*scaleX*0.3;
-const y=Math.sin(baseAngle)*r*scaleY+Math.cos(baseAngle+t*5)*envelope*scaleY*0.15;
-if(s===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+
+for(let s=0;s<=segments;s++){
+const angle=(s/segments)*Math.PI*2;
+const x=cx+Math.cos(angle)*rx*Math.cos(tilt)-Math.sin(angle)*0;
+const y=cy+Math.sin(angle)*ry*0.95+Math.cos(angle)*rx*Math.sin(tilt)*0.3;
+if(s===0)ctx.moveTo(x,y);
+else ctx.lineTo(x,y);
 }
 ctx.stroke();
 }
-ctx.restore();
+
+/* Horizontal latitude rings */
+const latRings=20;
+for(let i=0;i<latRings;i++){
+const t=i/latRings;
+const lat=(t-0.5)*Math.PI;
+const ringR=r*Math.cos(lat);
+const ringY=cy+r*Math.sin(lat)*0.95;
+
+const alpha=0.2+0.2*Math.cos(lat);
+ctx.strokeStyle='rgba(100,20,180,'+alpha+')';
+ctx.lineWidth=0.5;
+ctx.beginPath();
+
+for(let s=0;s<=segments;s++){
+const angle=(s/segments)*Math.PI*2+rotation*0.5;
+const x=cx+Math.cos(angle)*ringR;
+const y=ringY+Math.sin(angle)*ringR*Math.sin(rotation)*0.15;
+if(s===0)ctx.moveTo(x,y);
+else ctx.lineTo(x,y);
 }
-function draw(){
+ctx.stroke();
+}
+}
+
+let time=0;
+function animate(){
+time+=0.003;
 ctx.clearRect(0,0,W,H);
-const sz=Math.min(W*0.55,200);
-const pageH=H;
-/* Pair 1: top-right corner */
-drawOrganicMesh(W*0.82,pageH*0.03,sz,sz*0.8,-0.5,70,'rgba(60,0,160,.5)',2.6,0.3);
-drawOrganicMesh(W*0.78,pageH*0.035,sz*0.85,sz*0.7,-0.3,50,'rgba(90,10,210,.3)',2.9,0.25);
-/* Pair 2: bottom-left corner */
-drawOrganicMesh(W*0.18,pageH*0.12,sz,sz*0.9,0.8,70,'rgba(60,0,160,.5)',2.4,0.35);
-drawOrganicMesh(W*0.22,pageH*0.125,sz*0.8,sz*0.75,1.0,50,'rgba(90,10,210,.3)',2.1,0.28);
-/* Pair 3: mid-right */
-drawOrganicMesh(W*0.85,pageH*0.3,sz*0.7,sz*0.6,-1.2,55,'rgba(60,0,160,.4)',2.7,0.3);
-drawOrganicMesh(W*0.82,pageH*0.305,sz*0.6,sz*0.5,-1.0,40,'rgba(90,10,210,.25)',2.5,0.25);
-/* Pair 4: mid-left */
-drawOrganicMesh(W*0.15,pageH*0.48,sz*0.7,sz*0.6,2.0,55,'rgba(60,0,160,.4)',2.3,0.32);
-drawOrganicMesh(W*0.18,pageH*0.485,sz*0.6,sz*0.5,2.2,40,'rgba(90,10,210,.25)',2.0,0.26);
-/* Pair 5: lower-right */
-drawOrganicMesh(W*0.8,pageH*0.65,sz*0.65,sz*0.55,0.5,50,'rgba(60,0,160,.35)',2.8,0.28);
-/* Pair 6: bottom-left */
-drawOrganicMesh(W*0.2,pageH*0.82,sz*0.7,sz*0.6,3.2,50,'rgba(60,0,160,.38)',2.5,0.3);
+
+/* Breathing effect: subtle scale pulsation */
+const breath1=1+Math.sin(time*1.2)*0.03;
+const breath2=1+Math.sin(time*0.9+1.5)*0.03;
+
+/* Rotation: slow continuous */
+const rot1=time*0.4;
+const rot2=time*0.3+Math.PI*0.5;
+
+/* Sphere sizes relative to viewport */
+const baseSize=Math.min(W,H)*0.55;
+
+/* Sphere 1: top-right corner (partially visible) */
+drawSphere(
+W+baseSize*0.12,
+-baseSize*0.18,
+baseSize,
+rot1,
+breath1
+);
+
+/* Sphere 2: bottom-left corner (partially visible) */
+drawSphere(
+-baseSize*0.15,
+H+baseSize*0.12,
+baseSize*0.9,
+rot2,
+breath2
+);
+
+requestAnimationFrame(animate);
 }
+
 resize();
-let resizeTimer;
-window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(resize,200)});
-/* Update canvas height when page content changes */
-let lastH=0;
-setInterval(()=>{const h=document.documentElement.scrollHeight;if(h!==lastH){lastH=h;resize()}},2000);
-/* Make canvas scroll with page by using position absolute instead of fixed */
-cv.style.position='absolute';
-cv.style.top='0';
-cv.style.left='0';
+window.addEventListener('resize',resize);
+animate();
 })();
 </script>
 </body>
