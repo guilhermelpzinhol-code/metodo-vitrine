@@ -227,8 +227,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .method-bonus-video video{width:100%;display:block}
 .method-bonus-label{font-family:'Horizon',sans-serif;font-size:clamp(1.3rem,6vw,2.4rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,#d4b8ff 50%,#7b3cff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-label.mbl-show{opacity:1;transform:translateY(0)}
-.method-bonus-sub{display:inline-flex;align-items:center;gap:8px;font-size:clamp(.85rem,3.5vw,1.05rem);color:#fff;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 24px;border-radius:99px;background:linear-gradient(135deg,rgba(123,60,255,.18),rgba(123,60,255,.08));border:1px solid rgba(123,60,255,.35);box-shadow:0 0 30px rgba(123,60,255,.12);margin-bottom:8px;opacity:0;transform:translateY(10px);transition:opacity .5s .5s,transform .5s .5s;position:relative;z-index:1}
-.method-bonus-sub .mbs-icon{width:18px;height:18px;flex-shrink:0}
+.method-bonus-sub{font-size:clamp(1rem,4.5vw,1.35rem);color:transparent;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;opacity:0;transform:translateY(10px);transition:opacity .5s .5s,transform .5s .5s;position:relative;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,.15) 0%,#7b3cff 30%,#a855f7 70%,rgba(255,255,255,.15) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.method-bonus-sub span{font-family:'Horizon',sans-serif;font-size:clamp(1.4rem,6vw,2rem);display:block;margin-bottom:2px;background:linear-gradient(90deg,#7b3cff,#c084fc,#7b3cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.01em}
+.method-bonus-sub .mbs-line{display:block;width:60px;height:2px;margin:8px auto 10px;background:linear-gradient(90deg,transparent,#7b3cff,transparent);border-radius:2px}
 .method-bonus-sub.mbl-show{opacity:1;transform:translateY(0)}
 .compare{padding:64px 0;text-align:center}
 .compare-header{margin-bottom:40px}
@@ -533,7 +534,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <video src="site-exemplo.mp4" muted playsinline loop preload="metadata"></video>
 </div>
 <div class="method-bonus-label" id="mbLabel">SITE PROFISSIONAL<br>100% PENSADO EM AFASTAR CURIOSOS</div>
-<div class="method-bonus-sub" id="mbSub"><svg class="mbs-icon" viewBox="0 0 24 24" fill="none" stroke="#7b3cff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>Contrato de 1 ano para ajustes</div>
+<div class="method-bonus-sub" id="mbSub"><span>+ 1 ANO</span><i class="mbs-line"></i>de contrato para ajustes</div>
 </div>
 
 </div></div></section>
@@ -836,21 +837,24 @@ ctx.restore();
 }
 function draw(){
 ctx.clearRect(0,0,W,H);
-const mw=Math.min(W,500);
-/* Shape 1: top area - wide flowing ribbon, positioned right */
-drawOrganicMesh(W*0.6,H*0.05,mw*0.9,H*0.045,-0.4,80,'rgba(75,0,180,.45)',2.8,0.35);
-drawOrganicMesh(W*0.55,H*0.05,mw*0.85,H*0.04,-0.3,60,'rgba(100,20,220,.3)',3.0,0.3);
-/* Shape 2: lower-left area - rounded dense mass */
-drawOrganicMesh(W*0.25,H*0.14,mw*0.6,H*0.05,0.6,75,'rgba(80,0,190,.4)',2.5,0.4);
-drawOrganicMesh(W*0.3,H*0.145,mw*0.55,H*0.045,0.8,55,'rgba(100,20,220,.28)',2.2,0.35);
-/* Shape 3: mid-right accent */
-drawOrganicMesh(W*0.75,H*0.28,mw*0.5,H*0.035,1.8,50,'rgba(70,0,170,.3)',2.6,0.3);
-/* Shape 4: lower section */
-drawOrganicMesh(W*0.3,H*0.45,mw*0.7,H*0.04,2.5,65,'rgba(85,10,200,.35)',3.1,0.38);
-/* Shape 5: bottom area */
-drawOrganicMesh(W*0.7,H*0.65,mw*0.55,H*0.04,0.3,55,'rgba(75,0,180,.28)',2.4,0.32);
-/* Shape 6: far bottom */
-drawOrganicMesh(W*0.25,H*0.82,mw*0.6,H*0.035,3.5,50,'rgba(90,10,210,.3)',2.8,0.36);
+const sz=Math.min(W*0.55,200);
+const pageH=H;
+/* Pair 1: top-right corner */
+drawOrganicMesh(W*0.82,pageH*0.03,sz,sz*0.8,-0.5,70,'rgba(60,0,160,.5)',2.6,0.3);
+drawOrganicMesh(W*0.78,pageH*0.035,sz*0.85,sz*0.7,-0.3,50,'rgba(90,10,210,.3)',2.9,0.25);
+/* Pair 2: bottom-left corner */
+drawOrganicMesh(W*0.18,pageH*0.12,sz,sz*0.9,0.8,70,'rgba(60,0,160,.5)',2.4,0.35);
+drawOrganicMesh(W*0.22,pageH*0.125,sz*0.8,sz*0.75,1.0,50,'rgba(90,10,210,.3)',2.1,0.28);
+/* Pair 3: mid-right */
+drawOrganicMesh(W*0.85,pageH*0.3,sz*0.7,sz*0.6,-1.2,55,'rgba(60,0,160,.4)',2.7,0.3);
+drawOrganicMesh(W*0.82,pageH*0.305,sz*0.6,sz*0.5,-1.0,40,'rgba(90,10,210,.25)',2.5,0.25);
+/* Pair 4: mid-left */
+drawOrganicMesh(W*0.15,pageH*0.48,sz*0.7,sz*0.6,2.0,55,'rgba(60,0,160,.4)',2.3,0.32);
+drawOrganicMesh(W*0.18,pageH*0.485,sz*0.6,sz*0.5,2.2,40,'rgba(90,10,210,.25)',2.0,0.26);
+/* Pair 5: lower-right */
+drawOrganicMesh(W*0.8,pageH*0.65,sz*0.65,sz*0.55,0.5,50,'rgba(60,0,160,.35)',2.8,0.28);
+/* Pair 6: bottom-left */
+drawOrganicMesh(W*0.2,pageH*0.82,sz*0.7,sz*0.6,3.2,50,'rgba(60,0,160,.38)',2.5,0.3);
 }
 resize();
 let resizeTimer;
