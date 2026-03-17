@@ -22,17 +22,19 @@ body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hid
 @keyframes glowDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,25px)}}
 @keyframes glowDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,-20px)}}
 @keyframes glowDrift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,-30px)}}
-.bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(123,60,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(123,60,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 50% at 50% 50%,#000 20%,transparent 100%)}
-.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.03;mix-blend-mode:overlay}
-.bg-grain svg{width:100%;height:100%}
-.bg-stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
-.shooting-star{position:absolute;width:80px;height:1px;background:linear-gradient(90deg,rgba(123,60,255,.6),rgba(255,255,255,.8),transparent);border-radius:999px;opacity:0;filter:blur(.3px)}
-.shooting-star:nth-child(1){top:15%;left:-80px;animation:shoot1 6s 1s ease-in infinite}
-.shooting-star:nth-child(2){top:45%;left:-80px;animation:shoot2 8s 3.5s ease-in infinite}
-.shooting-star:nth-child(3){top:70%;left:-80px;animation:shoot1 7s 6s ease-in infinite}
-@keyframes shoot1{0%{transform:translateX(0) rotate(-8deg);opacity:0}5%{opacity:.7}30%{transform:translateX(calc(100vw + 80px)) rotate(-8deg);opacity:0}100%{opacity:0}}
-@keyframes shoot2{0%{transform:translateX(0) rotate(-5deg);opacity:0}5%{opacity:.5}25%{transform:translateX(calc(100vw + 80px)) rotate(-5deg);opacity:0}100%{opacity:0}}
-body>*:not(.bg-dots):not(.bg-glow):not(.bg-grid):not(.bg-grain):not(.bg-stars){position:relative;z-index:1}
+.bg-spotlight{position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:120vw;height:60vh;z-index:0;pointer-events:none;background:radial-gradient(ellipse 40% 70% at 50% 0%,rgba(123,60,255,.07) 0%,transparent 100%)}
+.bg-bokeh{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.bokeh{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(123,60,255,.25) 0%,rgba(123,60,255,.08) 40%,transparent 70%);animation:float linear infinite}
+.bokeh:nth-child(1){width:6px;height:6px;left:12%;bottom:-6px;animation-duration:18s;animation-delay:0s}
+.bokeh:nth-child(2){width:4px;height:4px;left:28%;bottom:-4px;animation-duration:22s;animation-delay:3s}
+.bokeh:nth-child(3){width:8px;height:8px;left:45%;bottom:-8px;animation-duration:16s;animation-delay:1s}
+.bokeh:nth-child(4){width:3px;height:3px;left:62%;bottom:-3px;animation-duration:24s;animation-delay:5s}
+.bokeh:nth-child(5){width:5px;height:5px;left:78%;bottom:-5px;animation-duration:20s;animation-delay:2s}
+.bokeh:nth-child(6){width:7px;height:7px;left:90%;bottom:-7px;animation-duration:17s;animation-delay:8s}
+.bokeh:nth-child(7){width:4px;height:4px;left:5%;bottom:-4px;animation-duration:21s;animation-delay:6s}
+.bokeh:nth-child(8){width:5px;height:5px;left:55%;bottom:-5px;animation-duration:19s;animation-delay:10s}
+@keyframes float{0%{transform:translateY(0) translateX(0);opacity:0}5%{opacity:.6}50%{transform:translateY(-50vh) translateX(15px);opacity:.4}95%{opacity:0}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
+body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh){position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 ::selection{background:rgba(123,60,255,.3);color:#fff}
@@ -359,9 +361,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <body>
 <div class="bg-dots"></div>
 <div class="bg-glow"><div class="bg-glow-1"></div><div class="bg-glow-2"></div><div class="bg-glow-3"></div><div class="bg-glow-4"></div></div>
-<div class="bg-grid"></div>
-<div class="bg-grain"><svg><filter id="ng"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#ng)"/></svg></div>
-<div class="bg-stars"><div class="shooting-star"></div><div class="shooting-star"></div><div class="shooting-star"></div></div>
+<div class="bg-spotlight"></div>
+<div class="bg-bokeh"><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div></div>
 <div class="progress-bar" id="progressBar"></div>
 <header class="header" id="header">
 <div class="logo"><img src="https://i.ibb.co/PvRHwvLb/image.png" alt="Método Vitrine"></div>
