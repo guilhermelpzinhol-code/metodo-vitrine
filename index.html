@@ -7,7 +7,7 @@
 <meta name="description" content="Posicione sua empresa nas primeiras posições do Google sem gastar em tráfego pago. Resultados reais em 30 dias.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
@@ -34,7 +34,7 @@ body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hid
 .bokeh:nth-child(7){width:4px;height:4px;left:5%;bottom:-4px;animation-duration:21s;animation-delay:6s}
 .bokeh:nth-child(8){width:5px;height:5px;left:55%;bottom:-5px;animation-duration:19s;animation-delay:10s}
 @keyframes float{0%{transform:translateY(0) translateX(0);opacity:0}5%{opacity:.6}50%{transform:translateY(-50vh) translateX(15px);opacity:.4}95%{opacity:0}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
-body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.header):not(.progress-bar){position:relative;z-index:1}
+body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.header):not(.progress-bar):not(.st-dots){position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 ::selection{background:rgba(123,60,255,.3);color:#fff}
@@ -271,7 +271,29 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .nb-gsc-q-row span:first-child{flex:1;color:#8ab4f8;font-weight:500}
 .nb-gsc-q-row span:nth-child(2){color:#9aa0a6;font-size:.38rem}
 .nb-gsc-q-row span:last-child{color:#34a853;font-weight:700;font-size:.4rem}
-@media(prefers-reduced-motion:reduce){.st-card,.st-mockup,.st-label,.st-title,.st-counter,.st-line,.st-desc .st-word{transition:none!important;opacity:1!important;transform:none!important;clip-path:none!important}.st-line{height:calc(100% - 64px)!important}}
+/* Dot navigation */
+.st-dots{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:14px;opacity:0;pointer-events:none;transition:opacity .3s}
+.st-dots.st-dots-show{opacity:1;pointer-events:all}
+.st-dot{width:10px;height:10px;border-radius:50%;border:2px solid rgba(155,89,245,.4);background:transparent;cursor:pointer;transition:all .3s;padding:0}
+.st-dot.st-dot-active{background:#9B59F5;border-color:#9B59F5;box-shadow:0 0 10px rgba(155,89,245,.5);animation:dotPulse 1.5s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 10px rgba(155,89,245,.5)}50%{box-shadow:0 0 18px rgba(155,89,245,.7)}}
+/* Results section */
+.results-section{padding:80px 20px;text-align:center;position:relative}
+.results-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,6vw,2.4rem);font-weight:800;color:#F5F5F5;letter-spacing:-.03em;margin-bottom:48px;line-height:1.12}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:500px;margin:0 auto 56px}
+.result-card{background:rgba(155,89,245,.05);border:1px solid rgba(155,89,245,.2);border-radius:16px;padding:24px 16px;text-align:center;transition:border-color .4s}
+.result-card.rc-ping{animation:rcPing .6s}
+@keyframes rcPing{0%{border-color:rgba(155,89,245,.2)}40%{border-color:rgba(155,89,245,.6);box-shadow:0 0 20px rgba(155,89,245,.15)}100%{border-color:rgba(155,89,245,.2);box-shadow:none}}
+.rc-number{font-family:'JetBrains Mono',monospace;font-size:clamp(1.8rem,7vw,2.6rem);font-weight:700;color:#9B59F5;line-height:1;margin-bottom:6px;letter-spacing:-.02em}
+.rc-label{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;line-height:1.4}
+.results-highlight{max-width:500px;margin:0 auto;text-align:center;padding:32px 24px;background:rgba(155,89,245,.05);border:1px solid rgba(155,89,245,.2);border-radius:20px}
+.rh-title{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,5vw,1.8rem);font-weight:800;color:#F5F5F5;margin-bottom:8px;letter-spacing:-.02em}
+.rh-title span{color:#9B59F5}
+.rh-sub{font-size:.82rem;color:rgba(255,255,255,.5);font-weight:500;line-height:1.6;margin-bottom:24px}
+.rh-bar{height:6px;background:rgba(155,89,245,.12);border-radius:99px;overflow:hidden;position:relative}
+.rh-bar-fill{height:100%;width:0;background:linear-gradient(90deg,#7B2FBE,#9B59F5);border-radius:99px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+.rh-bar-fill.rh-go{width:85%}
+@media(prefers-reduced-motion:reduce){.st-card,.st-mockup,.st-label,.st-title,.st-counter,.st-line,.st-desc .st-word{transition:none!important;opacity:1!important;transform:none!important;clip-path:none!important}.st-line{height:calc(100% - 64px)!important}.st-dot.st-dot-active{animation:none!important}.result-card.rc-ping{animation:none!important}.rh-bar-fill{transition:none!important;width:85%!important}}
 .method-bonus{padding:80px 12px 0;text-align:center;max-width:100%;margin:0 auto;position:relative}
 .method-bonus-title{font-size:clamp(2.2rem,10vw,4rem);font-weight:900;letter-spacing:-.04em;margin-bottom:48px;min-height:1.3em;line-height:1.08;position:relative;z-index:1;background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-video{position:relative;width:calc(100% + 24px);max-width:900px;margin:0 auto 40px;margin-left:-12px;border-radius:16px;overflow:hidden;border:2px solid rgba(123,60,255,.3);box-shadow:0 20px 60px rgba(123,60,255,.25),0 0 0 1px rgba(255,255,255,.05);opacity:0;transform:translateY(40px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -402,6 +424,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .niches,.method,.testimonials,.faq,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
 .st-card{flex-direction:row;gap:40px;padding:48px 40px;align-items:center}.st-mockup{max-width:420px;flex-shrink:0}.st-text{padding-left:24px}.st-nb{max-width:420px}
+.results-grid{max-width:700px;gap:20px}.result-card{padding:32px 24px}.results-highlight{max-width:700px;padding:40px 36px}
 .testimonial-card{max-width:420px}
 .hl-compare{max-width:800px}.hl-card{padding:36px 32px}
 .cta-btn{width:auto;max-width:none;margin:0 auto}.header .cta-btn{margin:0}
@@ -452,6 +475,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <section class="highlight-section" id="highlightSection">
 </section>
 
+<nav class="st-dots" id="stDots"><button class="st-dot st-dot-active" data-st-dot="0" aria-label="Card 1"></button><button class="st-dot" data-st-dot="1" aria-label="Card 2"></button></nav>
 <section class="method" id="method"><div class="container">
 <div class="method-header" data-anim><p class="method-pre">isso é</p><h2 class="method-title"><span class="method-title-metodo">MÉTODO</span><br><span class="method-title-vitrine">VITRINE</span></h2><p>Um método criado para transformar sua empresa na primeira escolha quando alguém procura pelo seu serviço.</p></div>
 <div class="method-steps">
@@ -519,44 +543,34 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 </div>
 </div>
 
-<!-- Card 3: Estrutura -->
-<div class="st-card" data-st>
-<div class="st-line"></div>
-<div class="st-mockup">
-<div class="st-nb">
-<div class="st-nb-screen">
-<div class="st-nb-notch"></div>
-<div class="st-nb-content">
-<div class="nb-google">
-<div class="nb-g-bar"><div class="nb-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="nb-g-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg>Search Console</div></div>
-<div class="nb-gsc">
-<div class="nb-gsc-head"><span>Desempenho</span><span>28 dias</span></div>
-<div class="nb-gsc-grid">
-<div class="nb-gsc-m"><small>Cliques</small><b style="color:#4285f4">187</b></div>
-<div class="nb-gsc-m"><small>Impressões</small><b style="color:#a855f7">2.340</b></div>
-<div class="nb-gsc-m"><small>CTR</small><b style="color:#34a853">8,0%</b></div>
-<div class="nb-gsc-m"><small>Posição</small><b style="color:#ea4335">2.4</b></div>
-</div>
-<div class="nb-gsc-chart"><svg viewBox="0 0 320 60" preserveAspectRatio="none"><defs><linearGradient id="nbFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4285f4" stop-opacity=".3"/><stop offset="100%" stop-color="#4285f4" stop-opacity="0"/></linearGradient></defs><path d="M0,50 L40,48 L80,45 L120,40 L160,35 L200,30 L240,24 L280,18 L320,14 L320,60 L0,60Z" fill="url(#nbFill)"/><path d="M0,50 L40,48 L80,45 L120,40 L160,35 L200,30 L240,24 L280,18 L320,14" fill="none" stroke="#4285f4" stroke-width="2" stroke-linecap="round"/></svg></div>
-<div class="nb-gsc-q">
-<div class="nb-gsc-q-title">Consultas</div>
-<div class="nb-gsc-q-row"><span>reformas residenciais</span><span>52 cliques</span><span>#2</span></div>
-<div class="nb-gsc-q-row"><span>empresa de reformas</span><span>41 cliques</span><span>#3</span></div>
-<div class="nb-gsc-q-row"><span>pedreiro na região</span><span>34 cliques</span><span>#1</span></div>
-</div></div></div>
-</div>
-</div>
-<div class="st-nb-base"></div>
-</div>
-<div class="st-counter">↑ 187 cliques em 28 dias</div>
-</div>
-<div class="st-text">
-<div class="st-label">Estrutura</div>
-<h3 class="st-title">Contatos todos os dias</h3>
-<p class="st-desc" data-st-desc>Uma máquina de posicionamento que trabalha 24h por dia trazendo clientes prontos para contratar seu serviço.</p>
-</div>
 </div>
 
+<!-- Results Section -->
+<div class="results-section" id="resultsSection">
+<h2 class="results-title" data-anim>Resultados que você vai ver</h2>
+<div class="results-grid">
+<div class="result-card" data-rc data-rc-val="187" data-rc-suffix="">
+<div class="rc-number">0</div>
+<div class="rc-label">Cliques em 28 dias</div>
+</div>
+<div class="result-card" data-rc data-rc-val="2340" data-rc-suffix="" data-rc-fmt="dot">
+<div class="rc-number">0</div>
+<div class="rc-label">Impressões orgânicas</div>
+</div>
+<div class="result-card" data-rc data-rc-val="8.0" data-rc-suffix="%" data-rc-dec="1">
+<div class="rc-number">0</div>
+<div class="rc-label">Taxa de cliques</div>
+</div>
+<div class="result-card" data-rc data-rc-val="4.9" data-rc-suffix="★" data-rc-dec="1">
+<div class="rc-number">0</div>
+<div class="rc-label">Avaliação média</div>
+</div>
+</div>
+<div class="results-highlight" data-anim>
+<div class="rh-title">Posição <span>2.4</span> no Google</div>
+<p class="rh-sub">Em média, nossos clientes alcançam as primeiras posições em 90 dias</p>
+<div class="rh-bar"><div class="rh-bar-fill" id="rhBar"></div></div>
+</div>
 </div>
 
 <div class="method-bonus" id="methodBonus">
@@ -827,9 +841,12 @@ const waObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){ru
 waObs.observe(waPhoneEl);
 }
 
-/* Scroll storytelling cards */
+/* Scroll storytelling cards + dot nav */
 (function(){
 const cards=document.querySelectorAll('[data-st]');
+const dots=document.getElementById('stDots');
+const dotBtns=dots?dots.querySelectorAll('.st-dot'):[];
+const methodSection=document.getElementById('method');
 if(!cards.length)return;
 const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 /* Wrap description words for typewriter */
@@ -841,21 +858,69 @@ desc.innerHTML=text.split(/(\s+)/).map(w=>/^\s+$/.test(w)?w:'<span class="st-wor
 }
 });
 if(prefersReduced){cards.forEach(c=>c.classList.add('st-visible'));return}
+/* Card reveal observer */
 const stObs=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
 if(!e.isIntersecting)return;
 const card=e.target;
 card.style.willChange='transform,opacity';
 card.classList.add('st-visible');
-/* Typewriter word reveal */
 const words=card.querySelectorAll('.st-word');
 words.forEach((w,i)=>{w.style.transitionDelay=(300+i*20)+'ms'});
-/* Cleanup will-change after animation */
 setTimeout(()=>{card.style.willChange='auto'},1200);
 stObs.unobserve(card);
 });
-},{threshold:.2,rootMargin:'0px 0px -60px 0px'});
+},{threshold:.15,rootMargin:'0px 0px -60px 0px'});
 cards.forEach(c=>stObs.observe(c));
+/* Dot nav visibility + active tracking */
+if(dots&&methodSection){
+const secObs=new IntersectionObserver(es=>{es.forEach(e=>{dots.classList.toggle('st-dots-show',e.isIntersecting)})},{threshold:0});
+secObs.observe(methodSection);
+const dotObs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const idx=[...cards].indexOf(e.target);dotBtns.forEach((d,i)=>d.classList.toggle('st-dot-active',i===idx))})},{threshold:.4});
+cards.forEach(c=>dotObs.observe(c));
+dotBtns.forEach(d=>{d.addEventListener('click',()=>{const i=+d.dataset.stDot;if(cards[i])cards[i].scrollIntoView({behavior:'smooth',block:'center'})})});
+}
+})();
+
+/* Results count-up + ping */
+(function(){
+const rcCards=document.querySelectorAll('[data-rc]');
+if(!rcCards.length)return;
+const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+function countUp(el,target,suffix,dec,fmt){
+if(prefersReduced){el.textContent=(fmt?target.toLocaleString('pt-BR'):dec>0?target.toFixed(dec):target)+suffix;return}
+const duration=1200;const start=performance.now();
+function tick(now){
+const p=Math.min((now-start)/duration,1);
+const eased=1-Math.pow(1-p,3);
+let val=eased*target;
+if(dec>0)val=val.toFixed(dec);
+else val=Math.round(val);
+if(fmt)val=Number(val).toLocaleString('pt-BR');
+el.textContent=val+suffix;
+if(p<1)requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+}
+const rcObs=new IntersectionObserver(es=>{es.forEach(e=>{
+if(!e.isIntersecting)return;
+const card=e.target;
+const numEl=card.querySelector('.rc-number');
+const target=parseFloat(card.dataset.rcVal);
+const suffix=card.dataset.rcSuffix||'';
+const dec=parseInt(card.dataset.rcDec)||0;
+const fmt=card.dataset.rcFmt==='dot';
+countUp(numEl,target,suffix,dec,fmt);
+card.classList.add('rc-ping');
+rcObs.unobserve(card);
+})},{threshold:.15});
+rcCards.forEach(c=>rcObs.observe(c));
+/* Progress bar */
+const rhBar=document.getElementById('rhBar');
+if(rhBar){
+const barObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){rhBar.classList.add('rh-go');barObs.unobserve(e.target)}})},{threshold:.3});
+barObs.observe(rhBar.parentElement);
+}
 })();
 
 /* FAQ */
