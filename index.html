@@ -169,9 +169,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .nb-base::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:4px;background:rgba(255,255,255,.04);border-radius:0 0 4px 4px}
 .nb-glow{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:80%;height:60px;background:radial-gradient(ellipse,rgba(123,60,255,.25) 0%,transparent 70%);pointer-events:none;filter:blur(20px)}
 /* Notebook nav dots */
-.nb-nav{display:flex;gap:10px;margin-top:24px;justify-content:center}
-.nb-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
-.nb-dot.nb-dot-active{background:#7b3cff;border-color:#9b5cff;box-shadow:0 0 12px rgba(123,60,255,.5)}
 /* Step info below notebook */
 .nb-info{text-align:center;margin-top:28px;min-height:100px}
 .nb-info-label{font-size:.7rem;font-weight:700;color:#7b3cff;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;opacity:0;transform:translateY(8px);transition:all .4s}
@@ -265,12 +262,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .testimonial-stars svg{width:14px;height:14px;fill:#f5a623;stroke:none}
 .testimonial-text{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.8}
 .testimonial-text strong{color:rgba(255,255,255,.8);font-weight:600}
-.testimonial-counter{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  display:flex;gap:8px;align-items:center;z-index:3
-}
-.tc-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);transition:all .3s}
-.tc-dot.active{background:#7b3cff;width:24px;border-radius:3px}
 .faq{padding:64px 0;text-align:center}
 .faq-header{margin-bottom:40px}
 .faq-header h2{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
@@ -344,7 +335,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-result-title{font-size:1rem}.hs-result-desc{font-size:.8rem}
 .niches,.method,.testimonials,.faq,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
-.nb-laptop{max-width:520px}.nb-screen{border-radius:16px 16px 0 0}.nb-wrapper{flex-direction:row;gap:60px;align-items:center}.nb-info{text-align:left;margin-top:0}.nb-info-desc{margin:0}.nb-nav{justify-content:flex-start}
+.nb-laptop{max-width:520px}.nb-screen{border-radius:16px 16px 0 0}.nb-wrapper{flex-direction:row;gap:60px;align-items:center}.nb-info{text-align:left;margin-top:0}.nb-info-desc{margin:0}
 .testimonial-card{max-width:480px}
 .cta-btn{width:auto;max-width:none;margin:0 auto}.header .cta-btn{margin:0}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
@@ -518,11 +509,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="nb-base"></div>
 <div class="nb-glow"></div>
 </div>
-<div class="nb-nav">
-<div class="nb-dot nb-dot-active" data-nbd="0"></div>
-<div class="nb-dot" data-nbd="1"></div>
-<div class="nb-dot" data-nbd="2"></div>
-</div>
 <div class="nb-info" id="nbInfo">
 <div class="nb-info-label nb-show" id="nbLabel">Posicionamento</div>
 <div class="nb-info-title nb-show" id="nbTitle">Sua empresa em primeiro no Google</div>
@@ -560,7 +546,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
 <div class="testimonial-text">"Sinceramente achei que não ia funcionar pra construtora, porque a concorrência aqui é pesada. Mas o pessoal do Método Vitrine <strong>colocou a gente no topo</strong> e agora recebo orçamento pelo Google toda semana. Mudou o jogo."</div>
 </div>
-<div class="testimonial-counter" id="tcDots"></div>
 </div>
 </section>
 
@@ -676,7 +661,6 @@ waObs.observe(waPhoneEl);
 /* 3D Notebook auto-cycle */
 (function(){
 const slides=document.querySelectorAll('.nb-slide');
-const dots=document.querySelectorAll('.nb-dot');
 const wrapper=document.getElementById('nbWrapper');
 if(!slides.length||!wrapper)return;
 const steps=[
@@ -687,9 +671,7 @@ const steps=[
 let cur=0,interval=null,started=false;
 function goTo(i){
 slides.forEach(s=>s.classList.remove('nb-active'));
-dots.forEach(d=>d.classList.remove('nb-dot-active'));
 slides[i].classList.add('nb-active');
-dots[i].classList.add('nb-dot-active');
 const lbl=document.getElementById('nbLabel'),ttl=document.getElementById('nbTitle'),dsc=document.getElementById('nbDesc');
 [lbl,ttl,dsc].forEach(el=>{if(el)el.classList.remove('nb-show')});
 setTimeout(()=>{
@@ -700,8 +682,6 @@ if(dsc){dsc.textContent=steps[i].desc;dsc.classList.add('nb-show')}
 cur=i;
 }
 function startCycle(){if(interval)return;interval=setInterval(()=>{goTo((cur+1)%3)},3500)}
-function stopCycle(){clearInterval(interval);interval=null}
-dots.forEach(d=>{d.addEventListener('click',()=>{stopCycle();goTo(parseInt(d.dataset.nbd));startCycle()})});
 const nbObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!started){started=true;startCycle();nbObs.unobserve(e.target)}})},{threshold:.2});
 nbObs.observe(wrapper);
 })();
@@ -714,10 +694,7 @@ if(!was){it.classList.add('open');const a=it.querySelector('.faq-answer');a.styl
 /* Sticky scroll testimonials */
 const tcSection=document.getElementById('testimonialsSection');
 const tcCards=tcSection?tcSection.querySelectorAll('.testimonial-card'):[];
-const tcDotsWrap=document.getElementById('tcDots');
-if(tcCards.length&&tcDotsWrap){
-tcCards.forEach((_,i)=>{const d=document.createElement('span');d.className='tc-dot';tcDotsWrap.appendChild(d)});
-const tcDots=tcDotsWrap.querySelectorAll('.tc-dot');
+if(tcCards.length){
 function updateTC(){
 const rect=tcSection.getBoundingClientRect();
 const sH=tcSection.offsetHeight;
@@ -727,7 +704,7 @@ const progress=Math.max(0,Math.min(1,scrolled/(sH-wH)));
 const total=tcCards.length;
 const idx=Math.min(Math.floor(progress*total),total-1);
 tcCards.forEach((c,i)=>{c.classList.remove('tc-active','tc-done');if(i===idx)c.classList.add('tc-active');else if(i<idx)c.classList.add('tc-done')});
-tcDots.forEach((d,i)=>d.classList.toggle('active',i===idx))}
+}
 window.addEventListener('scroll',updateTC,{passive:true});
 updateTC()}
 
