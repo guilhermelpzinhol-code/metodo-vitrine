@@ -12,7 +12,10 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hidden;line-height:1.6;position:relative}
-#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.bg-dots{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background:radial-gradient(at 20% 80%,rgba(255,255,255,.8) .5px,transparent .5px);background-size:4px 4px;opacity:.045}
+.bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.bg-glow-1{position:absolute;top:-20%;right:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(123,60,255,.08) 0%,transparent 60%);filter:blur(80px)}
+.bg-glow-2{position:absolute;bottom:-15%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(123,60,255,.06) 0%,transparent 60%);filter:blur(80px)}
 body>*{position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
@@ -42,7 +45,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .header .logo img{height:38px}
 .header .cta-btn{font-size:.75rem;padding:10px 20px;min-height:auto;width:auto;max-width:none;margin:0}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(123,60,255,.06) 0%,transparent 60%);pointer-events:none}
+.hero::before{display:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent 0%,#000 70%);pointer-events:none;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:6px;padding:6px 14px;font-size:.6rem;font-weight:600;color:rgba(255,255,255,.45);margin:0 auto 28px;background:rgba(255,255,255,.03);letter-spacing:.08em;text-transform:uppercase;position:relative;overflow:hidden}
 .hero-badge::before{content:'';position:absolute;inset:0;border-radius:6px;padding:1px;background:linear-gradient(135deg,rgba(123,60,255,.35),transparent 50%,rgba(155,92,255,.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
@@ -327,7 +330,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(123,60,255,.25);border-radius:99px}
 @media(min-width:769px){
 .container{padding:0 80px}
-.hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-sponsored{max-width:620px}
+.hero{padding:80px 80px 120px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-sponsored{max-width:620px}
 .niches,.method,.testimonials,.faq,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
 .nb-laptop{max-width:520px}.nb-screen{border-radius:16px 16px 0 0}.nb-wrapper{flex-direction:row;gap:60px;align-items:center}.nb-info{text-align:left;margin-top:0}.nb-info-desc{margin:0}
@@ -338,7 +341,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:1024px){.wa-section-header h2,.method-header h2,.testimonials-header h2,.faq-header h2{font-size:2.6rem}}</style>
 </head>
 <body>
-<canvas id="bgCanvas"></canvas>
+<div class="bg-dots"></div>
+<div class="bg-glow"><div class="bg-glow-1"></div><div class="bg-glow-2"></div></div>
 <div class="progress-bar" id="progressBar"></div>
 <header class="header" id="header">
 <div class="logo"><img src="https://i.ibb.co/PvRHwvLb/image.png" alt="Método Vitrine"></div>
@@ -774,96 +778,6 @@ mbObs.observe(mbSection);
 /* CTA hover glow */
 document.querySelectorAll('.cta-btn').forEach(b=>{let lt=0;b.addEventListener('mousemove',e=>{const n=Date.now();if(n-lt<32)return;lt=n;const r=b.getBoundingClientRect();b.style.boxShadow=(e.clientX-r.left-r.width/2)+'px '+(e.clientY-r.top-r.height/2)+'px 40px rgba(123,60,255,.2)'},{passive:true});b.addEventListener('mouseleave',()=>{b.style.boxShadow=''})});
 
-/* Lightweight wireframe spheres background */
-(function(){
-const cv=document.getElementById('bgCanvas');
-if(!cv)return;
-const isMobile=window.innerWidth<768;
-if(isMobile){cv.style.display='none';return;}
-const ctx=cv.getContext('2d');
-let W,H;
-
-function resize(){
-W=window.innerWidth;
-H=window.innerHeight;
-cv.width=W;
-cv.height=H;
-}
-
-function drawSphere(cx,cy,radius,rotation,breathScale){
-const r=radius*breathScale;
-const numRings=10;
-const segments=28;
-
-for(let i=0;i<numRings;i++){
-const t=i/numRings;
-const ringAngle=t*Math.PI;
-const tilt=ringAngle+rotation;
-const ry=r;
-const rx=r*Math.sin(ringAngle);
-const alpha=0.25+0.2*Math.sin(t*Math.PI);
-
-ctx.strokeStyle='rgba(90,30,160,'+alpha+')';
-ctx.lineWidth=0.6;
-ctx.beginPath();
-
-for(let s=0;s<=segments;s++){
-const angle=(s/segments)*Math.PI*2;
-const x=cx+Math.cos(angle)*rx*Math.cos(tilt);
-const y=cy+Math.sin(angle)*ry*0.95+Math.cos(angle)*rx*Math.sin(tilt)*0.3;
-if(s===0)ctx.moveTo(x,y);
-else ctx.lineTo(x,y);
-}
-ctx.stroke();
-}
-
-const latRings=6;
-for(let i=0;i<latRings;i++){
-const t=i/latRings;
-const lat=(t-0.5)*Math.PI;
-const ringR=r*Math.cos(lat);
-const ringY=cy+r*Math.sin(lat)*0.95;
-const alpha=0.15+0.15*Math.cos(lat);
-
-ctx.strokeStyle='rgba(100,20,180,'+alpha+')';
-ctx.lineWidth=0.4;
-ctx.beginPath();
-
-for(let s=0;s<=segments;s++){
-const angle=(s/segments)*Math.PI*2+rotation*0.5;
-const x=cx+Math.cos(angle)*ringR;
-const y=ringY+Math.sin(angle)*ringR*Math.sin(rotation)*0.15;
-if(s===0)ctx.moveTo(x,y);
-else ctx.lineTo(x,y);
-}
-ctx.stroke();
-}
-}
-
-let time=0;
-let lastFrame=0;
-const interval=1000/30; /* Cap at 30fps */
-function animate(now){
-requestAnimationFrame(animate);
-if(now-lastFrame<interval)return;
-lastFrame=now;
-time+=0.003;
-ctx.clearRect(0,0,W,H);
-
-const breath1=1+Math.sin(time*1.2)*0.03;
-const breath2=1+Math.sin(time*0.9+1.5)*0.03;
-const rot1=time*0.4;
-const rot2=time*0.3+Math.PI*0.5;
-const baseSize=Math.min(W,H)*0.55;
-
-drawSphere(W+baseSize*0.12,-baseSize*0.18,baseSize,rot1,breath1);
-drawSphere(-baseSize*0.15,H+baseSize*0.12,baseSize*0.9,rot2,breath2);
-}
-
-resize();
-window.addEventListener('resize',resize);
-requestAnimationFrame(animate);
-})();
 </script>
 </body>
 </html>
