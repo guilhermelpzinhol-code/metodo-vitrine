@@ -123,9 +123,31 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-lock-flashlight svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
 .wa-lock-camera{position:absolute;bottom:clamp(44px,7vh,64px);right:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
 .wa-lock-camera svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
-.highlight-section{position:relative;padding:140px 20px;min-height:90vh;text-align:center;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(45,16,102,.85) 8%,rgba(45,16,102,.85) 92%,rgba(0,0,0,0) 100%);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.highlight-section{position:relative;padding:100px 20px;text-align:center;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(45,16,102,.85) 8%,rgba(45,16,102,.85) 92%,rgba(0,0,0,0) 100%);overflow:hidden}
 .highlight-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 50%,rgba(123,60,255,.15) 0%,transparent 55%);pointer-events:none}
 .highlight-section .container{position:relative;z-index:1;width:100%}
+.hl-title{font-size:clamp(1.4rem,6vw,2.2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:8px;line-height:1.12}
+.hl-sub{font-size:clamp(.8rem,3vw,.9rem);color:rgba(255,255,255,.4);margin-bottom:48px;line-height:1.6}
+.hl-compare{display:flex;flex-direction:column;gap:16px;max-width:600px;margin:0 auto}
+.hl-card{border-radius:18px;padding:28px 22px;text-align:left;position:relative;overflow:hidden}
+.hl-card--before{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.hl-card--after{background:rgba(123,60,255,.08);border:1px solid rgba(123,60,255,.2);box-shadow:0 8px 40px rgba(123,60,255,.12)}
+.hl-card-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:6px;margin-bottom:18px}
+.hl-card--before .hl-card-tag{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
+.hl-card--after .hl-card-tag{background:rgba(123,60,255,.2);color:#b388ff}
+.hl-rows{display:flex;flex-direction:column;gap:14px}
+.hl-row{display:flex;align-items:flex-start;gap:12px}
+.hl-row-icon{width:20px;height:20px;flex-shrink:0;margin-top:2px}
+.hl-card--before .hl-row-icon{color:rgba(255,255,255,.2)}
+.hl-card--after .hl-row-icon{color:#7b3cff}
+.hl-row-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hl-row-text{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.5}
+.hl-card--after .hl-row-text{color:rgba(255,255,255,.7)}
+.hl-card--after .hl-row-text strong{color:#fff}
+.hl-divider{display:flex;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.15);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.hl-divider::before,.hl-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+.hl-arrow{width:36px;height:36px;border-radius:50%;background:rgba(123,60,255,.15);display:flex;align-items:center;justify-content:center}
+.hl-arrow svg{width:18px;height:18px;stroke:#7b3cff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .wa-section{padding:80px 0;text-align:center;position:relative}
 .wa-section-header{margin-bottom:40px;padding:0 20px}
 .wa-section-header h2{font-size:clamp(1.4rem,6vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:14px;line-height:1.12}
@@ -279,7 +301,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-tc-name{font-size:1.05rem;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.01em}
 .wa-tc-status{display:none}
 .wa-tc-icons{display:flex;gap:24px;color:#fff;align-items:center;margin-left:auto}
-.wa-tc-icons svg{width:24px;height:24px;fill:currentColor;stroke:none}
+.wa-tc-icons svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 /* WA chat body */
 .wa-tc-body{background:#0b141a;padding:18px 12px 14px;min-height:120px;position:relative;background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm-140 40c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm20 40c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm-40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm-40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm-40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm-20 40c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2zm40 0c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z' fill='rgba(255,255,255,.018)' fill-rule='evenodd'/%3E%3C/svg%3E")}
 /* WA bubble */
@@ -366,6 +388,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-phone{max-width:375px}
 .nb-laptop{max-width:520px}.nb-screen{border-radius:16px 16px 0 0}.nb-wrapper{flex-direction:row;gap:60px;align-items:center}.nb-info{text-align:left;margin-top:0}.nb-info-desc{margin:0}
 .testimonial-card{max-width:420px}
+.hl-compare{max-width:800px}.hl-card{padding:36px 32px}
 .cta-btn{width:auto;max-width:none;margin:0 auto}.header .cta-btn{margin:0}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
 }
@@ -412,7 +435,30 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 </section>
 
 <section class="highlight-section" id="highlightSection">
-<div class="container" data-anim>
+<div class="container">
+<h2 class="hl-title grad-text" data-anim>Antes e depois do Método Vitrine</h2>
+<p class="hl-sub" data-anim>O que muda quando sua empresa aparece no topo do Google</p>
+<div class="hl-compare">
+<div class="hl-card hl-card--before" data-anim>
+<span class="hl-card-tag">Antes</span>
+<div class="hl-rows">
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="hl-row-text">Empresa invisível no Google — cliente pesquisa e encontra o concorrente</div></div>
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="hl-row-text">Depende 100% de indicação ou tráfego pago pra receber contato</div></div>
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="hl-row-text">WhatsApp parado — nenhuma mensagem de cliente novo</div></div>
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="hl-row-text">Site sem visita, sem clique, sem resultado</div></div>
+</div>
+</div>
+<div class="hl-divider" data-anim><div class="hl-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div></div>
+<div class="hl-card hl-card--after" data-anim>
+<span class="hl-card-tag">Depois</span>
+<div class="hl-rows">
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="hl-row-text"><strong>Primeira posição no Google</strong> — cliente pesquisa e encontra você</div></div>
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="hl-row-text"><strong>Clientes chegam pelo orgânico</strong> sem gastar em anúncio</div></div>
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="hl-row-text"><strong>WhatsApp tocando</strong> com mensagens de gente que te achou no Google</div></div>
+<div class="hl-row"><div class="hl-row-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="hl-row-text"><strong>Site trabalhando por você</strong> 24h por dia, 7 dias por semana</div></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
