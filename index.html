@@ -809,39 +809,48 @@ cv.style.width=W+'px';cv.style.height=H+'px';
 ctx.setTransform(dpr,0,0,dpr,0,0);
 draw();
 }
-function drawMesh(cx,cy,rx,ry,rot,lines,color){
+function drawOrganicMesh(cx,cy,scaleX,scaleY,rotation,numLines,color,twist,spread){
+ctx.save();
+ctx.translate(cx,cy);
+ctx.rotate(rotation);
 ctx.strokeStyle=color;
-ctx.lineWidth=0.6;
-ctx.globalAlpha=1;
-for(let i=0;i<lines;i++){
-const angle=rot+(i/lines)*Math.PI*2;
-const wobble=Math.sin(i*0.7)*0.15;
+ctx.lineWidth=0.5;
+for(let i=0;i<numLines;i++){
+const t=i/numLines;
+const angle=t*Math.PI*2;
 ctx.beginPath();
-for(let t=0;t<=1;t+=0.008){
-const a=angle+t*Math.PI*2.5;
-const r1=rx*(0.3+t*0.7+wobble*Math.sin(t*6));
-const r2=ry*(0.3+t*0.7+wobble*Math.cos(t*5));
-const x=cx+Math.cos(a)*r1;
-const y=cy+Math.sin(a)*r2;
-if(t===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+const steps=180;
+for(let s=0;s<=steps;s++){
+const p=s/steps;
+const baseAngle=angle+p*Math.PI*twist;
+const envelope=Math.sin(p*Math.PI);
+const r=envelope*(0.6+0.4*Math.sin(t*12+p*4));
+const warp=Math.sin(p*Math.PI*3+t*8)*spread*envelope;
+const x=Math.cos(baseAngle)*r*scaleX+warp*scaleX*0.3;
+const y=Math.sin(baseAngle)*r*scaleY+Math.cos(baseAngle+t*5)*envelope*scaleY*0.15;
+if(s===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
 }
 ctx.stroke();
 }
+ctx.restore();
 }
 function draw(){
 ctx.clearRect(0,0,W,H);
-/* Top-right mesh */
-drawMesh(W*0.75,H*0.04,W*0.45,H*0.06,-0.3,60,'rgba(90,20,200,.35)');
-/* Left mesh */
-drawMesh(W*0.15,H*0.18,W*0.35,H*0.05,0.8,50,'rgba(123,60,255,.25)');
-/* Center-right */
-drawMesh(W*0.8,H*0.35,W*0.3,H*0.04,1.5,45,'rgba(80,20,180,.2)');
-/* Bottom-left */
-drawMesh(W*0.2,H*0.55,W*0.4,H*0.06,2.2,55,'rgba(100,30,220,.3)');
-/* Bottom-right */
-drawMesh(W*0.85,H*0.7,W*0.3,H*0.05,0.5,40,'rgba(123,60,255,.2)');
-/* Far bottom */
-drawMesh(W*0.3,H*0.85,W*0.35,H*0.05,3.8,48,'rgba(90,20,200,.25)');
+const mw=Math.min(W,500);
+/* Shape 1: top area - wide flowing ribbon, positioned right */
+drawOrganicMesh(W*0.6,H*0.05,mw*0.9,H*0.045,-0.4,80,'rgba(75,0,180,.45)',2.8,0.35);
+drawOrganicMesh(W*0.55,H*0.05,mw*0.85,H*0.04,-0.3,60,'rgba(100,20,220,.3)',3.0,0.3);
+/* Shape 2: lower-left area - rounded dense mass */
+drawOrganicMesh(W*0.25,H*0.14,mw*0.6,H*0.05,0.6,75,'rgba(80,0,190,.4)',2.5,0.4);
+drawOrganicMesh(W*0.3,H*0.145,mw*0.55,H*0.045,0.8,55,'rgba(100,20,220,.28)',2.2,0.35);
+/* Shape 3: mid-right accent */
+drawOrganicMesh(W*0.75,H*0.28,mw*0.5,H*0.035,1.8,50,'rgba(70,0,170,.3)',2.6,0.3);
+/* Shape 4: lower section */
+drawOrganicMesh(W*0.3,H*0.45,mw*0.7,H*0.04,2.5,65,'rgba(85,10,200,.35)',3.1,0.38);
+/* Shape 5: bottom area */
+drawOrganicMesh(W*0.7,H*0.65,mw*0.55,H*0.04,0.3,55,'rgba(75,0,180,.28)',2.4,0.32);
+/* Shape 6: far bottom */
+drawOrganicMesh(W*0.25,H*0.82,mw*0.6,H*0.035,3.5,50,'rgba(90,10,210,.3)',2.8,0.36);
 }
 resize();
 let resizeTimer;
