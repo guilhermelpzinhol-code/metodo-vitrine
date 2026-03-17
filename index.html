@@ -110,6 +110,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-lock-flashlight svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
 .wa-lock-camera{position:absolute;bottom:clamp(44px,7vh,64px);right:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
 .wa-lock-camera svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
+.highlight-section{position:relative;padding:80px 20px;text-align:center;background:linear-gradient(180deg,#000 0%,#1a0a3a 15%,#2d1066 40%,#2d1066 60%,#1a0a3a 85%,#000 100%);overflow:hidden}
+.highlight-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(123,60,255,.12) 0%,transparent 60%);pointer-events:none}
+.highlight-section .container{position:relative;z-index:1}
 .wa-section{padding:80px 0;text-align:center;position:relative}
 .wa-section::before{content:'';position:absolute;top:20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(123,60,255,.1) 0%,transparent 60%);pointer-events:none;z-index:0}
 .wa-section-header{margin-bottom:40px;padding:0 20px}
@@ -418,6 +421,10 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </section>
 
+<section class="highlight-section" id="highlightSection">
+<div class="container" data-anim>
+</div>
+</section>
 
 <section class="wa-section" id="waSection">
 <div class="wa-section-header" data-anim>
