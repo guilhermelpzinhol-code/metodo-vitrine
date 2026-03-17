@@ -220,14 +220,15 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vis-gsc-query-text{flex:1;color:#8ab4f8;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.58rem}
 .vis-gsc-query-clicks{color:#9aa0a6;font-size:.52rem;min-width:55px;text-align:right}
 .vis-gsc-query-pos{color:#34a853;font-weight:700;font-size:.55rem;min-width:20px;text-align:right}
-.method-bonus{padding:80px 20px 0;text-align:center;max-width:800px;margin:0 auto;position:relative}
+.method-bonus{padding:80px 12px 0;text-align:center;max-width:100%;margin:0 auto;position:relative}
 .method-bonus-title{font-size:clamp(2.2rem,10vw,4rem);font-weight:900;letter-spacing:-.04em;margin-bottom:48px;min-height:1.3em;line-height:1.08;position:relative;z-index:1;background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.method-bonus-video{position:relative;width:100%;max-width:580px;margin:0 auto 32px;border-radius:24px;overflow:hidden;border:2px solid rgba(123,60,255,.25);box-shadow:0 20px 80px rgba(123,60,255,.22),0 0 160px rgba(123,60,255,.08),0 0 0 1px rgba(255,255,255,.04);opacity:0;transform:translateY(40px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.method-bonus-video{position:relative;width:100%;max-width:900px;margin:0 auto 40px;border-radius:20px;overflow:hidden;border:2px solid rgba(123,60,255,.3);box-shadow:0 30px 100px rgba(123,60,255,.28),0 0 200px rgba(123,60,255,.1),0 0 0 1px rgba(255,255,255,.05);opacity:0;transform:translateY(40px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .method-bonus-video.mbv-show{opacity:1;transform:translateY(0) scale(1)}
 .method-bonus-video video{width:100%;display:block}
-.method-bonus-label{font-size:clamp(1.1rem,5vw,1.6rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1}
+.method-bonus-label{font-family:'Horizon',sans-serif;font-size:clamp(1.3rem,6vw,2.4rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,#d4b8ff 50%,#7b3cff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-label.mbl-show{opacity:1;transform:translateY(0)}
-.method-bonus-sub{font-size:clamp(.9rem,3.5vw,1.1rem);color:rgba(255,255,255,.5);font-weight:600;margin-bottom:8px;opacity:0;transform:translateY(10px);transition:opacity .5s .5s,transform .5s .5s;position:relative;z-index:1}
+.method-bonus-sub{display:inline-flex;align-items:center;gap:8px;font-size:clamp(.85rem,3.5vw,1.05rem);color:#fff;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 24px;border-radius:99px;background:linear-gradient(135deg,rgba(123,60,255,.18),rgba(123,60,255,.08));border:1px solid rgba(123,60,255,.35);box-shadow:0 0 30px rgba(123,60,255,.12);margin-bottom:8px;opacity:0;transform:translateY(10px);transition:opacity .5s .5s,transform .5s .5s;position:relative;z-index:1}
+.method-bonus-sub .mbs-icon{width:18px;height:18px;flex-shrink:0}
 .method-bonus-sub.mbl-show{opacity:1;transform:translateY(0)}
 .compare{padding:64px 0;text-align:center}
 .compare-header{margin-bottom:40px}
@@ -531,8 +532,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="method-bonus-video" id="mbVideo">
 <video src="site-exemplo.mp4" muted playsinline loop preload="metadata"></video>
 </div>
-<div class="method-bonus-label" id="mbLabel">SITE PROFISSIONAL, 100% PENSADO EM AFASTAR CURIOSOS</div>
-<div class="method-bonus-sub" id="mbSub">+ Contrato de 1 ano para ajustes</div>
+<div class="method-bonus-label" id="mbLabel">SITE PROFISSIONAL<br>100% PENSADO EM AFASTAR CURIOSOS</div>
+<div class="method-bonus-sub" id="mbSub"><svg class="mbs-icon" viewBox="0 0 24 24" fill="none" stroke="#7b3cff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>Contrato de 1 ano para ajustes</div>
 </div>
 
 </div></div></section>
