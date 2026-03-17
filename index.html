@@ -63,34 +63,29 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hs-cursor{display:inline-block;width:1px;height:1.1em;background:#e8eaed;animation:blink .8s step-end infinite;vertical-align:text-bottom;margin-left:1px}
 .hs-mic{width:20px;height:20px;flex-shrink:0}
 .hs-mic svg{width:100%;height:100%;fill:none}
-.hs-results{margin-top:0;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s,margin-top .4s;background:#202124;border-radius:0 0 16px 16px;border:1px solid #5f6368;border-top:none}
-.hs-results.hs-show{max-height:600px;opacity:1;margin-top:-16px;padding-top:16px}
-.hs-tabs{display:flex;gap:0;padding:8px 16px 0;border-bottom:1px solid #3c4043;justify-content:flex-start}
-.hs-tab{font-size:.7rem;color:#969ba1;padding:8px 12px;position:relative;font-weight:500}
-.hs-tab--active{color:#8ab4f8;font-weight:600}
-.hs-tab--active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:3px;background:#8ab4f8;border-radius:3px 3px 0 0}
-.hs-stats{font-size:.65rem;color:#9aa0a6;padding:10px 16px 6px;text-align:left}
-.hs-result{padding:10px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.04)}
-.hs-result:last-child{border:none;padding-bottom:16px}
-.hs-result-domain{margin-bottom:2px}
-.hs-result-domain-name{font-size:.72rem;color:#bdc1c6;font-weight:500}
-.hs-result-domain-url{font-size:.6rem;color:#969ba1}
-.hs-result-title{font-size:.92rem;font-weight:400;color:#8ab4f8;line-height:1.35;margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.hs-result-desc{font-size:.75rem;color:#bdc1c6;line-height:1.5}
-.hs-result--first{background:rgba(123,60,255,.06);border:1px solid rgba(123,60,255,.12);border-radius:12px;margin:8px 12px;padding:12px 16px}
-.hs-result--first .hs-result-title{color:#c58aff;font-weight:500}
-.hs-rank{font-size:.5rem;font-weight:800;background:linear-gradient(135deg,#7b3cff,#9b5cff);color:#fff;border-radius:4px;padding:2px 6px;flex-shrink:0}
-.hs-result--dim .hs-result-title{color:rgba(138,180,248,.35)}
-.hs-result--dim .hs-result-desc{color:rgba(189,193,198,.25)}
-.hs-result--dim .hs-result-domain-name{color:rgba(189,193,198,.3)}
-.hs-result--dim .hs-result-domain-url{color:rgba(150,154,161,.25)}
-.hs-loading{display:flex;justify-content:center;padding:20px 0;gap:6px}
-.hs-loading span{width:8px;height:8px;border-radius:50%;animation:hsLoad 1.2s ease-in-out infinite}
-.hs-loading span:nth-child(1){background:#4285f4;animation-delay:0s}
-.hs-loading span:nth-child(2){background:#ea4335;animation-delay:.15s}
-.hs-loading span:nth-child(3){background:#fbbc05;animation-delay:.3s}
-.hs-loading span:nth-child(4){background:#34a853;animation-delay:.45s}
-@keyframes hsLoad{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-8px);opacity:1}}
+.hs-results{display:none}
+/* Google-style sponsored result outside search bar */
+.hs-sponsored{margin-top:24px;width:100%;max-width:540px;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .6s .3s,transform .6s .3s}
+.hs-sponsored.hs-show{opacity:1;transform:translateY(0)}
+.hs-sponsored-tag{display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;color:#9aa0a6;margin-bottom:8px;letter-spacing:.02em}
+.hs-sponsored-tag span{font-size:.5rem;color:#9aa0a6;border:1px solid #5f6368;border-radius:3px;padding:1px 4px;font-weight:600}
+.hs-sp-card{background:#1a1a2e;border:1px solid rgba(123,60,255,.15);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.hs-sp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7b3cff,#9b5cff,#7b3cff);border-radius:14px 14px 0 0}
+.hs-sp-domain{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.hs-sp-favicon{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7b3cff,#9b5cff);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:800;color:#fff}
+.hs-sp-site{font-size:.72rem;color:#bdc1c6;font-weight:500}
+.hs-sp-url{font-size:.58rem;color:#969ba1;display:block}
+.hs-sp-title{font-size:1rem;font-weight:500;color:#c58aff;line-height:1.35;margin-bottom:6px}
+.hs-sp-desc{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.55}
+.hs-sp-extras{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.hs-sp-extra{font-size:.62rem;color:#8ab4f8;padding:4px 10px;border:1px solid rgba(138,180,248,.2);border-radius:12px;font-weight:500}
+/* Dim results below */
+.hs-dim-results{margin-top:12px;opacity:0;transform:translateY(10px);transition:opacity .5s .8s,transform .5s .8s}
+.hs-dim-results.hs-show{opacity:1;transform:translateY(0)}
+.hs-dim-res{padding:8px 0;text-align:left}
+.hs-dim-res-domain{font-size:.65rem;color:rgba(189,193,198,.25);margin-bottom:1px}
+.hs-dim-res-title{font-size:.82rem;color:rgba(138,180,248,.25);line-height:1.3;margin-bottom:2px}
+.hs-dim-res-desc{font-size:.68rem;color:rgba(189,193,198,.18);line-height:1.4}
 .wa-dynamic-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:100px;height:28px;background:#000;border-radius:99px;z-index:20}
 .wa-lock{position:absolute;inset:0;z-index:10;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(60px,15vh,100px);border-radius:44px;overflow:hidden;transition:transform .5s cubic-bezier(.32,.72,.35,1)}
 .wa-lock.unlocked{transform:translateY(-105%)}
@@ -333,7 +328,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(123,60,255,.25);border-radius:99px}
 @media(min-width:769px){
 .container{padding:0 80px}
-.hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-result-title{font-size:1rem}.hs-result-desc{font-size:.8rem}
+.hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-sponsored{max-width:620px}
 .niches,.method,.testimonials,.faq,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
 .nb-laptop{max-width:520px}.nb-screen{border-radius:16px 16px 0 0}.nb-wrapper{flex-direction:row;gap:60px;align-items:center}.nb-info{text-align:left;margin-top:0}.nb-info-desc{margin:0}
@@ -362,28 +357,19 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div id="hsText" style="flex:1;font-size:.88rem;color:#e8eaed;font-family:'Inter',sans-serif;min-height:1.2em;display:flex;align-items:center"></div>
 <div class="hs-mic"><svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 00-4 4v6a4 4 0 008 0V5a4 4 0 00-4-4z" stroke="#ea4335" stroke-width="1.5"/><path d="M19 10v1a7 7 0 01-14 0v-1" stroke="#4285f4" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="18" x2="12" y2="22" stroke="#34a853" stroke-width="1.5" stroke-linecap="round"/></svg></div>
 </div>
-<div class="hs-results" id="hsResults">
-<div class="hs-loading" id="hsLoading"><span></span><span></span><span></span><span></span></div>
-<div id="hsContent" style="display:none">
-<div class="hs-tabs"><div class="hs-tab hs-tab--active">Tudo</div><div class="hs-tab">Imagens</div><div class="hs-tab">Maps</div><div class="hs-tab">Noticias</div></div>
-<div class="hs-stats">Aproximadamente 567 resultados (0,38 s)</div>
-<div class="hs-result hs-result--first">
-<div class="hs-result-domain"><span class="hs-result-domain-name">Sua Empresa</span><span class="hs-result-domain-url"> › www.suaempresa.com.br</span></div>
-<div class="hs-result-title"><span class="hs-rank">#1</span> Sua Empresa — Imoveis em Sao Paulo</div>
-<div class="hs-result-desc">A imobiliaria mais bem avaliada de SP. Apartamentos, casas e comerciais com atendimento personalizado. Fale conosco.</div>
+<div class="hs-results" id="hsResults"></div>
 </div>
-<div class="hs-result hs-result--dim">
-<div class="hs-result-domain"><span class="hs-result-domain-name">Concorrente A</span><span class="hs-result-domain-url"> › www.concorrente-a.com.br</span></div>
-<div class="hs-result-title">Concorrente A — Imoveis na regiao</div>
-<div class="hs-result-desc">Servicos imobiliarios diversos na regiao...</div>
+<div class="hs-sponsored" id="hsSponsored">
+<div class="hs-sponsored-tag"><span>Patrocinado</span> Resultado orgânico</div>
+<div class="hs-sp-card">
+<div class="hs-sp-domain"><div class="hs-sp-favicon">SE</div><div><span class="hs-sp-site">Sua Empresa</span><span class="hs-sp-url">www.suaempresa.com.br</span></div></div>
+<div class="hs-sp-title">Sua Empresa — Imóveis em São Paulo</div>
+<div class="hs-sp-desc">A imobiliária mais bem avaliada de SP. Apartamentos, casas e comerciais com atendimento personalizado.</div>
+<div class="hs-sp-extras"><span class="hs-sp-extra">Fale conosco</span><span class="hs-sp-extra">Ver imóveis</span><span class="hs-sp-extra">Avaliações</span></div>
 </div>
-<div class="hs-result hs-result--dim">
-<div class="hs-result-domain"><span class="hs-result-domain-name">Concorrente B</span><span class="hs-result-domain-url"> › www.concorrente-b.com.br</span></div>
-<div class="hs-result-title">Concorrente B — Servicos gerais</div>
-<div class="hs-result-desc">Empresa local com servicos variados...</div>
-</div>
-</div>
-</div>
+<div class="hs-dim-results" id="hsDimResults">
+<div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente A › www.concorrente-a.com.br</div><div class="hs-dim-res-title">Concorrente A — Imóveis na região</div><div class="hs-dim-res-desc">Serviços imobiliários diversos na região...</div></div>
+<div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente B › www.concorrente-b.com.br</div><div class="hs-dim-res-title">Concorrente B — Serviços gerais</div><div class="hs-dim-res-desc">Empresa local com serviços variados...</div></div>
 </div>
 <a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </section>
@@ -742,9 +728,8 @@ document.addEventListener('click',e=>{if(cWin.classList.contains('open')&&!cWin.
 const hsEl=document.getElementById('heroSearch');
 const hsBar=document.getElementById('hsBar');
 const hsText=document.getElementById('hsText');
-const hsResults=document.getElementById('hsResults');
-const hsLoading=document.getElementById('hsLoading');
-const hsContent=document.getElementById('hsContent');
+const hsSp=document.getElementById('hsSponsored');
+const hsDim=document.getElementById('hsDimResults');
 let hsStarted=false;
 const hsQuery='melhor serviço de imóveis em São Paulo';
 function runHeroSearch(){
@@ -759,8 +744,8 @@ const iv=setInterval(()=>{
 span.textContent=hsQuery.slice(0,i+1);i++;
 if(i>=hsQuery.length){clearInterval(iv);
 cursor.remove();
-setTimeout(()=>{hsBar.classList.remove('hs-focused');hsBar.style.borderRadius='24px 24px 0 0';hsResults.classList.add('hs-show');},300);
-setTimeout(()=>{hsLoading.style.display='none';hsContent.style.display='block'},2200);
+setTimeout(()=>{hsBar.classList.remove('hs-focused');if(hsSp)hsSp.classList.add('hs-show')},400);
+setTimeout(()=>{if(hsDim)hsDim.classList.add('hs-show')},1200);
 }},55);
 }
 const hsObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){setTimeout(runHeroSearch,600);hsObs.unobserve(e.target)}})},{threshold:.4});
