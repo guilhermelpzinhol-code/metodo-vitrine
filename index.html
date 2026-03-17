@@ -12,7 +12,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden;line-height:1.6;position:relative}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(90,30,180,.08) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(123,60,255,.05) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 85% 50%,rgba(80,20,160,.06) 0%,transparent 50%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 100% 80% at 50% -10%,rgba(90,20,200,.14) 0%,transparent 50%),radial-gradient(ellipse 70% 60% at 10% 90%,rgba(123,60,255,.1) 0%,transparent 45%),radial-gradient(ellipse 60% 50% at 95% 40%,rgba(80,20,180,.1) 0%,transparent 45%),radial-gradient(ellipse 50% 40% at 50% 50%,rgba(100,40,200,.04) 0%,transparent 60%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background:repeating-conic-gradient(rgba(123,60,255,.015) 0% 25%,transparent 0% 50%) 0 0/60px 60px;pointer-events:none;z-index:0;opacity:.5}
 body>*{position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
@@ -23,7 +24,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .grad-text{background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .accent{font-family:'Horizon','Inter',sans-serif;background:linear-gradient(90deg,#7b3cff,#9b5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .logo{display:inline-flex;align-items:center;justify-content:center;padding:0;border-radius:0;background:none;border:none;position:relative;box-shadow:none}
-.logo img{height:clamp(36px,8vw,52px);width:auto;display:block}
+.logo img{height:clamp(60px,16vw,100px);width:auto;display:block}
 .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#000;font-weight:700;font-size:1rem;padding:16px 32px;min-height:52px;border-radius:999px;cursor:pointer;transition:all .25s;width:100%;max-width:320px;margin:0 auto;text-decoration:none;position:relative;overflow:hidden}
 .cta-btn::before{content:'';position:absolute;inset:0;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(123,60,255,.15),transparent);transform:translateX(-100%);transition:none}
 .cta-btn:hover{box-shadow:0 0 30px rgba(123,60,255,.4);transform:translateY(-2px)}
@@ -39,7 +40,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
 .header{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(0,0,0,.7);border-bottom:1px solid rgba(255,255,255,.05);transform:translateY(-100%);transition:transform .35s}
 .header.show{transform:translateY(0)}
-.header .logo img{height:28px}
+.header .logo img{height:38px}
 .header .cta-btn{font-size:.75rem;padding:10px 20px;min-height:auto;width:auto;max-width:none;margin:0}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(123,60,255,.06) 0%,transparent 65%);pointer-events:none}
@@ -48,7 +49,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero-badge svg{width:11px;height:11px;stroke:#9b5cff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 .hero .logo{margin:0 auto 14px;position:relative;overflow:visible}
-.hero .logo img{height:clamp(44px,10vw,64px)}
+.hero .logo img{height:clamp(80px,20vw,130px)}
 .hero-sub{font-size:clamp(.7rem,2.8vw,.95rem);font-weight:500;color:#cfcfcf;letter-spacing:.05em;margin-bottom:20px;white-space:nowrap}
 .hero-sub strong{color:#fff;font-weight:700}
 .hero-headline{font-size:clamp(2rem,8vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:640px;margin:0 auto 20px}
@@ -91,67 +92,30 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hs-loading span:nth-child(3){background:#fbbc05;animation-delay:.3s}
 .hs-loading span:nth-child(4){background:#34a853;animation-delay:.45s}
 @keyframes hsLoad{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-8px);opacity:1}}
-.metrics{padding:80px 0;text-align:center;position:relative}
-.metrics-header{margin-bottom:48px;padding:0 20px}
-.metrics-header h2{font-size:clamp(1.5rem,7vw,2.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;line-height:1.1}
-.metrics-header p{font-size:clamp(.82rem,3.2vw,1rem);color:rgba(255,255,255,.4);font-weight:500;max-width:420px;margin:0 auto;line-height:1.7}
-.metrics-grid{display:flex;flex-direction:column;gap:20px;padding:0 20px;max-width:1200px;margin:0 auto}
-.metric-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:32px 24px;text-align:center;opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
-.metric-card.mc-visible{opacity:1;transform:translateY(0)}
-.metric-number{font-size:clamp(3rem,10vw,4.5rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em;position:relative;display:inline-flex;align-items:center}
-.metric-cursor{display:inline-block;width:3px;height:.8em;background:#9b5cff;margin-left:4px;animation:mcBlink .6s step-end infinite;vertical-align:baseline}
-.metric-cursor.mc-hide{display:none}
-@keyframes mcBlink{0%,100%{opacity:1}50%{opacity:0}}
-.metric-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:8px}
-.metric-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 12px;font-weight:700;font-size:.8rem;margin-top:12px;opacity:0;transform:scale(.5);transition:opacity .4s,transform .4s cubic-bezier(.34,1.56,.64,1)}
-.metric-badge.mb-show{opacity:1;transform:scale(1)}
-.metric-badge--green{background:rgba(52,168,83,.12);border:1px solid rgba(52,168,83,.2);color:#34a853}
-.metric-badge--purple{background:rgba(123,60,255,.15);border:1px solid rgba(123,60,255,.25);color:#9b5cff}
-.metric-badge svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.metric-bars{display:flex;align-items:flex-end;justify-content:center;gap:6px;height:80px;margin-top:20px}
-.metric-bar-wrap{flex:1;max-width:32px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative;cursor:pointer}
-.metric-bar{width:100%;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#9b5cff,#7b3cff);transform-origin:bottom;transform:scaleY(0);transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
-.metric-bar-wrap:hover .metric-bar{filter:brightness(1.2)}
-.metric-bar-tip{position:absolute;top:-28px;background:rgba(0,0,0,.85);color:#fff;font-size:.6rem;font-weight:600;padding:3px 8px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:2}
-.metric-bar-wrap:hover .metric-bar-tip{opacity:1}
-.metric-ref{font-size:.65rem;color:rgba(255,255,255,.2);text-align:center;letter-spacing:.08em;margin-top:16px;text-transform:uppercase}
-.metric-spark{margin-top:20px;position:relative}
-.metric-spark svg{width:100%;height:80px;display:block}
-.metric-spark-line{fill:none;stroke:#7b3cff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.metric-spark-fill{opacity:0;transition:opacity .5s .8s}
-.metric-spark-fill.msf-show{opacity:1}
-.metric-rank{display:flex;flex-direction:column;gap:8px;margin-top:20px}
-.metric-rank-bar{display:flex;align-items:center;gap:10px;height:32px}
-.metric-rank-pos{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.3);min-width:20px;text-align:right}
-.metric-rank-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:.7rem;font-weight:600;white-space:nowrap;width:0;transition:width 1s cubic-bezier(.16,1,.3,1)}
-.metric-rank-fill--you{background:linear-gradient(90deg,#7b3cff,#9b5cff);color:#fff}
-.metric-rank-fill--comp{background:rgba(255,255,255,.04);color:rgba(255,255,255,.15)}
-.wa-lock{position:absolute;inset:0;z-index:10;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(50px,12vh,80px);cursor:pointer;transition:transform .45s cubic-bezier(.4,0,.2,1);border-radius:40px;overflow:hidden}
-.wa-lock.unlocked{transform:translateY(-102%)}
-.wa-lock-time{font-size:clamp(4rem,16vw,5.5rem);font-weight:100;color:#fff;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.wa-lock-date{font-size:.82rem;color:rgba(255,255,255,.55);font-weight:500;margin-bottom:28px}
+.wa-dynamic-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:100px;height:28px;background:#000;border-radius:99px;z-index:20}
+.wa-lock{position:absolute;inset:0;z-index:10;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(60px,15vh,100px);border-radius:44px;overflow:hidden;transition:transform .5s cubic-bezier(.32,.72,.35,1)}
+.wa-lock.unlocked{transform:translateY(-105%)}
+.wa-lock-time{font-size:clamp(4.5rem,18vw,6rem);font-weight:100;color:#fff;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.wa-lock-date{font-size:.78rem;color:rgba(255,255,255,.55);font-weight:500;margin-bottom:32px}
 .wa-lock-notif{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:14px;padding:10px 14px;width:calc(100% - 48px);max-width:320px;text-align:left}
-.wa-lock-notif-icon{width:38px;height:38px;border-radius:8px;background:#25d366;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:waLockPulse 2s ease-in-out infinite}
-@keyframes waLockPulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}50%{box-shadow:0 0 0 10px rgba(37,211,102,0)}}
+.wa-lock-notif-icon{width:38px;height:38px;border-radius:8px;background:#25d366;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .wa-lock-notif-icon svg{width:20px;height:20px;fill:#fff}
 .wa-lock-notif-text{flex:1;min-width:0}
 .wa-lock-notif-title{font-size:.78rem;font-weight:700;color:#fff;margin-bottom:1px}
 .wa-lock-notif-msg{font-size:.68rem;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wa-lock-notif-time{font-size:.6rem;color:rgba(255,255,255,.35);flex-shrink:0;align-self:flex-start;margin-top:2px}
-.wa-lock-bottom{position:absolute;bottom:clamp(20px,5vh,40px);display:flex;flex-direction:column;align-items:center;gap:6px}
+.wa-lock-bottom{position:absolute;bottom:clamp(16px,4vh,32px);display:flex;flex-direction:column;align-items:center;gap:4px}
 .wa-lock-bar{width:120px;height:4px;border-radius:99px;background:rgba(255,255,255,.35)}
-.wa-lock-hint{font-size:.65rem;color:rgba(255,255,255,.3);font-weight:400;letter-spacing:.04em;animation:waHintPulse 2s ease-in-out infinite}
-@keyframes waHintPulse{0%,100%{opacity:.3}50%{opacity:.7}}
-.wa-lock-flashlight{position:absolute;bottom:clamp(50px,8vh,70px);left:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.wa-lock-flashlight{position:absolute;bottom:clamp(44px,7vh,64px);left:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
 .wa-lock-flashlight svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
-.wa-lock-camera{position:absolute;bottom:clamp(50px,8vh,70px);right:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.wa-lock-camera{position:absolute;bottom:clamp(44px,7vh,64px);right:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
 .wa-lock-camera svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
 .wa-section{padding:80px 0;text-align:center}
 .wa-section-header{margin-bottom:40px;padding:0 20px}
 .wa-section-header h2{font-size:clamp(1.4rem,6vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:14px;line-height:1.12}
 .wa-section-header p{font-size:clamp(.8rem,3vw,.95rem);color:rgba(255,255,255,.4);font-weight:500;max-width:480px;margin:0 auto;line-height:1.7}
-.wa-phone{max-width:380px;width:calc(100% - 40px);margin:0 auto;border-radius:40px;border:1px solid rgba(255,255,255,.06);background:#0b0b1a;overflow:hidden;box-shadow:0 20px 80px rgba(123,60,255,.12),0 0 0 1px rgba(255,255,255,.03);position:relative}
-.wa-statusbar{display:flex;align-items:center;justify-content:space-between;padding:8px 20px 4px;font-size:.65rem;font-weight:600;color:rgba(255,255,255,.4)}
+.wa-phone{max-width:375px;width:calc(100% - 40px);aspect-ratio:9/19.5;margin:0 auto;border-radius:44px;border:3px solid rgba(255,255,255,.12);background:#0b0b1a;overflow:hidden;box-shadow:0 20px 80px rgba(123,60,255,.12),0 0 0 1px rgba(255,255,255,.03),inset 0 0 0 1px rgba(255,255,255,.04);position:relative}
+.wa-statusbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px 4px;font-size:.65rem;font-weight:600;color:rgba(255,255,255,.4)}
 .wa-statusbar-icons{display:flex;align-items:center;gap:5px}
 .wa-statusbar-icons svg{width:14px;height:14px;fill:rgba(255,255,255,.4)}
 .wa-header{padding:4px 16px 10px;display:flex;align-items:center;justify-content:space-between}
@@ -254,14 +218,14 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vis-gsc-query-text{flex:1;color:#8ab4f8;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.58rem}
 .vis-gsc-query-clicks{color:#9aa0a6;font-size:.52rem;min-width:55px;text-align:right}
 .vis-gsc-query-pos{color:#34a853;font-weight:700;font-size:.55rem;min-width:20px;text-align:right}
-.method-bonus{padding:48px 20px 0;text-align:center;max-width:600px;margin:0 auto}
-.method-bonus-title{font-size:clamp(1.4rem,6vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:32px;min-height:1.2em}
-.method-bonus-video{position:relative;width:100%;max-width:480px;margin:0 auto 20px;border-radius:16px;overflow:hidden;border:1px solid rgba(123,60,255,.15);box-shadow:0 12px 48px rgba(123,60,255,.12);opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.method-bonus{padding:64px 20px 0;text-align:center;max-width:700px;margin:0 auto}
+.method-bonus-title{font-size:clamp(1.8rem,8vw,3rem);font-weight:800;color:#fff;letter-spacing:-.03em;margin-bottom:40px;min-height:1.2em;line-height:1.1}
+.method-bonus-video{position:relative;width:100%;max-width:540px;margin:0 auto 28px;border-radius:20px;overflow:hidden;border:2px solid rgba(123,60,255,.2);box-shadow:0 16px 64px rgba(123,60,255,.18),0 0 120px rgba(123,60,255,.06);opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
 .method-bonus-video.mbv-show{opacity:1;transform:translateY(0)}
 .method-bonus-video video{width:100%;display:block}
-.method-bonus-label{font-size:clamp(.85rem,3.5vw,1.05rem);font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;opacity:0;transition:opacity .4s .3s}
+.method-bonus-label{font-size:clamp(1rem,4vw,1.3rem);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px;opacity:0;transition:opacity .4s .3s}
 .method-bonus-label.mbl-show{opacity:1}
-.method-bonus-sub{font-size:.82rem;color:rgba(255,255,255,.4);font-weight:500;margin-bottom:8px;opacity:0;transition:opacity .4s .5s}
+.method-bonus-sub{font-size:clamp(.85rem,3vw,1rem);color:rgba(255,255,255,.45);font-weight:600;margin-bottom:8px;opacity:0;transition:opacity .4s .5s}
 .method-bonus-sub.mbl-show{opacity:1}
 .compare{padding:64px 0;text-align:center}
 .compare-header{margin-bottom:40px}
@@ -283,7 +247,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .compare-card--before .compare-icon svg{stroke:rgba(239,68,68,.5)}
 .compare-card--after .compare-icon svg{stroke:#9b5cff}
 /* Sticky scroll testimonials */
-.testimonials{position:relative;text-align:center;height:500vh}
+.testimonials{position:relative;text-align:center;height:350vh}
 .testimonials-header{padding:64px 20px 40px;position:sticky;top:0;z-index:2;background:#000}
 .testimonials-header h2{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
 .testimonials-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:1}
@@ -331,7 +295,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .footer{padding:48px 20px 32px;text-align:center;border-top:1px solid rgba(123,60,255,.08);position:relative}
 .footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:400px;height:150px;background:radial-gradient(ellipse,rgba(123,60,255,.06) 0%,transparent 70%);pointer-events:none}
 .footer .logo{margin-bottom:16px}
-.footer .logo img{height:36px}
+.footer .logo img{height:56px}
 .footer-desc{font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:20px;line-height:1.6;max-width:360px;margin-left:auto;margin-right:auto}
 .footer-links{display:flex;justify-content:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
 .footer-links a{font-size:.72rem;color:rgba(255,255,255,.25);transition:color .2s}.footer-links a:hover{color:#9b5cff}
@@ -382,9 +346,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:769px){
 .container{padding:0 80px}
 .hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-result-title{font-size:1rem}.hs-result-desc{font-size:.8rem}
-.metrics,.niches,.method,.compare,.testimonials,.faq,.final-cta{padding:120px 0}
-.metrics-grid{flex-direction:row;gap:24px}.metric-card{flex:1}
-.wa-phone{max-width:400px}
+.niches,.method,.compare,.testimonials,.faq,.final-cta{padding:120px 0}
+.wa-phone{max-width:375px}
 .method-steps{gap:120px}
 .method-step{display:grid;grid-template-columns:1fr 1fr;gap:80px;text-align:left}
 .method-step-text{text-align:left;align-items:flex-start;background:none;border:none;padding:0;border-radius:0}
@@ -406,7 +369,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .method-step-visual{position:relative}.method-step-visual::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(123,60,255,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
 }
-@media(min-width:1024px){.metrics-header h2,.wa-section-header h2,.method-header h2,.compare-header h2,.testimonials-header h2,.faq-header h2{font-size:2.6rem}}</style>
+@media(min-width:1024px){.wa-section-header h2,.method-header h2,.compare-header h2,.testimonials-header h2,.faq-header h2{font-size:2.6rem}}</style>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -452,52 +415,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </section>
 
-<section class="metrics" id="metricsSection">
-<div class="metrics-header" data-anim><h2 class="grad-text" data-tw="Resultados reais em 30 dias"></h2><p>Prints direto do painel do Google. Sem edição, sem enganação.</p></div>
-<div class="metrics-grid">
-<div class="metric-card" id="mc1">
-<div class="metric-number"><span id="mcNum1">0</span><span class="metric-cursor" id="mcCur1"></span></div>
-<div class="metric-label">CHAMADAS RECEBIDAS</div>
-<div class="metric-badge metric-badge--green" id="mcBadge1"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> +50,9%</div>
-<div class="metric-bars" id="mcBars1">
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:30%"></div><div class="metric-bar-tip">Sem 1: 18</div></div>
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:45%"></div><div class="metric-bar-tip">Sem 2: 24</div></div>
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:38%"></div><div class="metric-bar-tip">Sem 3: 21</div></div>
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:60%"></div><div class="metric-bar-tip">Sem 4: 31</div></div>
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:55%"></div><div class="metric-bar-tip">Sem 5: 28</div></div>
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:75%"></div><div class="metric-bar-tip">Sem 6: 35</div></div>
-<div class="metric-bar-wrap"><div class="metric-bar" style="height:90%"></div><div class="metric-bar-tip">Sem 7: 35</div></div>
-</div>
-<div class="metric-ref">FEVEREIRO DE 2026 — PERFIL DA EMPRESA NO GOOGLE</div>
-</div>
-<div class="metric-card" id="mc2">
-<div class="metric-number"><span id="mcNum2">0</span><span class="metric-cursor" id="mcCur2"></span></div>
-<div class="metric-label">IMPRESSÕES NO MÊS</div>
-<div class="metric-badge metric-badge--green" id="mcBadge2"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> +127%</div>
-<div class="metric-spark" id="mcSpark2">
-<svg viewBox="0 0 200 80" preserveAspectRatio="none">
-<defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7b3cff" stop-opacity=".15"/><stop offset="100%" stop-color="#7b3cff" stop-opacity="0"/></linearGradient></defs>
-<path class="metric-spark-fill" id="mcSparkFill" d="M0,72 20,65 40,68 60,52 80,58 100,44 120,36 140,30 160,22 180,14 200,6 200,80 0,80Z" fill="url(#sparkFill)"/>
-<path class="metric-spark-line" id="mcSparkLine" d="M0,72 20,65 40,68 60,52 80,58 100,44 120,36 140,30 160,22 180,14 200,6" fill="none"/>
-</svg>
-</div>
-<div class="metric-ref">FEVEREIRO DE 2026 — IMPRESSÕES NO GOOGLE</div>
-</div>
-<div class="metric-card" id="mc3">
-<div class="metric-number"><span id="mcNum3">12º</span><span class="metric-cursor" id="mcCur3"></span></div>
-<div class="metric-label">POSIÇÃO NO RANKING</div>
-<div class="metric-badge metric-badge--purple" id="mcBadge3">TOPO</div>
-<div class="metric-rank" id="mcRank3">
-<div class="metric-rank-bar"><span class="metric-rank-pos">1º</span><div class="metric-rank-fill metric-rank-fill--you" data-w="100%">Sua empresa</div></div>
-<div class="metric-rank-bar"><span class="metric-rank-pos">2º</span><div class="metric-rank-fill metric-rank-fill--comp" data-w="78%">Concorrente</div></div>
-<div class="metric-rank-bar"><span class="metric-rank-pos">3º</span><div class="metric-rank-fill metric-rank-fill--comp" data-w="62%">Concorrente</div></div>
-<div class="metric-rank-bar"><span class="metric-rank-pos">4º</span><div class="metric-rank-fill metric-rank-fill--comp" data-w="48%">Concorrente</div></div>
-<div class="metric-rank-bar"><span class="metric-rank-pos">5º</span><div class="metric-rank-fill metric-rank-fill--comp" data-w="35%">Concorrente</div></div>
-</div>
-<div class="metric-ref">POSIÇÃO ATUAL — GOOGLE MAPS E PESQUISA</div>
-</div>
-</div>
-</section>
 
 <section class="wa-section" id="waSection">
 <div class="wa-section-header" data-anim>
@@ -505,6 +422,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <p>Cada mensagem abaixo é de um cliente real que pesquisou no Google e encontrou quem aparece primeiro.</p>
 </div>
 <div class="wa-phone" data-anim data-anim-delay="1">
+<div class="wa-dynamic-island"></div>
 <div class="wa-lock" id="waLock">
 <div class="wa-lock-time" id="waLockTime">09:41</div>
 <div class="wa-lock-date" id="waLockDate">segunda-feira, 17 de março</div>
@@ -647,16 +565,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
 <div class="testimonial-text">"Sinceramente achei que não ia funcionar pra construtora, porque a concorrência aqui é pesada. Mas o pessoal do Método Vitrine <strong>colocou a gente no topo</strong> e agora recebo orçamento pelo Google toda semana. Mudou o jogo."</div>
 </div>
-<div class="testimonial-card" data-tc="3">
-<div class="testimonial-head"><div class="testimonial-avatar"><img src="https://randomuser.me/api/portraits/women/57.jpg" alt="Fernanda"></div><div class="testimonial-info"><div class="testimonial-name">Fernanda Lima</div><div class="testimonial-role">Escritório de Contabilidade</div></div></div>
-<div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-<div class="testimonial-text">"Meu escritório era invisível na internet. Depois do trabalho deles, <strong>meu telefone não para</strong>. Semana passada mesmo fechei dois clientes novos que me acharam pesquisando 'contador em Salvador'. Valeu cada centavo."</div>
-</div>
-<div class="testimonial-card" data-tc="4">
-<div class="testimonial-head"><div class="testimonial-avatar"><img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Marcos"></div><div class="testimonial-info"><div class="testimonial-name">Marcos Teixeira</div><div class="testimonial-role">Imobiliária</div></div></div>
-<div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-<div class="testimonial-text">"Antes eu vivia de indicação e rezando pra aparecer cliente. Agora o <strong>Google trabalha pra mim 24h</strong>. Só esse mês já recebi mais de 15 contatos de pessoas buscando imóvel na região. Recomendo demais."</div>
-</div>
 <div class="testimonial-counter" id="tcDots"></div>
 </div>
 </section>
@@ -726,93 +634,8 @@ document.querySelectorAll('[data-tw]').forEach(el=>twObs.observe(el));
 const pEls=document.querySelectorAll('[data-parallax]');let pT=false;
 window.addEventListener('scroll',()=>{if(!pT){requestAnimationFrame(()=>{pEls.forEach(el=>{const s=parseFloat(el.dataset.parallax)||.1;const r=el.getBoundingClientRect();const o=(r.top+r.height/2-window.innerHeight/2)*s;el.style.transform='translateY('+o+'px)'});pT=false});pT=true}},{passive:true});
 
-/* Metrics dashboard animation */
-let metricsStarted=false;
-function easeOutCubic(t){return 1-Math.pow(1-t,3)}
-function countUp(el,target,duration,format,onDone){
-const start=performance.now();
-function tick(now){
-const p=Math.min((now-start)/duration,1);
-const val=Math.round(easeOutCubic(p)*target);
-el.textContent=format?format(val):val;
-if(p<1)requestAnimationFrame(tick);
-else if(onDone)onDone();
-}
-requestAnimationFrame(tick);
-}
-function runMetrics(){
-if(metricsStarted)return;metricsStarted=true;
-const mc1=document.getElementById('mc1');
-const mc2=document.getElementById('mc2');
-const mc3=document.getElementById('mc3');
-/* Block 1 — Chamadas */
-setTimeout(()=>{
-mc1.classList.add('mc-visible');
-countUp(document.getElementById('mcNum1'),192,1800,null,()=>{
-document.getElementById('mcCur1').classList.add('mc-hide');
-setTimeout(()=>document.getElementById('mcBadge1').classList.add('mb-show'),200);
-});
-const bars=mc1.querySelectorAll('.metric-bar');
-bars.forEach((b,i)=>setTimeout(()=>{b.style.transform='scaleY(1)'},400+i*120));
-},0);
-/* Block 2 — Impressões */
-setTimeout(()=>{
-mc2.classList.add('mc-visible');
-countUp(document.getElementById('mcNum2'),12400,2000,v=>{
-return v.toLocaleString('pt-BR');
-},()=>{
-document.getElementById('mcCur2').classList.add('mc-hide');
-setTimeout(()=>document.getElementById('mcBadge2').classList.add('mb-show'),200);
-});
-const line=document.getElementById('mcSparkLine');
-const len=line.getTotalLength();
-line.style.strokeDasharray=len;
-line.style.strokeDashoffset=len;
-line.style.transition='stroke-dashoffset 1.5s ease-out';
-requestAnimationFrame(()=>{line.style.strokeDashoffset='0'});
-setTimeout(()=>document.getElementById('mcSparkFill').classList.add('msf-show'),1600);
-},300);
-/* Block 3 — Posição */
-setTimeout(()=>{
-mc3.classList.add('mc-visible');
-const num3=document.getElementById('mcNum3');
-const positions=[12,9,7,5,3,2,1];
-let pi=0;
-function nextPos(){
-if(pi>=positions.length)return;
-num3.style.transition='opacity .15s';
-num3.style.opacity='0';
-setTimeout(()=>{
-num3.textContent=positions[pi]+'º';
-num3.style.opacity='1';
-if(positions[pi]===1){
-document.getElementById('mcCur3').classList.add('mc-hide');
-setTimeout(()=>{
-num3.style.transition='transform .3s cubic-bezier(.34,1.56,.64,1)';
-num3.style.transform='scale(1.15)';
-num3.style.textShadow='0 0 30px rgba(123,60,255,.6)';
-setTimeout(()=>{num3.style.transform='scale(1)';num3.style.textShadow='none'},300);
-},100);
-setTimeout(()=>document.getElementById('mcBadge3').classList.add('mb-show'),300);
-}
-pi++;
-if(pi<positions.length)setTimeout(nextPos,220);
-},150);
-}
-nextPos();
-/* Rank bars — competitors first, then yours last */
-const fills=mc3.querySelectorAll('.metric-rank-fill');
-const compBars=[...fills].filter(f=>f.classList.contains('metric-rank-fill--comp'));
-const youBar=[...fills].find(f=>f.classList.contains('metric-rank-fill--you'));
-compBars.forEach((b,i)=>setTimeout(()=>{b.style.width=b.dataset.w},600+i*200));
-setTimeout(()=>{if(youBar)youBar.style.width=youBar.dataset.w},600+compBars.length*200+300);
-},600);
-}
-const mObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){runMetrics();mObs.unobserve(e.target)}})},{threshold:.15});
-const mSec=document.getElementById('metricsSection');
-if(mSec)mObs.observe(mSec);
 
-/* WhatsApp notification section */
+/* WhatsApp notification section — auto-animated iPhone 15 */
 const waTimeEl=document.getElementById('waTime');
 const waLockTimeEl=document.getElementById('waLockTime');
 const waLockDateEl=document.getElementById('waLockDate');
@@ -830,67 +653,29 @@ const waChats=[
 {name:'Luciana Reis',photo:'https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=100&h=100&fit=crop&crop=face',msg:'Oi, encontrei vocês pesquisando conserto de iPhone. Meu celular não liga mais, atendem hoje?'},
 {name:'Paulo Henrique',photo:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',msg:'Boa tarde, achei a escola pelo Google. Minha filha tem 4 anos, como funciona a matrícula?'}
 ];
-let waStarted=false,waAudioCtx=null,waAudioReady=false;
-function initWaAudio(){
-if(waAudioReady)return;
-try{
-waAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
-if(waAudioCtx.state==='suspended')waAudioCtx.resume();
-waAudioReady=true;
-}catch(e){}
-}
-['click','touchstart','touchend','keydown'].forEach(ev=>{
-document.addEventListener(ev,initWaAudio,{once:false,passive:true});
-});
-function playWaNotif(){
-if(!waAudioCtx)return;
-try{
-if(waAudioCtx.state==='suspended')waAudioCtx.resume();
-const ctx=waAudioCtx;
-const t=ctx.currentTime;
-const notes=[1046.5,1318.5,1568];
-const dur=0.08,gap=0.06,vol=0.12;
-notes.forEach((freq,i)=>{
-const osc=ctx.createOscillator();
-const gain=ctx.createGain();
-const filter=ctx.createBiquadFilter();
-osc.type='sine';
-osc.frequency.value=freq;
-filter.type='lowpass';
-filter.frequency.value=3000;
-osc.connect(filter);
-filter.connect(gain);
-gain.connect(ctx.destination);
-const start=t+i*(dur+gap);
-gain.gain.setValueAtTime(0,start);
-gain.gain.linearRampToValueAtTime(vol,start+0.005);
-gain.gain.setValueAtTime(vol,start+dur*0.6);
-gain.gain.exponentialRampToValueAtTime(0.001,start+dur);
-osc.start(start);
-osc.stop(start+dur+0.01);
-});
-}catch(e){}
-}
+let waStarted=false;
 function getWaTime(){const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')}
 function addWaChat(chat){
 const row=document.createElement('div');
 row.className='wa-chat-row';
 row.innerHTML='<img class="wa-avatar" src="'+chat.photo+'" alt="'+chat.name+'"><div class="wa-chat-content"><div class="wa-chat-top"><span class="wa-chat-name">'+chat.name+'</span><span class="wa-chat-time">'+getWaTime()+'</span></div><div class="wa-chat-bottom"><span class="wa-chat-preview">'+chat.msg+'</span><span class="wa-chat-badge">1</span></div></div>';
 waList.insertBefore(row,waList.firstChild);
-playWaNotif();
 }
 function runWaSequence(){
 if(waStarted)return;waStarted=true;
-waChats.forEach((chat,i)=>{setTimeout(()=>addWaChat(chat),i*2500)});
-}
 const waLockEl=document.getElementById('waLock');
-if(waLockEl){
-waLockEl.addEventListener('click',function(){
-initWaAudio();
-waLockEl.classList.add('unlocked');
-setTimeout(()=>{waLockEl.style.display='none';runWaSequence()},500);
-});
-waLockEl.addEventListener('touchstart',function(){initWaAudio()},{passive:true});
+/* Show lock screen for 1.5s then auto slide up */
+setTimeout(()=>{
+if(waLockEl){waLockEl.classList.add('unlocked');setTimeout(()=>{waLockEl.style.display='none'},600)}
+/* Start adding chats after lock slides away */
+waChats.forEach((chat,i)=>{setTimeout(()=>addWaChat(chat),(i*2500)+400)});
+},1500);
+}
+/* Auto-trigger on viewport */
+const waPhoneEl=document.querySelector('.wa-phone');
+if(waPhoneEl){
+const waObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){runWaSequence();waObs.unobserve(e.target)}})},{threshold:.3});
+waObs.observe(waPhoneEl);
 }
 
 /* Typing in search bars */
