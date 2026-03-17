@@ -34,7 +34,7 @@ body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hid
 .bokeh:nth-child(7){width:4px;height:4px;left:5%;bottom:-4px;animation-duration:21s;animation-delay:6s}
 .bokeh:nth-child(8){width:5px;height:5px;left:55%;bottom:-5px;animation-duration:19s;animation-delay:10s}
 @keyframes float{0%{transform:translateY(0) translateX(0);opacity:0}5%{opacity:.6}50%{transform:translateY(-50vh) translateX(15px);opacity:.4}95%{opacity:0}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
-body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh){position:relative;z-index:1}
+body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.header):not(.progress-bar){position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 ::selection{background:rgba(123,60,255,.3);color:#fff}
@@ -123,7 +123,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-lock-flashlight svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
 .wa-lock-camera{position:absolute;bottom:clamp(44px,7vh,64px);right:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
 .wa-lock-camera svg{width:16px;height:16px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5}
-.highlight-section{position:relative;padding:100px 20px;text-align:center;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(45,16,102,.85) 8%,rgba(45,16,102,.85) 92%,rgba(0,0,0,0) 100%);overflow:hidden}
+.highlight-section{position:relative;padding:0;text-align:center;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(45,16,102,.85) 8%,rgba(45,16,102,.85) 92%,rgba(0,0,0,0) 100%);overflow:hidden;display:none}
 .highlight-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 50%,rgba(123,60,255,.15) 0%,transparent 55%);pointer-events:none}
 .highlight-section .container{position:relative;z-index:1;width:100%}
 .hl-title{font-size:clamp(1.4rem,6vw,2.2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:8px;line-height:1.12}
@@ -281,6 +281,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .method-bonus-sub.mbl-show{opacity:1;transform:translateY(0)}
 /* Sticky scroll testimonials — WhatsApp iPhone style */
 .testimonials{position:relative;text-align:center;height:350vh}
+.testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,#06020f,transparent);pointer-events:none;z-index:3}
 .testimonials::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#06020f);pointer-events:none;z-index:3}
 .testimonials-header{padding:64px 20px 40px;position:sticky;top:0;z-index:2;background:linear-gradient(180deg,#06020f 0%,#06020f 70%,transparent 100%)}
 .testimonials-header h2{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
@@ -333,6 +334,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
 .faq-answer-inner{padding:0 20px 18px;font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.7}
 .final-cta{padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.final-cta::after{content:'';position:absolute;top:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,#06020f,transparent);pointer-events:none;z-index:0}
 .final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(123,60,255,.06) 0%,transparent 65%);pointer-events:none}
 .final-cta .container{position:relative;z-index:1}
 .final-divider{width:60px;height:2px;margin:0 auto 40px;background:linear-gradient(90deg,#7b3cff,#9b5cff)}
