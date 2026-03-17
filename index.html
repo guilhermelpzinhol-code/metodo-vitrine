@@ -87,9 +87,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hs-mic svg{width:100%;height:100%;fill:none}
 .hs-results{display:none}
 /* Google-style sponsored result outside search bar */
-.hs-sponsored{margin:24px auto 0;width:100%;max-width:540px;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .6s .3s,transform .6s .3s}
+.hs-sponsored{margin:24px auto 0;width:100%;max-width:540px;text-align:center;opacity:0;transform:translateY(20px);transition:opacity .6s .3s,transform .6s .3s}
 .hs-sponsored.hs-show{opacity:1;transform:translateY(0)}
-.hs-sp-card{background:#1a1a2e;border:1px solid rgba(123,60,255,.15);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.hs-sp-card{background:#1a1a2e;border:1px solid rgba(123,60,255,.15);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;text-align:left}
 .hs-sp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7b3cff,#9b5cff,#7b3cff);border-radius:14px 14px 0 0}
 .hs-sp-domain{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .hs-sp-site{font-size:.72rem;color:#bdc1c6;font-weight:500}
@@ -99,7 +99,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hs-sp-extras{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .hs-sp-extra{font-size:.62rem;color:#8ab4f8;padding:4px 10px;border:1px solid rgba(138,180,248,.2);border-radius:12px;font-weight:500}
 /* Dim results below */
-.hs-dim-results{margin-top:12px;opacity:0;transform:translateY(10px);transition:opacity .5s .8s,transform .5s .8s}
+.hs-dim-results{margin-top:12px;opacity:0;transform:translateY(10px);transition:opacity .5s .8s,transform .5s .8s;text-align:left}
 .hs-dim-results.hs-show{opacity:1;transform:translateY(0)}
 .hs-dim-res{padding:8px 0;text-align:left}
 .hs-dim-res-domain{font-size:.65rem;color:rgba(189,193,198,.25);margin-bottom:1px}
@@ -393,7 +393,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente A › www.concorrente-a.com.br</div><div class="hs-dim-res-title">Concorrente A — Imóveis na região</div><div class="hs-dim-res-desc">Serviços imobiliários diversos na região...</div></div>
 <div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente B › www.concorrente-b.com.br</div><div class="hs-dim-res-title">Concorrente B — Serviços gerais</div><div class="hs-dim-res-desc">Empresa local com serviços variados...</div></div>
 </div>
-<a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn" data-anim data-anim-delay="4" style="margin-top:20px;position:relative;z-index:3">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+<div style="text-align:center;margin-top:24px;position:relative;z-index:3" data-anim data-anim-delay="4">
+<a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
 </section>
 
 <section class="highlight-section" id="highlightSection">
