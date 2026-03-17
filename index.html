@@ -117,6 +117,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-section-header h2{font-size:clamp(1.4rem,6vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:14px;line-height:1.12}
 .wa-section-header p{font-size:clamp(.8rem,3vw,.95rem);color:rgba(255,255,255,.4);font-weight:500;max-width:480px;margin:0 auto;line-height:1.7}
 .wa-phone{max-width:375px;width:calc(100% - 40px);aspect-ratio:9/19.5;margin:0 auto;border-radius:44px;border:3px solid rgba(255,255,255,.12);background:#0b0b1a;overflow:hidden;box-shadow:0 20px 80px rgba(123,60,255,.12),0 0 0 1px rgba(255,255,255,.03),inset 0 0 0 1px rgba(255,255,255,.04);position:relative}
+.wa-phone::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent 0%,#0b0b1a 70%);pointer-events:none;z-index:15;border-radius:0 0 41px 41px}
 .wa-statusbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px 4px;font-size:.65rem;font-weight:600;color:rgba(255,255,255,.4)}
 .wa-statusbar-icons{display:flex;align-items:center;gap:5px}
 .wa-statusbar-icons svg{width:14px;height:14px;fill:rgba(255,255,255,.4)}
@@ -151,78 +152,86 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .method-title-metodo{color:#fff}
 .method-title-vitrine{background:linear-gradient(90deg,#7b3cff 0%,#9b5cff 40%,#ffffff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 30px rgba(123,60,255,.3))}
 .method-header p{font-size:clamp(.85rem,3.5vw,1.05rem);color:#cfcfcf;font-weight:500;max-width:480px;margin:0 auto;line-height:1.7}
-.method-steps{display:flex;flex-direction:column;gap:64px}
-.method-step{display:flex;flex-direction:column;align-items:center;gap:32px;position:relative}
-.method-step-text{text-align:center;display:flex;flex-direction:column;align-items:center;background:rgba(123,60,255,.04);border:1px solid rgba(123,60,255,.1);border-radius:20px;padding:28px 20px;position:relative;overflow:hidden;width:100%}
-.method-step-text::before{content:attr(data-step);position:absolute;top:-12px;right:12px;font-size:5rem;font-weight:900;color:rgba(123,60,255,.06);line-height:1;pointer-events:none;font-family:'Horizon','Inter',sans-serif}
-.method-step-label{display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#9b5cff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;background:rgba(123,60,255,.1);border:1px solid rgba(123,60,255,.18);border-radius:999px;padding:5px 16px}
-.method-step-text h3{font-size:clamp(1.3rem,5.5vw,1.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px;color:#fff;position:relative;z-index:1}
-.method-step-text p{font-size:.88rem;color:rgba(255,255,255,.45);font-weight:500;line-height:1.75;max-width:100%;position:relative;z-index:1}
-.method-step-visual{width:100%;display:flex;align-items:center;justify-content:center}
-.step-visual-box{position:relative;z-index:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;width:100%;max-width:100%;box-shadow:0 12px 40px rgba(0,0,0,.5)}
-.vis-google{background:#202124;font-family:'Inter',sans-serif}
-.vis-g-topbar{display:flex;align-items:center;gap:10px;padding:10px 14px 0}
-.vis-g-logo{font-size:.75rem;font-weight:700;letter-spacing:-.02em;display:flex}
-.vis-g-logo span:nth-child(1){color:#4285f4}.vis-g-logo span:nth-child(2){color:#ea4335}.vis-g-logo span:nth-child(3){color:#fbbc05}.vis-g-logo span:nth-child(4){color:#4285f4}.vis-g-logo span:nth-child(5){color:#34a853}.vis-g-logo span:nth-child(6){color:#ea4335}
-.vis-g-searchbar{flex:1;display:flex;align-items:center;gap:6px;background:#303134;border:1px solid #5f6368;border-radius:20px;padding:6px 12px;font-size:.62rem;color:#e8eaed;overflow:hidden;white-space:nowrap}
-.vis-g-searchbar svg{width:11px;height:11px;stroke:#9aa0a6;fill:none;flex-shrink:0}
-.vis-g-searchbar .typing-text{display:inline;color:#e8eaed;border-right:2px solid #e8eaed;padding-right:2px;animation:blink .8s step-end infinite}
-@keyframes blink{0%,100%{border-color:#e8eaed}50%{border-color:transparent}}
-.vis-g-tabs{display:flex;gap:0;padding:8px 14px 0;border-bottom:1px solid #3c4043}
-.vis-g-tab{font-size:.55rem;color:#969ba1;padding:6px 10px;position:relative;letter-spacing:.02em}
-.vis-g-tab--active{color:#8ab4f8;border-bottom:2px solid #8ab4f8;margin-bottom:-1px}
-.vis-g-results{padding:10px 14px 14px}
-.vis-g-stats{font-size:.52rem;color:#9aa0a6;margin-bottom:10px}
-.vis-g-result{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}.vis-g-result:last-child{border:none}
-.vis-g-result-site{display:flex;align-items:center;gap:6px;margin-bottom:2px}
-.vis-g-favicon{width:16px;height:16px;border-radius:50%;background:#303134;display:flex;align-items:center;justify-content:center;font-size:.42rem;font-weight:700;color:#8ab4f8}
-.vis-g-result-site-info{display:flex;flex-direction:column}
-.vis-g-site-name{font-size:.55rem;color:#bdc1c6}.vis-g-site-url{font-size:.48rem;color:#969ba1}
-.vis-g-result-title{font-size:.7rem;font-weight:400;color:#8ab4f8;margin-bottom:3px;line-height:1.3;display:flex;align-items:center;gap:4px}
-.vis-g-result-desc{font-size:.6rem;color:#bdc1c6;line-height:1.45}
-.vis-g-result--first{background:rgba(123,60,255,.06);border-radius:8px;padding:8px;margin:0 -8px 6px;border:1px solid rgba(123,60,255,.12)}
-.vis-g-result--first .vis-g-result-title{color:#c58aff;font-weight:500}
-.vis-rank{font-size:.42rem;font-weight:800;background:linear-gradient(135deg,#7b3cff,#9b5cff);color:#fff;border-radius:3px;padding:1px 4px}
-.vis-g-result--dim .vis-g-result-title{color:rgba(138,180,248,.3)}.vis-g-result--dim .vis-g-result-desc{color:rgba(189,193,198,.25)}.vis-g-result--dim .vis-g-site-name{color:rgba(189,193,198,.25)}.vis-g-result--dim .vis-g-site-url{color:rgba(150,154,161,.25)}
-.vis-g-result--dim-mobile{display:none}
-.vis-gmb{padding:10px 14px 14px}
-.vis-gmb-card{background:#303134;border-radius:10px;padding:12px;border:1px solid #3c4043}
-.vis-gmb-header{margin-bottom:6px}.vis-gmb-name{font-size:.82rem;font-weight:700;color:#e8eaed}.vis-gmb-category{font-size:.55rem;color:#9aa0a6}
-.vis-gmb-rating{display:flex;align-items:center;gap:5px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #3c4043}
-.vis-gmb-stars{display:flex;gap:1px}.vis-gmb-stars svg{width:12px;height:12px}
-.vis-gmb-score{font-size:.7rem;font-weight:700;color:#e8eaed}.vis-gmb-count{font-size:.55rem;color:#9aa0a6}
-.vis-gmb-info{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #3c4043}
-.vis-gmb-row{font-size:.6rem;color:#bdc1c6;display:flex;align-items:center;gap:6px}
-.vis-gmb-row svg{width:12px;height:12px;stroke:#9aa0a6;fill:none;stroke-width:1.5;flex-shrink:0}
-.vis-gmb-actions{display:flex;gap:6px;margin-bottom:10px}
-.vis-gmb-btn{flex:1;text-align:center;font-size:.55rem;font-weight:600;color:#8ab4f8;padding:6px 4px;border-radius:16px;border:1px solid #5f6368;background:transparent}
-.vis-gmb-btn--primary{background:#8ab4f8;color:#202124;border-color:#8ab4f8}
-.vis-gmb-reviews{display:flex;flex-direction:column;gap:8px}
-.vis-gmb-review{padding:8px;background:#202124;border-radius:6px;border:1px solid #3c4043}
-.vis-gmb-review-head{display:flex;align-items:center;gap:6px;margin-bottom:4px}
-.vis-gmb-review-avatar{width:20px;height:20px;border-radius:50%;background:#5f6368;display:flex;align-items:center;justify-content:center;font-size:.45rem;font-weight:700;color:#e8eaed}
-.vis-gmb-review-name{font-size:.55rem;font-weight:600;color:#e8eaed;flex:1}
-.vis-gmb-review-stars{display:flex;gap:1px}.vis-gmb-review-stars svg{width:9px;height:9px}
-.vis-gmb-review-text{font-size:.55rem;color:#9aa0a6;line-height:1.4}
-.vis-gsc{padding:10px 14px 14px;font-family:'Inter',sans-serif}
-.vis-gsc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)}
-.vis-gsc-title{font-size:.7rem;font-weight:600;color:#e8eaed}
-.vis-gsc-period{font-size:.55rem;color:#9aa0a6;background:rgba(255,255,255,.04);border-radius:4px;padding:2px 8px;border:1px solid rgba(255,255,255,.08)}
-.vis-gsc-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:10px}
-.vis-gsc-metric{text-align:center;padding:8px 6px;background:rgba(255,255,255,.02);border-radius:6px;border:1px solid rgba(255,255,255,.04)}
-.vis-gsc-metric-label{font-size:.48rem;font-weight:500;color:#9aa0a6;text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px}
-.vis-gsc-metric-value{font-size:.9rem;font-weight:700;letter-spacing:-.02em}
-.vis-gsc-chart{background:rgba(255,255,255,.015);border-radius:6px;padding:10px 8px 6px;margin-bottom:10px;border:1px solid rgba(255,255,255,.04)}
-.vis-gsc-chart svg{width:100%;height:auto;display:block}
-.vis-gsc-queries{background:rgba(255,255,255,.015);border-radius:6px;border:1px solid rgba(255,255,255,.04);overflow:hidden}
-.vis-gsc-queries-title{font-size:.6rem;font-weight:600;color:#e8eaed;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
-.vis-gsc-query{display:flex;align-items:center;gap:6px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.03);font-size:.6rem}.vis-gsc-query:last-child{border-bottom:none}
-.vis-gsc-query-text{flex:1;color:#8ab4f8;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.58rem}
-.vis-gsc-query-clicks{color:#9aa0a6;font-size:.52rem;min-width:55px;text-align:right}
-.vis-gsc-query-pos{color:#34a853;font-weight:700;font-size:.55rem;min-width:20px;text-align:right}
+.method-steps{display:flex;flex-direction:column;gap:0;position:relative}
+/* 3D Notebook */
+.nb-wrapper{perspective:900px;display:flex;flex-direction:column;align-items:center;padding:80px 0}
+.nb-laptop{position:relative;width:100%;max-width:340px;transform:rotateX(8deg);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.nb-screen{position:relative;width:100%;aspect-ratio:16/10;background:#0a0a0a;border-radius:12px 12px 0 0;border:2px solid rgba(255,255,255,.1);border-bottom:none;overflow:hidden;box-shadow:0 -10px 60px rgba(123,60,255,.2),0 0 120px rgba(123,60,255,.08)}
+.nb-screen::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 50%);pointer-events:none;z-index:10;border-radius:12px 12px 0 0}
+.nb-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.08);z-index:11}
+.nb-screen-content{position:relative;width:100%;height:100%;overflow:hidden}
+.nb-slide{position:absolute;inset:0;opacity:0;transform:scale(.95);transition:opacity .5s,transform .5s;display:flex;flex-direction:column;overflow-y:auto;-ms-overflow-style:none;scrollbar-width:none}
+.nb-slide::-webkit-scrollbar{display:none}
+.nb-slide.nb-active{opacity:1;transform:scale(1)}
+.nb-base{width:110%;margin-left:-5%;height:14px;background:linear-gradient(180deg,#2a2a2e 0%,#1a1a1e 100%);border-radius:0 0 8px 8px;position:relative;border:1px solid rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.12)}
+.nb-base::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:4px;background:rgba(255,255,255,.04);border-radius:0 0 4px 4px}
+.nb-glow{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:80%;height:60px;background:radial-gradient(ellipse,rgba(123,60,255,.25) 0%,transparent 70%);pointer-events:none;filter:blur(20px)}
+/* Notebook nav dots */
+.nb-nav{display:flex;gap:10px;margin-top:24px;justify-content:center}
+.nb-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
+.nb-dot.nb-dot-active{background:#7b3cff;border-color:#9b5cff;box-shadow:0 0 12px rgba(123,60,255,.5)}
+/* Step info below notebook */
+.nb-info{text-align:center;margin-top:28px;min-height:100px}
+.nb-info-label{font-size:.7rem;font-weight:700;color:#7b3cff;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;opacity:0;transform:translateY(8px);transition:all .4s}
+.nb-info-label.nb-show{opacity:1;transform:translateY(0)}
+.nb-info-title{font-size:clamp(1.4rem,6vw,2rem);font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:10px;line-height:1.15;opacity:0;transform:translateY(8px);transition:all .4s .1s}
+.nb-info-title.nb-show{opacity:1;transform:translateY(0)}
+.nb-info-desc{font-size:.88rem;color:rgba(255,255,255,.45);font-weight:500;line-height:1.7;max-width:400px;margin:0 auto;opacity:0;transform:translateY(8px);transition:all .4s .2s}
+.nb-info-desc.nb-show{opacity:1;transform:translateY(0)}
+/* Google clone inside notebook */
+.nb-google{background:#202124;font-family:'Inter',sans-serif;font-size:.55rem;height:100%}
+.nb-g-bar{display:flex;align-items:center;gap:6px;padding:8px 10px 6px}
+.nb-g-logo{font-size:.6rem;font-weight:700;display:flex}
+.nb-g-logo span:nth-child(1){color:#4285f4}.nb-g-logo span:nth-child(2){color:#ea4335}.nb-g-logo span:nth-child(3){color:#fbbc05}.nb-g-logo span:nth-child(4){color:#4285f4}.nb-g-logo span:nth-child(5){color:#34a853}.nb-g-logo span:nth-child(6){color:#ea4335}
+.nb-g-search{flex:1;background:#303134;border:1px solid #5f6368;border-radius:14px;padding:4px 8px;color:#e8eaed;font-size:.5rem;display:flex;align-items:center;gap:4px}
+.nb-g-search svg{width:8px;height:8px;stroke:#9aa0a6;fill:none;flex-shrink:0}
+.nb-g-tabs{display:flex;padding:0 10px;border-bottom:1px solid #3c4043;gap:0}
+.nb-g-tab{font-size:.42rem;color:#969ba1;padding:4px 6px}.nb-g-tab--a{color:#8ab4f8;border-bottom:2px solid #8ab4f8;margin-bottom:-1px}
+.nb-g-body{padding:8px 10px}
+.nb-g-stat{font-size:.38rem;color:#9aa0a6;margin-bottom:6px}
+.nb-g-res{padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.nb-g-res-top{display:flex;align-items:center;gap:4px;margin-bottom:1px}
+.nb-g-fav{width:12px;height:12px;border-radius:50%;background:#303134;display:flex;align-items:center;justify-content:center;font-size:.32rem;font-weight:700;color:#8ab4f8}
+.nb-g-site{font-size:.4rem;color:#bdc1c6}.nb-g-url{font-size:.35rem;color:#969ba1}
+.nb-g-title{font-size:.52rem;color:#8ab4f8;margin-bottom:2px;line-height:1.3;display:flex;align-items:center;gap:3px}
+.nb-g-desc{font-size:.42rem;color:#bdc1c6;line-height:1.4}
+.nb-g-res--hl{background:rgba(123,60,255,.08);border-radius:6px;padding:6px;margin:0 -6px 4px;border:1px solid rgba(123,60,255,.15)}
+.nb-g-res--hl .nb-g-title{color:#c58aff;font-weight:600}
+.nb-g-rank{font-size:.32rem;font-weight:800;background:linear-gradient(135deg,#7b3cff,#9b5cff);color:#fff;border-radius:2px;padding:1px 3px}
+.nb-g-res--dim .nb-g-title{color:rgba(138,180,248,.25)}.nb-g-res--dim .nb-g-desc{color:rgba(189,193,198,.2)}.nb-g-res--dim .nb-g-site{color:rgba(189,193,198,.2)}
+/* GMB card inside notebook */
+.nb-gmb{background:#303134;border-radius:8px;padding:8px;margin:6px 0;border:1px solid #3c4043}
+.nb-gmb-name{font-size:.6rem;font-weight:700;color:#e8eaed}.nb-gmb-cat{font-size:.4rem;color:#9aa0a6;margin-bottom:4px}
+.nb-gmb-rating{display:flex;align-items:center;gap:3px;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid #3c4043}
+.nb-gmb-rating svg{width:9px;height:9px}
+.nb-gmb-rating .score{font-size:.55rem;font-weight:700;color:#e8eaed}.nb-gmb-rating .count{font-size:.4rem;color:#9aa0a6}
+.nb-gmb-row{font-size:.42rem;color:#bdc1c6;display:flex;align-items:center;gap:4px;margin-bottom:3px}
+.nb-gmb-row svg{width:9px;height:9px;stroke:#9aa0a6;fill:none;stroke-width:1.5;flex-shrink:0}
+.nb-gmb-row .open{color:#34a853}
+.nb-gmb-btns{display:flex;gap:4px;margin-top:6px}
+.nb-gmb-btn{flex:1;text-align:center;font-size:.4rem;font-weight:600;color:#8ab4f8;padding:4px;border-radius:10px;border:1px solid #5f6368}
+.nb-gmb-btn--p{background:#8ab4f8;color:#202124;border-color:#8ab4f8}
+/* GSC panel inside notebook */
+.nb-gsc{padding:8px 10px}
+.nb-gsc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.06)}
+.nb-gsc-head span:first-child{font-size:.5rem;font-weight:600;color:#e8eaed}
+.nb-gsc-head span:last-child{font-size:.4rem;color:#9aa0a6;background:rgba(255,255,255,.04);padding:1px 5px;border-radius:3px}
+.nb-gsc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px}
+.nb-gsc-m{text-align:center;padding:5px 4px;background:rgba(255,255,255,.02);border-radius:4px;border:1px solid rgba(255,255,255,.04)}
+.nb-gsc-m small{font-size:.35rem;color:#9aa0a6;text-transform:uppercase;display:block;margin-bottom:1px}
+.nb-gsc-m b{font-size:.65rem;font-weight:700;letter-spacing:-.02em}
+.nb-gsc-chart{background:rgba(255,255,255,.015);border-radius:4px;padding:6px;margin-bottom:6px;border:1px solid rgba(255,255,255,.04)}
+.nb-gsc-chart svg{width:100%;height:auto;display:block}
+.nb-gsc-q{background:rgba(255,255,255,.015);border-radius:4px;border:1px solid rgba(255,255,255,.04);overflow:hidden}
+.nb-gsc-q-title{font-size:.42rem;font-weight:600;color:#e8eaed;padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.nb-gsc-q-row{display:flex;align-items:center;gap:4px;padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.03);font-size:.42rem}
+.nb-gsc-q-row:last-child{border:none}
+.nb-gsc-q-row span:first-child{flex:1;color:#8ab4f8;font-weight:500}
+.nb-gsc-q-row span:nth-child(2){color:#9aa0a6;font-size:.38rem}
+.nb-gsc-q-row span:last-child{color:#34a853;font-weight:700;font-size:.4rem}
 .method-bonus{padding:80px 12px 0;text-align:center;max-width:100%;margin:0 auto;position:relative}
 .method-bonus-title{font-size:clamp(2.2rem,10vw,4rem);font-weight:900;letter-spacing:-.04em;margin-bottom:48px;min-height:1.3em;line-height:1.08;position:relative;z-index:1;background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.method-bonus-video{position:relative;width:100%;max-width:900px;margin:0 auto 40px;border-radius:20px;overflow:hidden;border:2px solid rgba(123,60,255,.3);box-shadow:0 30px 100px rgba(123,60,255,.28),0 0 200px rgba(123,60,255,.1),0 0 0 1px rgba(255,255,255,.05);opacity:0;transform:translateY(40px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.method-bonus-video{position:relative;width:calc(100% + 24px);max-width:900px;margin:0 auto 40px;margin-left:-12px;border-radius:16px;overflow:hidden;border:2px solid rgba(123,60,255,.3);box-shadow:0 30px 100px rgba(123,60,255,.28),0 0 200px rgba(123,60,255,.1),0 0 0 1px rgba(255,255,255,.05);opacity:0;transform:translateY(40px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .method-bonus-video.mbv-show{opacity:1;transform:translateY(0) scale(1)}
 .method-bonus-video video{width:100%;display:block}
 .method-bonus-label{font-family:'Horizon',sans-serif;font-size:clamp(1.3rem,6vw,2.4rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,#d4b8ff 50%,#7b3cff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -333,24 +342,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero{padding:80px 80px 120px}.hero::before{width:900px;height:900px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-result-title{font-size:1rem}.hs-result-desc{font-size:.8rem}
 .niches,.method,.testimonials,.faq,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
-.method-steps{gap:120px}
-.method-step{display:grid;grid-template-columns:1fr 1fr;gap:80px;text-align:left}
-.method-step-text{text-align:left;align-items:flex-start;background:none;border:none;padding:0;border-radius:0}
-.method-step-text::before{display:none}
-.method-step-label{background:none;border:none;padding:0;font-size:.7rem;letter-spacing:.15em;display:flex;align-items:center;gap:10px}
-.method-step-label::before{content:'';width:20px;height:1px;background:linear-gradient(90deg,#7b3cff,#9b5cff)}
-.method-step-text p{max-width:420px}
-.method-step--reverse{direction:rtl}.method-step--reverse>*{direction:ltr}
-.step-visual-box{max-width:420px;border-radius:16px}
-.vis-g-topbar{padding:16px 20px 0;gap:16px}.vis-g-logo{font-size:.95rem}.vis-g-searchbar{padding:8px 16px;font-size:.72rem;border-radius:24px}.vis-g-searchbar svg{width:14px;height:14px}
-.vis-g-tabs{padding:12px 20px 0}.vis-g-tab{font-size:.65rem;padding:8px 14px}
-.vis-g-results{padding:16px 20px 20px}.vis-g-stats{font-size:.6rem;margin-bottom:16px}.vis-g-result{padding:12px 0}.vis-g-favicon{width:20px;height:20px;font-size:.5rem}.vis-g-result-site{gap:8px;margin-bottom:4px}.vis-g-site-name{font-size:.65rem}.vis-g-site-url{font-size:.58rem}.vis-g-result-title{font-size:.85rem;gap:6px}.vis-g-result-desc{font-size:.7rem}.vis-g-result--first{padding:12px;margin:0 -12px 8px;border-radius:10px}.vis-rank{font-size:.5rem;padding:2px 6px}
-.vis-g-result--dim-mobile{display:block}
-.vis-gmb{padding:16px 20px 20px}.vis-gmb-card{padding:16px;border-radius:12px}.vis-gmb-name{font-size:1rem}.vis-gmb-category{font-size:.65rem}.vis-gmb-stars svg{width:14px;height:14px}.vis-gmb-score{font-size:.8rem}.vis-gmb-count{font-size:.65rem}.vis-gmb-row{font-size:.7rem;gap:8px}.vis-gmb-row svg{width:14px;height:14px}.vis-gmb-btn{font-size:.65rem;padding:8px 4px;border-radius:20px}.vis-gmb-review{padding:10px;border-radius:8px}.vis-gmb-review-avatar{width:24px;height:24px;font-size:.55rem}.vis-gmb-review-name{font-size:.65rem}.vis-gmb-review-stars svg{width:11px;height:11px}.vis-gmb-review-text{font-size:.65rem}
-.vis-gsc{padding:16px 20px 20px}.vis-gsc-header{margin-bottom:16px;padding-bottom:12px}.vis-gsc-title{font-size:.85rem}.vis-gsc-period{font-size:.65rem;padding:3px 10px}.vis-gsc-metrics{grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}.vis-gsc-metric{padding:12px 8px;border-radius:8px}.vis-gsc-metric-label{font-size:.55rem;margin-bottom:4px}.vis-gsc-metric-value{font-size:1.15rem}.vis-gsc-chart{padding:16px 12px 8px;margin-bottom:16px;border-radius:8px}.vis-gsc-queries-title{font-size:.7rem;padding:10px 14px}.vis-gsc-query{padding:8px 14px;font-size:.7rem}.vis-gsc-query-text{font-size:.68rem}.vis-gsc-query-clicks{font-size:.62rem;min-width:65px}.vis-gsc-query-pos{font-size:.65rem;min-width:24px}
+.nb-laptop{max-width:520px}.nb-screen{border-radius:16px 16px 0 0}.nb-wrapper{flex-direction:row;gap:60px;align-items:center}.nb-info{text-align:left;margin-top:0}.nb-info-desc{margin:0}.nb-nav{justify-content:flex-start}
 .testimonial-card{max-width:480px}
 .cta-btn{width:auto;max-width:none;margin:0 auto}.header .cta-btn{margin:0}
-.method-step-visual{position:relative}.method-step-visual::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(123,60,255,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
 }
 @media(min-width:1024px){.wa-section-header h2,.method-header h2,.testimonials-header h2,.faq-header h2{font-size:2.6rem}}</style>
@@ -465,48 +459,74 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <section class="method" id="method"><div class="container">
 <div class="method-header" data-anim><p class="method-pre">isso é</p><h2 class="method-title"><span class="method-title-metodo">MÉTODO</span><br><span class="method-title-vitrine">VITRINE</span></h2><p>Um método criado para transformar sua empresa na primeira escolha quando alguém procura pelo seu serviço.</p></div>
 <div class="method-steps">
-
-<div class="method-step" data-parallax-container>
-<div class="method-step-text" data-anim data-step="01"><div class="method-step-label">01 — Posicionamento</div><h3 data-tw="Posicionamento estratégico no Google"></h3><p>Sua empresa aparece exatamente quando o cliente procura pelo seu serviço na região. Sem depender de anúncios pagos.</p></div>
-<div class="method-step-visual" data-anim data-anim-delay="2" data-parallax="0.05"><div class="step-visual-box"><div class="vis-google">
-<div class="vis-g-topbar"><div class="vis-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="vis-g-searchbar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg><span class="typing-text" data-typing="melhor empresa de reformas perto de mim"></span></div></div>
-<div class="vis-g-tabs"><div class="vis-g-tab vis-g-tab--active">Tudo</div><div class="vis-g-tab">Imagens</div><div class="vis-g-tab">Maps</div><div class="vis-g-tab">Notícias</div></div>
-<div class="vis-g-results"><div class="vis-g-stats">Aproximadamente 1.240.000 resultados (0,42 s)</div>
-<div class="vis-g-result vis-g-result--first"><div class="vis-g-result-site"><div class="vis-g-favicon">SE</div><div class="vis-g-result-site-info"><span class="vis-g-site-name">Sua Empresa</span><span class="vis-g-site-url">www.suaempresa.com.br</span></div></div><div class="vis-g-result-title"><span class="vis-rank">#1</span> Sua Empresa — Referência no segmento</div><div class="vis-g-result-desc">Qualidade e confiança há mais de 10 anos. Solicite um orçamento sem compromisso.</div></div>
-<div class="vis-g-result vis-g-result--dim vis-g-result--dim-mobile"><div class="vis-g-result-site"><div class="vis-g-favicon">C</div><div class="vis-g-result-site-info"><span class="vis-g-site-name">Concorrente A</span><span class="vis-g-site-url">www.concorrente-a.com.br</span></div></div><div class="vis-g-result-title">Concorrente A — Empresa local</div><div class="vis-g-result-desc">Serviços diversos na região...</div></div>
-</div></div></div></div></div>
-
-<div class="method-step method-step--reverse" data-parallax-container>
-<div class="method-step-text" data-anim data-step="02"><div class="method-step-label">02 — Autoridade</div><h3 data-tw="Autoridade digital real"></h3><p>O Google reconhece sua empresa como referência no seu segmento. Credibilidade que se constrói com método, não com sorte.</p></div>
-<div class="method-step-visual" data-anim data-anim-delay="2" data-parallax="0.05"><div class="step-visual-box"><div class="vis-google">
-<div class="vis-g-topbar"><div class="vis-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="vis-g-searchbar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg><span class="typing-text" data-typing="escritório de advocacia confiável"></span></div></div>
-<div class="vis-g-tabs"><div class="vis-g-tab vis-g-tab--active">Tudo</div><div class="vis-g-tab">Imagens</div><div class="vis-g-tab">Maps</div><div class="vis-g-tab">Notícias</div></div>
-<div class="vis-gmb"><div class="vis-gmb-card">
-<div class="vis-gmb-header"><div class="vis-gmb-name">Sua Empresa</div><div class="vis-gmb-category">Empresa local</div></div>
-<div class="vis-gmb-rating"><span class="vis-gmb-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg></span><span class="vis-gmb-score">4.9</span><span class="vis-gmb-count">(127 avaliações)</span></div>
-<div class="vis-gmb-info">
-<div class="vis-gmb-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Rua Exemplo, 123 — Centro</div>
-<div class="vis-gmb-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span style="color:#34a853">Aberto</span> · Fecha às 18:00</div>
-<div class="vis-gmb-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> (11) 9999-9999</div>
-<div class="vis-gmb-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> suaempresa.com.br</div>
+<div class="nb-wrapper" data-anim id="nbWrapper">
+<div class="nb-laptop" id="nbLaptop">
+<div class="nb-screen">
+<div class="nb-notch"></div>
+<div class="nb-screen-content" id="nbContent">
+<!-- Slide 1: Google Search Results -->
+<div class="nb-slide nb-active" data-nb="0">
+<div class="nb-google">
+<div class="nb-g-bar"><div class="nb-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="nb-g-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg>melhor empresa de reformas</div></div>
+<div class="nb-g-tabs"><div class="nb-g-tab nb-g-tab--a">Tudo</div><div class="nb-g-tab">Maps</div><div class="nb-g-tab">Imagens</div></div>
+<div class="nb-g-body">
+<div class="nb-g-stat">1.240.000 resultados (0,42 s)</div>
+<div class="nb-g-res nb-g-res--hl"><div class="nb-g-res-top"><div class="nb-g-fav">SE</div><span class="nb-g-site">Sua Empresa</span><span class="nb-g-url">suaempresa.com.br</span></div><div class="nb-g-title"><span class="nb-g-rank">#1</span> Sua Empresa — Referência</div><div class="nb-g-desc">Qualidade e confiança há mais de 10 anos. Solicite um orçamento.</div></div>
+<div class="nb-g-res nb-g-res--dim"><div class="nb-g-res-top"><div class="nb-g-fav">C</div><span class="nb-g-site">Concorrente A</span></div><div class="nb-g-title">Concorrente A — Empresa local</div><div class="nb-g-desc">Serviços diversos na região...</div></div>
+<div class="nb-g-res nb-g-res--dim"><div class="nb-g-res-top"><div class="nb-g-fav">B</div><span class="nb-g-site">Concorrente B</span></div><div class="nb-g-title">Concorrente B — Reformas</div><div class="nb-g-desc">Empresa de reformas em geral...</div></div>
+</div></div>
 </div>
-<div class="vis-gmb-actions"><div class="vis-gmb-btn vis-gmb-btn--primary">Ligar</div><div class="vis-gmb-btn">Rotas</div><div class="vis-gmb-btn">Site</div></div>
-<div class="vis-gmb-reviews">
-<div class="vis-gmb-review"><div class="vis-gmb-review-head"><span class="vis-gmb-review-avatar">M</span><span class="vis-gmb-review-name">Maria S.</span><span class="vis-gmb-review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg></span></div><div class="vis-gmb-review-text">"Melhor atendimento da cidade, super recomendo!"</div></div>
-<div class="vis-gmb-review"><div class="vis-gmb-review-head"><span class="vis-gmb-review-avatar">C</span><span class="vis-gmb-review-name">Carlos O.</span><span class="vis-gmb-review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg></span></div><div class="vis-gmb-review-text">"Profissionais excelentes, voltarei com certeza."</div></div>
-</div></div></div></div></div></div></div>
-
-<div class="method-step" data-parallax-container>
-<div class="method-step-text" data-anim data-step="03"><div class="method-step-label">03 — Estrutura</div><h3 data-tw="Contatos todos os dias"></h3><p>Uma máquina de posicionamento que trabalha 24h por dia trazendo clientes prontos para contratar seu serviço.</p></div>
-<div class="method-step-visual" data-anim data-anim-delay="2" data-parallax="0.05"><div class="step-visual-box"><div class="vis-google">
-<div class="vis-g-topbar"><div class="vis-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="vis-g-searchbar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg><span class="typing-text" data-typing="contabilidade para empresas na região"></span></div></div>
-<div class="vis-g-tabs"><div class="vis-g-tab vis-g-tab--active">Tudo</div><div class="vis-g-tab">Imagens</div><div class="vis-g-tab">Maps</div><div class="vis-g-tab">Notícias</div></div>
+<!-- Slide 2: Google Meu Negócio -->
+<div class="nb-slide" data-nb="1">
+<div class="nb-google">
+<div class="nb-g-bar"><div class="nb-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="nb-g-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg>advocacia confiável</div></div>
+<div class="nb-g-tabs"><div class="nb-g-tab nb-g-tab--a">Tudo</div><div class="nb-g-tab">Maps</div><div class="nb-g-tab">Imagens</div></div>
+<div class="nb-g-body">
+<div class="nb-gmb">
+<div class="nb-gmb-name">Sua Empresa</div><div class="nb-gmb-cat">Empresa local</div>
+<div class="nb-gmb-rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5a623" stroke="none"/></svg><span class="score">4.9</span><span class="count">(127)</span></div>
+<div class="nb-gmb-row"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rua Exemplo, 123</div>
+<div class="nb-gmb-row"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="open">Aberto</span> · Fecha 18h</div>
+<div class="nb-gmb-row"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>(11) 9999-9999</div>
+<div class="nb-gmb-btns"><div class="nb-gmb-btn nb-gmb-btn--p">Ligar</div><div class="nb-gmb-btn">Rotas</div><div class="nb-gmb-btn">Site</div></div>
+</div></div></div>
 </div>
-<div class="vis-gsc"><div class="vis-gsc-header"><div class="vis-gsc-title">Desempenho nos resultados da pesquisa</div><div class="vis-gsc-period">Últimos 28 dias</div></div>
-<div class="vis-gsc-metrics"><div class="vis-gsc-metric"><div class="vis-gsc-metric-label">Cliques totais</div><div class="vis-gsc-metric-value" style="color:#4285f4">187</div></div><div class="vis-gsc-metric"><div class="vis-gsc-metric-label">Impressões totais</div><div class="vis-gsc-metric-value" style="color:#a855f7">2.340</div></div><div class="vis-gsc-metric"><div class="vis-gsc-metric-label">CTR médio</div><div class="vis-gsc-metric-value" style="color:#34a853">8,0%</div></div><div class="vis-gsc-metric"><div class="vis-gsc-metric-label">Posição média</div><div class="vis-gsc-metric-value" style="color:#ea4335">2.4</div></div></div>
-<div class="vis-gsc-chart"><svg viewBox="0 0 320 80" preserveAspectRatio="none"><defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4285f4" stop-opacity=".3"/><stop offset="100%" stop-color="#4285f4" stop-opacity="0"/></linearGradient></defs><path d="M0,68 L20,70 L40,65 L60,62 L80,64 L100,58 L120,55 L140,52 L160,48 L180,50 L200,44 L220,40 L240,36 L260,33 L280,30 L300,25 L320,22 L320,80 L0,80Z" fill="url(#chartFill)"/><path d="M0,68 L20,70 L40,65 L60,62 L80,64 L100,58 L120,55 L140,52 L160,48 L180,50 L200,44 L220,40 L240,36 L260,33 L280,30 L300,25 L320,22" fill="none" stroke="#4285f4" stroke-width="2" stroke-linecap="round"/></svg></div>
-<div class="vis-gsc-queries"><div class="vis-gsc-queries-title">Principais consultas</div><div class="vis-gsc-query"><span class="vis-gsc-query-text">reformas residenciais</span><span class="vis-gsc-query-clicks">52 cliques</span><span class="vis-gsc-query-pos">#2</span></div><div class="vis-gsc-query"><span class="vis-gsc-query-text">empresa de reformas perto</span><span class="vis-gsc-query-clicks">41 cliques</span><span class="vis-gsc-query-pos">#3</span></div><div class="vis-gsc-query"><span class="vis-gsc-query-text">pedreiro na região</span><span class="vis-gsc-query-clicks">34 cliques</span><span class="vis-gsc-query-pos">#1</span></div></div>
-</div></div></div></div>
+<!-- Slide 3: Google Search Console -->
+<div class="nb-slide" data-nb="2">
+<div class="nb-google">
+<div class="nb-g-bar"><div class="nb-g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div><div class="nb-g-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg>Search Console</div></div>
+<div class="nb-gsc">
+<div class="nb-gsc-head"><span>Desempenho</span><span>28 dias</span></div>
+<div class="nb-gsc-grid">
+<div class="nb-gsc-m"><small>Cliques</small><b style="color:#4285f4">187</b></div>
+<div class="nb-gsc-m"><small>Impressões</small><b style="color:#a855f7">2.340</b></div>
+<div class="nb-gsc-m"><small>CTR</small><b style="color:#34a853">8,0%</b></div>
+<div class="nb-gsc-m"><small>Posição</small><b style="color:#ea4335">2.4</b></div>
+</div>
+<div class="nb-gsc-chart"><svg viewBox="0 0 320 60" preserveAspectRatio="none"><defs><linearGradient id="nbFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4285f4" stop-opacity=".3"/><stop offset="100%" stop-color="#4285f4" stop-opacity="0"/></linearGradient></defs><path d="M0,50 L40,48 L80,45 L120,40 L160,35 L200,30 L240,24 L280,18 L320,14 L320,60 L0,60Z" fill="url(#nbFill)"/><path d="M0,50 L40,48 L80,45 L120,40 L160,35 L200,30 L240,24 L280,18 L320,14" fill="none" stroke="#4285f4" stroke-width="2" stroke-linecap="round"/></svg></div>
+<div class="nb-gsc-q">
+<div class="nb-gsc-q-title">Consultas</div>
+<div class="nb-gsc-q-row"><span>reformas residenciais</span><span>52 cliques</span><span>#2</span></div>
+<div class="nb-gsc-q-row"><span>empresa de reformas</span><span>41 cliques</span><span>#3</span></div>
+<div class="nb-gsc-q-row"><span>pedreiro na região</span><span>34 cliques</span><span>#1</span></div>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="nb-base"></div>
+<div class="nb-glow"></div>
+</div>
+<div class="nb-nav">
+<div class="nb-dot nb-dot-active" data-nbd="0"></div>
+<div class="nb-dot" data-nbd="1"></div>
+<div class="nb-dot" data-nbd="2"></div>
+</div>
+<div class="nb-info" id="nbInfo">
+<div class="nb-info-label nb-show" id="nbLabel">Posicionamento</div>
+<div class="nb-info-title nb-show" id="nbTitle">Sua empresa em primeiro no Google</div>
+<div class="nb-info-desc nb-show" id="nbDesc">Sua empresa aparece exatamente quando o cliente procura pelo seu serviço na região. Sem depender de anúncios pagos.</div>
+</div>
+</div>
 
 <div class="method-bonus" id="methodBonus">
 <h2 class="method-bonus-title" id="mbTitle"></h2>
@@ -651,9 +671,38 @@ const waObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){ru
 waObs.observe(waPhoneEl);
 }
 
-/* Typing in search bars */
-const tObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target;const t=el.dataset.typing||'';let i=0;el.textContent='';const iv=setInterval(()=>{el.textContent=t.slice(0,i+1);i++;if(i>=t.length)clearInterval(iv)},50);tObs.unobserve(el)}})},{threshold:.5});
-document.querySelectorAll('[data-typing]').forEach(el=>tObs.observe(el));
+/* 3D Notebook auto-cycle */
+(function(){
+const slides=document.querySelectorAll('.nb-slide');
+const dots=document.querySelectorAll('.nb-dot');
+const wrapper=document.getElementById('nbWrapper');
+if(!slides.length||!wrapper)return;
+const steps=[
+{label:'Posicionamento',title:'Sua empresa em primeiro no Google',desc:'Sua empresa aparece exatamente quando o cliente procura pelo seu serviço na região. Sem depender de anúncios pagos.'},
+{label:'Autoridade',title:'Autoridade digital real',desc:'O Google reconhece sua empresa como referência no seu segmento. Credibilidade que se constrói com método, não com sorte.'},
+{label:'Estrutura',title:'Contatos todos os dias',desc:'Uma máquina de posicionamento que trabalha 24h por dia trazendo clientes prontos para contratar seu serviço.'}
+];
+let cur=0,interval=null,started=false;
+function goTo(i){
+slides.forEach(s=>s.classList.remove('nb-active'));
+dots.forEach(d=>d.classList.remove('nb-dot-active'));
+slides[i].classList.add('nb-active');
+dots[i].classList.add('nb-dot-active');
+const lbl=document.getElementById('nbLabel'),ttl=document.getElementById('nbTitle'),dsc=document.getElementById('nbDesc');
+[lbl,ttl,dsc].forEach(el=>{if(el)el.classList.remove('nb-show')});
+setTimeout(()=>{
+if(lbl){lbl.textContent=steps[i].label;lbl.classList.add('nb-show')}
+if(ttl){ttl.textContent=steps[i].title;ttl.classList.add('nb-show')}
+if(dsc){dsc.textContent=steps[i].desc;dsc.classList.add('nb-show')}
+},150);
+cur=i;
+}
+function startCycle(){if(interval)return;interval=setInterval(()=>{goTo((cur+1)%3)},3500)}
+function stopCycle(){clearInterval(interval);interval=null}
+dots.forEach(d=>{d.addEventListener('click',()=>{stopCycle();goTo(parseInt(d.dataset.nbd));startCycle()})});
+const nbObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!started){started=true;startCycle();nbObs.unobserve(e.target)}})},{threshold:.2});
+nbObs.observe(wrapper);
+})();
 
 /* FAQ */
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const it=btn.parentElement;const was=it.classList.contains('open');
