@@ -50,15 +50,15 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 @keyframes ctaShine{0%,100%{left:-75%;opacity:0}5%{opacity:1}45%{left:150%;opacity:0}46%,99%{left:-75%;opacity:0}}
 .cta-btn:hover{box-shadow:0 0 35px rgba(123,60,255,.4),0 4px 20px rgba(0,0,0,.25);transform:translateY(-2px)}
 /* Social proof below hero CTA */
-.hero-proof{display:flex;align-items:center;gap:16px;justify-content:center;margin-top:10px;opacity:0;animation:fadeUp .6s .8s forwards}
+.hero-proof{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:6px;opacity:0;animation:fadeUp .6s .8s forwards}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .hero-proof{transform:translateY(10px)}
 .hp-logos{display:flex;flex-shrink:0;gap:0}
-.hp-logo{width:40px;height:40px;border-radius:50%;border:2px solid rgba(155,89,245,.2);margin-left:-8px;overflow:hidden;background:#0d0518}
+.hp-logo{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(155,89,245,.2);margin-left:-6px;overflow:hidden;background:#0d0518}
 .hp-logo:first-child{margin-left:0}
 .hp-logo img{width:100%;height:100%;object-fit:cover}
-.hp-text{font-size:.85rem;color:rgba(255,255,255,.65);font-weight:600;line-height:1.4;text-align:left}
-.hp-text strong{color:#fff;font-weight:700}
+.hp-text{font-size:.68rem;color:rgba(255,255,255,.5);font-weight:500;line-height:1.3;text-align:left}
+.hp-text strong{color:rgba(255,255,255,.7);font-weight:600}
 .cta-btn:focus-visible{outline:2px solid #7b3cff;outline-offset:3px}
 button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .cta-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
@@ -108,12 +108,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hs-sp-extras{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .hs-sp-extra{font-size:.62rem;color:#8ab4f8;padding:4px 10px;border:1px solid rgba(138,180,248,.2);border-radius:12px;font-weight:500}
 /* Dim results below */
-.hs-dim-results{margin-top:12px;opacity:0;transform:translateY(10px);transition:opacity .5s .8s,transform .5s .8s;text-align:left}
-.hs-dim-results.hs-show{opacity:1;transform:translateY(0)}
-.hs-dim-res{padding:8px 0;text-align:left}
-.hs-dim-res-domain{font-size:.65rem;color:rgba(189,193,198,.25);margin-bottom:1px}
-.hs-dim-res-title{font-size:.82rem;color:rgba(138,180,248,.25);line-height:1.3;margin-bottom:2px}
-.hs-dim-res-desc{font-size:.68rem;color:rgba(189,193,198,.18);line-height:1.4}
 .wa-dynamic-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:100px;height:28px;background:#000;border-radius:99px;z-index:20}
 .wa-lock{position:absolute;inset:0;z-index:10;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(60px,15vh,100px);border-radius:44px;overflow:hidden;transition:transform .5s cubic-bezier(.32,.72,.35,1)}
 .wa-lock.unlocked{transform:translateY(-105%)}
@@ -418,10 +412,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="hs-sp-title">Sua Empresa | Imóveis em São Paulo</div>
 <div class="hs-sp-desc">A imobiliária mais bem avaliada de SP. Apartamentos, casas e comerciais com atendimento personalizado.</div>
 <div class="hs-sp-extras"><span class="hs-sp-extra">Fale conosco</span><span class="hs-sp-extra">Ver imóveis</span><span class="hs-sp-extra">Avaliações</span></div>
-</div>
-<div class="hs-dim-results" id="hsDimResults">
-<div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente A › www.concorrente-a.com.br</div><div class="hs-dim-res-title">Concorrente A | Imóveis na região</div><div class="hs-dim-res-desc">Serviços imobiliários diversos na região...</div></div>
-<div class="hs-dim-res"><div class="hs-dim-res-domain">Concorrente B › www.concorrente-b.com.br</div><div class="hs-dim-res-title">Concorrente B | Serviços gerais</div><div class="hs-dim-res-desc">Empresa local com serviços variados...</div></div>
 </div>
 <div style="text-align:center;margin-top:24px;position:relative;z-index:3" data-anim data-anim-delay="4">
 <a href="https://wa.me/5571991692700?text=Olá! Quero posicionar minha empresa no topo do Google" target="_blank" rel="noopener noreferrer" class="cta-btn">Quero estar no topo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
