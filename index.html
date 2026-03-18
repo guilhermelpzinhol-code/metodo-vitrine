@@ -34,12 +34,13 @@ body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hid
 .bokeh:nth-child(7){width:4px;height:4px;left:5%;bottom:-4px;animation-duration:21s;animation-delay:6s}
 .bokeh:nth-child(8){width:5px;height:5px;left:55%;bottom:-5px;animation-duration:19s;animation-delay:10s}
 @keyframes float{0%{transform:translateY(0) translateX(0);opacity:0}5%{opacity:.6}50%{transform:translateY(-50vh) translateX(15px);opacity:.4}95%{opacity:0}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
-body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.header):not(.progress-bar){position:relative;z-index:1}
+body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.header):not(.bottom-blur){position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 ::selection{background:rgba(123,60,255,.3);color:#fff}
 @font-face{font-family:'Horizon';src:url('fonts/Horizon-Font/Horizon.woff2') format('woff2'),url('fonts/Horizon-Font/Horizon.otf') format('opentype');font-weight:normal;font-style:normal;font-display:swap}
-.progress-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;background:linear-gradient(90deg,#7b3cff,#9b5cff);width:0;pointer-events:none}
+/* Bottom blur bar */
+.bottom-blur{position:fixed;bottom:0;left:0;right:0;height:80px;z-index:40;pointer-events:none;background:linear-gradient(to top,rgba(6,2,15,.95) 0%,rgba(6,2,15,.6) 40%,transparent 100%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 .grad-text{background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .accent{font-family:'Horizon','Inter',sans-serif;background:linear-gradient(90deg,#7b3cff,#9b5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -211,25 +212,21 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .results-section{padding:80px 20px;text-align:center;position:relative}
 .results-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,6vw,2.4rem);font-weight:800;color:#F5F5F5;letter-spacing:-.03em;margin-bottom:12px;line-height:1.12}
 .results-sub{font-size:clamp(.82rem,3.2vw,1rem);color:rgba(255,255,255,.4);font-weight:500;max-width:420px;margin:0 auto 40px;line-height:1.7}
-/* Real screenshots carousel */
-.rs-wrap{position:relative;margin:0 -20px 48px;display:flex;align-items:center}
-.rs-carousel{position:relative;flex:1;overflow:hidden}
-.rs-track{display:flex;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-.rs-slide{min-width:100%;display:flex;flex-direction:column}
-.rs-slide img{width:100%;display:block}
-.rs-caption{padding:14px 20px 4px;text-align:left}
-.rs-caption h3{font-family:'Inter',sans-serif;font-size:clamp(1rem,4vw,1.25rem);font-weight:700;color:#fff;margin-bottom:2px}
-.rs-caption p{font-size:.8rem;color:rgba(255,255,255,.45);font-weight:500}
-/* Progress bar indicator */
-.rs-progress{display:flex;gap:4px;padding:0 20px;margin-top:10px}
-.rs-bar{flex:1;height:3px;border-radius:99px;background:rgba(155,89,245,.15);overflow:hidden;position:relative}
-.rs-bar-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#7B2FBE,#9B59F5)}
-.rs-bar.rs-bar-done .rs-bar-fill{width:100%!important;transition:none}
-.rs-bar.rs-bar-active .rs-bar-fill{width:100%;transition:width 4s linear}
-/* Apple-style minimal arrows — always visible */
-.rs-nav{flex-shrink:0;width:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none;color:rgba(255,255,255,.35);padding:0;transition:color .2s}
-.rs-nav:hover{color:rgba(255,255,255,.7)}
-.rs-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* Phone mockup with scrolling screenshots */
+.rs-phone{position:relative;width:min(85vw,320px);margin:0 auto 48px;border-radius:32px;border:3px solid rgba(255,255,255,.12);background:#0a0a0a;padding:12px;box-shadow:0 0 60px rgba(123,60,255,.15),0 30px 80px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.05)}
+.rs-phone::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:5px;border-radius:99px;background:rgba(255,255,255,.1);z-index:3}
+.rs-phone-screen{position:relative;width:100%;aspect-ratio:9/16.5;border-radius:22px;overflow:hidden;background:#111}
+.rs-phone-scroll{display:flex;flex-direction:column;animation:rsScroll 12s cubic-bezier(.45,.05,.55,.95) infinite}
+.rs-phone-scroll img{width:100%;display:block;flex-shrink:0}
+@keyframes rsScroll{0%,16%{transform:translateY(0)}28%,50%{transform:translateY(-33.33%)}62%,83%{transform:translateY(-66.66%)}95%,100%{transform:translateY(0)}}
+.rs-phone-glow{position:absolute;inset:-2px;border-radius:34px;background:conic-gradient(from 0deg,transparent 0%,rgba(155,89,245,.3) 10%,transparent 20%);animation:phoneGlow 4s linear infinite;z-index:-1;filter:blur(2px)}
+@keyframes phoneGlow{0%{--a:0deg;transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+/* Captions below phone */
+.rs-captions{text-align:center;margin-top:20px}
+.rs-cap{opacity:0;position:absolute;transition:opacity .5s}
+.rs-cap.rs-cap-active{opacity:1;position:relative}
+.rs-cap h3{font-family:'Inter',sans-serif;font-size:clamp(1.05rem,4vw,1.3rem);font-weight:700;color:#fff;margin-bottom:4px}
+.rs-cap p{font-size:.82rem;color:rgba(255,255,255,.45);font-weight:500}
 .results-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:500px;margin:0 auto 56px}
 .result-card{background:rgba(155,89,245,.05);border:1px solid rgba(155,89,245,.2);border-radius:16px;padding:24px 16px;text-align:center;transition:border-color .4s}
 .result-card.rc-ping{animation:rcPing .6s}
@@ -243,7 +240,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .rh-bar{height:6px;background:rgba(155,89,245,.12);border-radius:99px;overflow:hidden;position:relative}
 .rh-bar-fill{height:100%;width:0;background:linear-gradient(90deg,#7B2FBE,#9B59F5);border-radius:99px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
 .rh-bar-fill.rh-go{width:85%}
-@media(prefers-reduced-motion:reduce){.mf-card{transition:none!important;opacity:1!important;transform:none!important}.result-card.rc-ping{animation:none!important}.rh-bar-fill{transition:none!important;width:85%!important}.rs-track{transition:none!important}.rs-bar-fill{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.mf-card{transition:none!important;opacity:1!important;transform:none!important}.result-card.rc-ping{animation:none!important}.rh-bar-fill{transition:none!important;width:85%!important}.rs-phone-scroll{animation:none!important}.rs-phone-glow{animation:none!important}}
 .method-bonus{padding:80px 12px 0;text-align:center;max-width:100%;margin:0 auto;position:relative}
 .method-bonus-title{font-size:clamp(2.2rem,10vw,4rem);font-weight:900;letter-spacing:-.04em;margin-bottom:48px;min-height:1.3em;line-height:1.08;position:relative;z-index:1;background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-video{position:relative;width:calc(100% + 24px);max-width:900px;margin:0 auto 40px;margin-left:-12px;border-radius:16px;overflow:hidden;border:2px solid rgba(123,60,255,.3);box-shadow:0 20px 60px rgba(123,60,255,.25),0 0 0 1px rgba(255,255,255,.05);opacity:0;transform:translateY(40px) scale(.96);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -361,7 +358,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .niches,.method,.testimonials,.final-cta{padding:120px 0}
 .wa-phone{max-width:375px}
 .mf-grid{grid-template-columns:1fr 1fr 1fr;gap:20px}.mf-card{padding:36px 28px}
-.rs-wrap{margin:0 auto 48px;max-width:700px}.rs-carousel{border-radius:16px;border:1px solid rgba(155,89,245,.2);box-shadow:0 0 40px rgba(155,89,245,.12),0 20px 60px rgba(0,0,0,.5)}.rs-nav svg{width:28px;height:28px}.results-grid{max-width:700px;gap:20px}.result-card{padding:32px 24px}.results-highlight{max-width:700px;padding:40px 36px}
+.rs-phone{width:340px}.results-grid{max-width:700px;gap:20px}.result-card{padding:32px 24px}.results-highlight{max-width:700px;padding:40px 36px}
 .testimonial-card{max-width:420px}
 .hl-compare{max-width:800px}.hl-card{padding:36px 32px}
 .cta-btn{width:auto;max-width:none;margin:0 auto;font-size:1rem;padding:16px 36px;min-height:52px}.header .cta-btn{margin:0}
@@ -374,7 +371,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="bg-glow"><div class="bg-glow-1"></div><div class="bg-glow-2"></div><div class="bg-glow-3"></div><div class="bg-glow-4"></div></div>
 <div class="bg-spotlight"></div>
 <div class="bg-bokeh"><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div></div>
-<div class="progress-bar" id="progressBar"></div>
+<div class="bottom-blur"></div>
 <header class="header" id="header">
 <div class="logo"><img src="https://i.ibb.co/PvRHwvLb/image.png" alt="Método Vitrine"></div>
 </header>
@@ -447,21 +444,20 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="results-section" id="resultsSection">
 <h2 class="results-title" data-anim>Resultados que você vai ver</h2>
 <p class="results-sub" data-anim>Prints direto do painel do Google. Sem edição, sem enganação.</p>
-<div class="rs-wrap" data-anim>
-<button class="rs-nav rs-nav-prev" id="rsPrev" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-<div class="rs-carousel">
-<div class="rs-track" id="rsTrack">
-<div class="rs-slide"><img src="img/resultado1.png" alt="192 Chamadas feitas do Perfil da Empresa — +50,9%" loading="lazy"><div class="rs-caption"><h3>192 Chamadas</h3><p>+50,9% comparado ao mês anterior</p></div></div>
-<div class="rs-slide"><img src="img/resultado2.png" alt="888 Interações no Perfil da Empresa" loading="lazy"><div class="rs-caption"><h3>888 Interações</h3><p>jan. a mar. 2026 — Perfil da Empresa</p></div></div>
-<div class="rs-slide"><img src="img/resultado3.png" alt="763 Interações no Perfil da Empresa — +23,6%" loading="lazy"><div class="rs-caption"><h3>763 Interações</h3><p>+23,6% comparado ao mês anterior</p></div></div>
+<div class="rs-phone" data-anim>
+<div class="rs-phone-glow"></div>
+<div class="rs-phone-screen">
+<div class="rs-phone-scroll" id="rsScroll">
+<img src="img/resultado1.png" alt="192 Chamadas feitas do Perfil da Empresa" loading="lazy">
+<img src="img/resultado2.png" alt="888 Interações no Perfil da Empresa" loading="lazy">
+<img src="img/resultado3.png" alt="763 Interações no Perfil da Empresa" loading="lazy">
 </div>
 </div>
-<button class="rs-nav rs-nav-next" id="rsNext" aria-label="Próximo"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
 </div>
-<div class="rs-progress" id="rsProgress">
-<div class="rs-bar rs-bar-active"><div class="rs-bar-fill"></div></div>
-<div class="rs-bar"><div class="rs-bar-fill"></div></div>
-<div class="rs-bar"><div class="rs-bar-fill"></div></div>
+<div class="rs-captions" id="rsCaptions">
+<div class="rs-cap rs-cap-active" data-rs-cap="0"><h3>192 Chamadas</h3><p>+50,9% comparado ao mês anterior</p></div>
+<div class="rs-cap" data-rs-cap="1"><h3>888 Interações</h3><p>jan. a mar. 2026, Perfil da Empresa</p></div>
+<div class="rs-cap" data-rs-cap="2"><h3>763 Interações</h3><p>+23,6% comparado ao mês anterior</p></div>
 </div>
 <div class="results-grid">
 <div class="result-card" data-rc data-rc-val="187" data-rc-suffix="">
@@ -676,14 +672,11 @@ Abrir Chat
 </div>
 
 <script>
-const PB=document.getElementById('progressBar');
 const hdr=document.getElementById('header');
 const pEls=document.querySelectorAll('[data-parallax]');
 let sTick=false;
 /* Single consolidated scroll handler */
 window.addEventListener('scroll',()=>{if(!sTick){requestAnimationFrame(()=>{
-const h=document.documentElement;
-PB.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
 hdr.classList.toggle('show',window.scrollY>window.innerHeight*.6);
 const wH=window.innerHeight;
 pEls.forEach(el=>{const s=parseFloat(el.dataset.parallax)||.1;const r=el.getBoundingClientRect();const o=(r.top+r.height/2-wH/2)*s;el.style.transform='translateY('+o+'px)'});
@@ -762,31 +755,13 @@ mfObs.unobserve(e.target);
 cards.forEach((c,i)=>{c.style.transitionDelay=(i*80)+'ms';mfObs.observe(c)});
 })();
 
-/* Results screenshot carousel */
+/* Phone scroll caption sync */
 (function(){
-const track=document.getElementById('rsTrack');
-const bars=document.querySelectorAll('#rsProgress .rs-bar');
-const prev=document.getElementById('rsPrev');
-const next=document.getElementById('rsNext');
-if(!track)return;
-let cur=0;const total=track.children.length;const INTERVAL=4000;
-function goTo(i){
-cur=((i%total)+total)%total;
-track.style.transform='translateX(-'+cur*100+'%)';
-bars.forEach((b,j)=>{b.classList.remove('rs-bar-active','rs-bar-done');b.querySelector('.rs-bar-fill').style.width='';if(j<cur)b.classList.add('rs-bar-done');else if(j===cur)requestAnimationFrame(()=>b.classList.add('rs-bar-active'))});
-}
-if(prev)prev.addEventListener('click',()=>{resetTimer();goTo(cur-1)});
-if(next)next.addEventListener('click',()=>{resetTimer();goTo(cur+1)});
-/* Touch swipe */
-let sx=0,dx=0;
-track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;dx=0},{passive:true});
-track.addEventListener('touchmove',e=>{dx=e.touches[0].clientX-sx},{passive:true});
-track.addEventListener('touchend',()=>{if(Math.abs(dx)>40){resetTimer();dx<0?goTo(cur+1):goTo(cur-1)}});
-/* Auto-advance synced with progress bar */
-let timer=setInterval(()=>goTo(cur+1),INTERVAL);
-function resetTimer(){clearInterval(timer);timer=setInterval(()=>goTo(cur+1),INTERVAL)}
-/* Init first bar */
-requestAnimationFrame(()=>bars[0].classList.add('rs-bar-active'));
+const caps=document.querySelectorAll('.rs-cap');
+if(!caps.length)return;
+const total=caps.length;const cycleDur=12000;
+let cur=0;
+setInterval(()=>{cur=(cur+1)%total;caps.forEach((c,i)=>c.classList.toggle('rs-cap-active',i===cur))},cycleDur/total);
 })();
 
 /* Results count-up + ping */
