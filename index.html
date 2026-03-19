@@ -186,7 +186,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .wa-chat-badge{width:20px;height:20px;border-radius:50%;background:#7b3cff;color:#fff;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .wa-impact{max-width:520px;margin:48px auto 0;padding:0 20px;font-size:clamp(.9rem,3.5vw,1.1rem);color:rgba(255,255,255,.5);font-weight:600;line-height:1.7;text-align:center}
 .wa-impact strong{color:#fff;font-weight:700}
-.method{padding:64px 0;text-align:center;position:relative;overflow:hidden;content-visibility:auto;contain-intrinsic-size:auto 2000px}
+.method{padding:64px 0;text-align:center;position:relative;overflow:hidden}
 .method::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,#06020f 0%,transparent 100%);pointer-events:none;z-index:1}
 .method::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#06020f);pointer-events:none;z-index:1}
 .method-header{margin-bottom:56px}
@@ -469,7 +469,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 </div>
 
 <!-- Funil de Cliques -->
-<div class="gd-funnel" id="gdFunnel">
+<div class="gd-funnel" id="gdFunnel" data-anim>
 <div class="gd-bar gd-bar-top" data-width="100" data-delay="0"><span class="gd-pos">Posição #1</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">27.6%</span></div>
 <div class="gd-bar" data-width="57" data-delay="80"><span class="gd-pos">Posição #2</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">15.8%</span></div>
 <div class="gd-bar" data-width="40" data-delay="160"><span class="gd-pos">Posição #3</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">11.0%</span></div>
@@ -505,7 +505,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 </div>
 
 <!-- Divisor com glow -->
-<div class="gd-glow-divider"></div>
+<div class="gd-glow-divider" data-anim></div>
 
 <!-- BLOCO 2 — Método Vitrine -->
 <div class="method-header" data-anim>
