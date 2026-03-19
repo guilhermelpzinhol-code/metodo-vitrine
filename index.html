@@ -362,7 +362,58 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .cta-btn{width:auto;max-width:none;margin:0 auto;font-size:1rem;padding:16px 36px;min-height:52px}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
 }
-@media(min-width:1024px){.wa-section-header h2,.method-header h2,.testimonials-header h2{font-size:2.6rem}}</style>
+@media(min-width:769px){
+.gd-funnel{max-width:680px}.gd-stats{grid-template-columns:1fr 1fr 1fr}.gd-bar{gap:14px}.gd-pos{min-width:100px;font-size:.82rem}.gd-pct{min-width:60px;font-size:.92rem}
+}
+@media(min-width:1024px){.wa-section-header h2,.method-header h2,.testimonials-header h2{font-size:2.6rem}.gd-headline{font-size:2.6rem}}
+/* === BLOCO 1 — Dados Google === */
+.gd-block{text-align:center;margin-bottom:56px}
+.gd-headline{font-family:'Syne','Inter',sans-serif;font-size:clamp(1.5rem,5.5vw,2.4rem);font-weight:800;color:#F5F5F5;letter-spacing:-.03em;line-height:1.12;max-width:700px;margin:0 auto 20px}
+.gd-headline strong{background:linear-gradient(90deg,#7b3cff,#9b5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gd-sub{font-size:clamp(.82rem,3.2vw,1.05rem);color:rgba(255,255,255,.55);font-weight:500;max-width:600px;margin:0 auto;line-height:1.7}
+/* Funil */
+.gd-funnel{max-width:540px;margin:48px auto;display:flex;flex-direction:column;gap:6px}
+.gd-bar{display:flex;align-items:center;gap:10px}
+.gd-pos{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);min-width:80px;text-align:right;white-space:nowrap;flex-shrink:0}
+.gd-bar-track{flex:1;height:28px;background:rgba(255,255,255,.04);border-radius:6px;overflow:hidden;position:relative}
+.gd-bar-fill{height:100%;width:0;border-radius:6px;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.gd-bar-top .gd-bar-fill{background:linear-gradient(90deg,#7b3cff,#9b5cff);box-shadow:0 0 20px rgba(123,60,255,.5),0 0 40px rgba(123,60,255,.2)}
+.gd-bar:not(.gd-bar-top):not(.gd-bar-dead) .gd-bar-fill{background:linear-gradient(90deg,rgba(123,60,255,.6),rgba(123,60,255,.3))}
+.gd-bar:nth-child(2) .gd-bar-fill{opacity:.85}
+.gd-bar:nth-child(3) .gd-bar-fill{opacity:.72}
+.gd-bar:nth-child(4) .gd-bar-fill{opacity:.6}
+.gd-bar:nth-child(5) .gd-bar-fill{opacity:.5}
+.gd-bar:nth-child(6) .gd-bar-fill{opacity:.42}
+.gd-bar:nth-child(7) .gd-bar-fill{opacity:.35}
+.gd-bar:nth-child(8) .gd-bar-fill{opacity:.28}
+.gd-bar:nth-child(9) .gd-bar-fill{opacity:.22}
+.gd-bar:nth-child(10) .gd-bar-fill{opacity:.18}
+.gd-bar-dead .gd-bar-fill{background:rgba(255,255,255,.08)}
+.gd-bar-dead .gd-pos{color:rgba(255,255,255,.3)}
+.gd-pct{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:rgba(255,255,255,.7);min-width:50px;flex-shrink:0}
+.gd-bar-top .gd-pct{color:#9b5cff;font-size:.9rem}
+.gd-pct-dead{color:rgba(255,255,255,.25)!important;font-size:.72rem!important;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gd-dead-label{font-family:'Inter',sans-serif;font-weight:600;font-size:.68rem;color:#F59E0B;letter-spacing:.03em}
+.gd-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:8px 0}
+.gd-source{font-size:.65rem;color:rgba(255,255,255,.2);text-align:center;margin-top:16px;font-weight:500}
+/* Stats mini-cards */
+.gd-stats{display:grid;grid-template-columns:1fr;gap:14px;max-width:700px;margin:48px auto 0}
+.gd-stat{background:rgba(155,89,245,.05);border:1px solid rgba(155,89,245,.15);border-radius:16px;padding:28px 20px;text-align:center;transition:border-color .3s,transform .3s,box-shadow .3s}
+.gd-stat:hover{border-color:rgba(155,89,245,.35);transform:translateY(-3px);box-shadow:0 8px 30px rgba(123,60,255,.12)}
+.gd-stat-num{font-family:'JetBrains Mono',monospace;font-size:clamp(2.2rem,8vw,3rem);font-weight:700;color:#9B59F5;line-height:1;margin-bottom:10px;letter-spacing:-.03em}
+.gd-stat-text{font-size:.82rem;color:rgba(255,255,255,.55);font-weight:500;line-height:1.6;max-width:260px;margin:0 auto 8px}
+.gd-stat-source{font-size:.65rem;color:rgba(255,255,255,.2);font-weight:500}
+/* Glow divider */
+.gd-glow-divider{width:120px;height:2px;margin:72px auto;background:linear-gradient(90deg,transparent,#7b3cff,transparent);border-radius:2px;position:relative}
+.gd-glow-divider::after{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:60px;height:18px;background:radial-gradient(ellipse,rgba(123,60,255,.3),transparent);filter:blur(4px)}
+/* Micro-dados nos cards */
+.mf-micro{margin-top:16px;padding-top:14px;border-top:1px solid rgba(155,89,245,.1);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px}
+.mf-micro-num{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:#10B981;line-height:1}
+.mf-micro-text{font-size:.72rem;color:rgba(255,255,255,.4);font-weight:500;line-height:1.5;flex:1;min-width:120px}
+.mf-micro-source{font-size:.6rem;color:rgba(255,255,255,.18);font-weight:500;width:100%}
+/* Frase de fechamento */
+.mf-closing{font-size:clamp(.85rem,3.2vw,1.05rem);color:rgba(255,255,255,.5);font-weight:600;text-align:center;max-width:560px;margin:48px auto 0;line-height:1.7;font-style:italic}
+@media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}</style>
 </head>
 <body>
 <div class="bg-dots"></div>
@@ -410,31 +461,87 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 </section>
 
 <section class="method" id="method"><div class="container">
-<div class="method-header" data-anim><p class="method-pre">isso é</p><h2 class="method-title"><span class="method-title-metodo">MÉTODO</span><br><span class="method-title-vitrine">VITRINE</span></h2><p>Três pilares que trabalham juntos. Um não funciona sem o outro. É assim que a gente coloca sua empresa na frente de todo mundo no Google.</p></div>
+
+<!-- BLOCO 1 — Dados do Google -->
+<div class="gd-block" data-anim>
+<h2 class="gd-headline">Não basta estar no Google. Você precisa estar em <strong>primeiro</strong>.</h2>
+<p class="gd-sub">90% das pessoas nunca passam da primeira página. O cliente está com o dinheiro na mão, mas fecha com o concorrente que aparece primeiro — simplesmente porque não te encontrou.</p>
+</div>
+
+<!-- Funil de Cliques -->
+<div class="gd-funnel" id="gdFunnel">
+<div class="gd-bar gd-bar-top" data-width="100" data-delay="0"><span class="gd-pos">Posição #1</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">27.6%</span></div>
+<div class="gd-bar" data-width="57" data-delay="80"><span class="gd-pos">Posição #2</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">15.8%</span></div>
+<div class="gd-bar" data-width="40" data-delay="160"><span class="gd-pos">Posição #3</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">11.0%</span></div>
+<div class="gd-bar" data-width="30" data-delay="240"><span class="gd-pos">Posição #4</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">8.4%</span></div>
+<div class="gd-bar" data-width="23" data-delay="320"><span class="gd-pos">Posição #5</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">6.3%</span></div>
+<div class="gd-bar" data-width="18" data-delay="400"><span class="gd-pos">Posição #6</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">4.9%</span></div>
+<div class="gd-bar" data-width="14" data-delay="480"><span class="gd-pos">Posição #7</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">3.9%</span></div>
+<div class="gd-bar" data-width="12" data-delay="560"><span class="gd-pos">Posição #8</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">3.3%</span></div>
+<div class="gd-bar" data-width="10" data-delay="640"><span class="gd-pos">Posição #9</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">2.7%</span></div>
+<div class="gd-bar" data-width="9" data-delay="720"><span class="gd-pos">Posição #10</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct">2.4%</span></div>
+<div class="gd-divider"></div>
+<div class="gd-bar gd-bar-dead" data-width="2" data-delay="880"><span class="gd-pos">Página 2+</span><div class="gd-bar-track"><div class="gd-bar-fill"></div></div><span class="gd-pct gd-pct-dead">0.63% <span class="gd-dead-label">Menos de 1% dos cliques</span></span></div>
+<p class="gd-source">Fonte: Backlinko — Análise de 4 milhões de resultados do Google</p>
+</div>
+
+<!-- Mini-cards de dados -->
+<div class="gd-stats" id="gdStats">
+<div class="gd-stat" data-anim>
+<div class="gd-stat-num" data-countup="19" data-suffix="x">0</div>
+<p class="gd-stat-text">O 1º resultado orgânico recebe 19x mais cliques que o 1º anúncio pago</p>
+<span class="gd-stat-source">First Page Sage, 2025</span>
+</div>
+<div class="gd-stat" data-anim>
+<div class="gd-stat-num" data-countup="75" data-suffix="%">0</div>
+<p class="gd-stat-text">dos usuários nunca passam da primeira página do Google</p>
+<span class="gd-stat-source">SMA Marketing</span>
+</div>
+<div class="gd-stat" data-anim>
+<div class="gd-stat-num" data-countup="88" data-suffix="%">0</div>
+<p class="gd-stat-text">das pessoas que fazem busca local no celular visitam ou ligam pro negócio em até 24h</p>
+<span class="gd-stat-source">Google</span>
+</div>
+</div>
+
+<!-- Divisor com glow -->
+<div class="gd-glow-divider"></div>
+
+<!-- BLOCO 2 — Método Vitrine -->
+<div class="method-header" data-anim>
+<p class="method-pre">é por isso que existe o</p>
+<h2 class="method-title"><span class="method-title-metodo">MÉTODO</span><br><span class="method-title-vitrine">VITRINE</span></h2>
+<p>Um sistema com 3 frentes que trabalham juntas para colocar seu negócio no topo do Google — e manter ele lá.</p>
+</div>
+
 <div class="method-steps">
 <div class="mf-grid">
 
 <div class="mf-card" data-mf>
-<div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><path d="M24 10L28.9 19.9L40 21.5L32 29.3L33.8 40L24 35L14.2 40L16 29.3L8 21.5L19.1 19.9L24 10Z" fill="#9B59F5"/></svg></div>
-<h3>Posicionamento<br>no Google</h3>
-<p>O Google analisa tudo antes de te colocar na primeira página. Perfil, site, conteúdo, avaliações. A gente cuida de cada ponto que ele exige pra te posicionar acima dos concorrentes.</p>
+<div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><path d="M14 34L14 22L20 22L20 34" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 34L21 16L27 16L27 34" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 34L28 10L34 10L34 34" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 34L36 34" stroke="#9B59F5" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg></div>
+<h3>SEO & Posicionamento<br>Estratégico</h3>
+<p>O Google usa mais de 200 fatores pra decidir quem aparece primeiro. Conteúdo, velocidade, autoridade, palavras-chave. A gente otimiza cada um deles pro seu negócio subir no ranking — não amanhã, mas de forma consistente e duradoura.</p>
+<div class="mf-micro"><span class="mf-micro-num" data-countup="32.3" data-suffix="%" data-decimals="1">0</span> <span class="mf-micro-text">Subir 1 posição no Google aumenta seus cliques em 32.3%</span><span class="mf-micro-source">Backlinko</span></div>
 </div>
 
 <div class="mf-card" data-mf>
 <div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><path d="M24 14C20 14 17 17 17 21C17 28 24 35 24 35C24 35 31 28 31 21C31 17 28 14 24 14Z" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="21" r="3" stroke="#9B59F5" stroke-width="2.2"/></svg></div>
-<h3>Google Meu<br>Negócio otimizado</h3>
-<p>Seu perfil no Google precisa estar completo, otimizado e linkado ao seu site. Sem isso, o algoritmo te ignora. Com isso, ele te prioriza nas buscas locais e no Maps.</p>
+<h3>Google Meu Negócio<br>Dominante</h3>
+<p>46% das buscas no Google são locais. Quando alguém pesquisa "dentista perto de mim" ou "advogado em [cidade]", o Google mostra o pacote de 3 resultados do Maps. A gente coloca você nesse pacote — completo, otimizado e na frente dos concorrentes.</p>
+<div class="mf-micro"><span class="mf-micro-num" data-countup="126" data-suffix="%">0</span> <span class="mf-micro-text">Negócios no Google 3-Pack recebem 126% mais tráfego</span><span class="mf-micro-source">SeoProfy</span></div>
 </div>
 
 <div class="mf-card" data-mf>
-<div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><rect x="14" y="16" width="20" height="16" rx="2" stroke="#9B59F5" stroke-width="2.2"/><path d="M14 20L24 26L34 20" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<h3>Site profissional<br>que converte</h3>
-<p>O Google rastreia cada link do seu perfil. Se o site não for rápido, otimizado e pensado em conversão, você perde pontos no ranking. No Método Vitrine, o site já vem pronto pra ranquear e converter.</p>
+<div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><rect x="14" y="14" width="20" height="15" rx="2" stroke="#9B59F5" stroke-width="2.2"/><path d="M14 33L24 33L24 36" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 36L28 36" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round"/><path d="M18 19L22 23L30 17" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<h3>Site que Ranqueia<br>e Converte</h3>
+<p>Não adianta ter um site bonito se o Google não consegue ler ele. E não adianta ranquear se o visitante entra e não vira cliente. O site do Método Vitrine é construído para os dois: agradar o algoritmo e converter quem visita.</p>
+<div class="mf-micro"><span class="mf-micro-num" data-countup="78" data-suffix="%">0</span> <span class="mf-micro-text">das buscas locais no celular resultam em compra</span><span class="mf-micro-source">Search Engine Land</span></div>
 </div>
 
+</div>
+</div>
 
-</div>
-</div>
+<p class="mf-closing" data-anim>Três frentes. Um sistema. O resultado: seu negócio aparecendo primeiro quando o cliente mais precisa de você.</p>
 
 <!-- Results Section -->
 <div class="results-section" id="resultsSection">
@@ -906,6 +1013,46 @@ mbObs.observe(mbSection);
 
 /* CTA hover glow */
 document.querySelectorAll('.cta-btn').forEach(b=>{let lt=0;b.addEventListener('mousemove',e=>{const n=Date.now();if(n-lt<32)return;lt=n;const r=b.getBoundingClientRect();b.style.boxShadow=(e.clientX-r.left-r.width/2)+'px '+(e.clientY-r.top-r.height/2)+'px 40px rgba(123,60,255,.2)'},{passive:true});b.addEventListener('mouseleave',()=>{b.style.boxShadow=''})});
+
+/* === Funil de Cliques — barras animadas === */
+(function(){
+const funnel=document.getElementById('gdFunnel');
+if(!funnel)return;
+const bars=funnel.querySelectorAll('.gd-bar');
+const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(prefersReduced){bars.forEach(b=>{const fill=b.querySelector('.gd-bar-fill');if(fill)fill.style.width=b.dataset.width+'%'});return}
+const fObs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;
+bars.forEach(b=>{const fill=b.querySelector('.gd-bar-fill');if(!fill)return;
+const w=b.dataset.width||0;const d=parseInt(b.dataset.delay)||0;
+setTimeout(()=>{fill.style.width=w+'%'},d)});
+fObs.unobserve(e.target)})},{threshold:.2});
+fObs.observe(funnel);
+})();
+
+/* === Count-up para stats e micro-dados === */
+(function(){
+const els=document.querySelectorAll('[data-countup]');
+if(!els.length)return;
+const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+function countUp(el){
+const target=parseFloat(el.dataset.countup);
+const suffix=el.dataset.suffix||'';
+const dec=parseInt(el.dataset.decimals)||0;
+if(prefersReduced){el.textContent=target.toFixed(dec)+suffix;return}
+const duration=1200;const start=performance.now();
+function tick(now){
+const p=Math.min((now-start)/duration,1);
+const eased=1-Math.pow(1-p,3);
+const val=(eased*target).toFixed(dec);
+el.textContent=val+suffix;
+if(p<1)requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+}
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;
+countUp(e.target);cObs.unobserve(e.target)})},{threshold:.3});
+els.forEach(el=>cObs.observe(el));
+})();
 
 </script>
 </body>
