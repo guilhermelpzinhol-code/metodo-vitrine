@@ -248,16 +248,16 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .marquee-container::before,.marquee-container::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:2;pointer-events:none}
 .marquee-container::before{left:0;background:linear-gradient(to right,#06020f,transparent)}
 .marquee-container::after{right:0;background:linear-gradient(to left,#06020f,transparent)}
-.marquee-track{display:flex;gap:16px;width:max-content;will-change:transform;animation:marquee 25s linear infinite}
+.marquee-track{display:flex;gap:16px;width:max-content;will-change:transform;animation:marquee 18s linear infinite}
 .marquee-container:hover .marquee-track{animation-play-state:paused}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.site-card{flex-shrink:0;width:280px;height:180px;border-radius:12px;overflow:hidden;border:1px solid rgba(139,92,246,.15);box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative;background:#111}
+.site-card{flex-shrink:0;width:320px;border-radius:12px;overflow:hidden;border:1px solid rgba(139,92,246,.15);box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative;background:#111}
 .site-card-bar{display:flex;align-items:center;gap:4px;padding:6px 10px;background:rgba(0,0,0,.6);position:absolute;top:0;left:0;right:0;z-index:1}
 .site-card-bar span{width:6px;height:6px;border-radius:50%}
 .site-card-bar span:nth-child(1){background:#ff5f57}
 .site-card-bar span:nth-child(2){background:#ffbd2e}
 .site-card-bar span:nth-child(3){background:#28c840}
-.site-card img{width:100%;height:100%;object-fit:cover;display:block}
+.site-card img{width:100%;display:block}
 .method-bonus-label{font-family:'Horizon',sans-serif;font-size:clamp(1.3rem,6vw,2.4rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,#d4b8ff 50%,#7b3cff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-label.mbl-show{opacity:1;transform:translateY(0)}
 .method-bonus-sub{font-size:clamp(1rem,4.5vw,1.35rem);color:transparent;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;opacity:0;transform:translateY(10px);transition:opacity .5s .5s,transform .5s .5s;position:relative;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,.15) 0%,#7b3cff 30%,#a855f7 70%,rgba(255,255,255,.15) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -374,7 +374,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .rs-stack{width:500px}.results-grid{max-width:700px;gap:20px}.result-card{padding:32px 24px}.results-highlight{max-width:700px;padding:40px 36px}
 .testimonial-card{max-width:420px}
 .hl-compare{max-width:800px}.hl-card{padding:36px 32px}
-.marquee-track{gap:24px;animation-duration:30s}.site-card{width:400px;height:250px}.marquee-container::before,.marquee-container::after{width:80px}
+.marquee-track{gap:24px;animation-duration:22s}.site-card{width:440px}.marquee-container::before,.marquee-container::after{width:80px}
 .cta-btn{width:auto;max-width:none;margin:0 auto;font-size:1rem;padding:16px 36px;min-height:52px}
 .chat-window{width:380px;height:540px;max-height:calc(100vh - 100px);bottom:20px;right:20px}
 }
@@ -536,21 +536,21 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 <div class="mf-card" data-mf>
 <div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><path d="M14 34L14 22L20 22L20 34" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 34L21 16L27 16L27 34" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 34L28 10L34 10L34 34" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 34L36 34" stroke="#9B59F5" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg></div>
 <h3>SEO & Posicionamento<br>Estratégico</h3>
-<p>O Google usa mais de 200 fatores pra decidir quem aparece primeiro. Conteúdo, velocidade, autoridade, palavras-chave. A gente otimiza cada um deles pro seu negócio subir no ranking. Não amanhã, mas de forma consistente e duradoura.</p>
+<p>Mais de 200 fatores definem quem aparece primeiro. A gente otimiza cada um deles pro seu negócio subir no ranking de forma consistente.</p>
 <div class="mf-micro"><span class="mf-micro-num" data-countup="32.3" data-suffix="%" data-decimals="1">0</span> <span class="mf-micro-text">Subir 1 posição no Google aumenta seus cliques em 32.3%</span><span class="mf-micro-source">Backlinko</span></div>
 </div>
 
 <div class="mf-card" data-mf>
 <div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><path d="M24 14C20 14 17 17 17 21C17 28 24 35 24 35C24 35 31 28 31 21C31 17 28 14 24 14Z" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="21" r="3" stroke="#9B59F5" stroke-width="2.2"/></svg></div>
 <h3>Google Meu Negócio<br>Dominante</h3>
-<p>46% das buscas no Google são locais. Quando alguém pesquisa "dentista perto de mim" ou "advogado em [cidade]", o Google mostra o pacote de 3 resultados do Maps. A gente coloca você nesse pacote. Completo, otimizado e na frente dos concorrentes.</p>
+<p>46% das buscas no Google são locais. Quando pesquisam seu serviço na sua cidade, o Google mostra 3 resultados no Maps. A gente coloca você nesse pacote, na frente dos concorrentes.</p>
 <div class="mf-micro"><span class="mf-micro-num" data-countup="126" data-suffix="%">0</span> <span class="mf-micro-text">Negócios no Google 3-Pack recebem 126% mais tráfego</span><span class="mf-micro-source">SeoProfy</span></div>
 </div>
 
 <div class="mf-card" data-mf>
 <div class="mf-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#9B59F5" stroke-width="2" opacity=".15"/><rect x="14" y="14" width="20" height="15" rx="2" stroke="#9B59F5" stroke-width="2.2"/><path d="M14 33L24 33L24 36" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 36L28 36" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round"/><path d="M18 19L22 23L30 17" stroke="#9B59F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <h3>Site que Ranqueia<br>e Converte</h3>
-<p>Não adianta ter um site bonito se o Google não consegue ler ele. E não adianta ranquear se o visitante entra e não vira cliente. O site do Método Vitrine é construído para os dois: agradar o algoritmo e converter quem visita.</p>
+<p>Site bonito que o Google não lê não serve. Site que ranqueia mas não converte também não. O nosso faz os dois: agrada o algoritmo e transforma visitante em cliente.</p>
 <div class="mf-micro"><span class="mf-micro-num" data-countup="78" data-suffix="%">0</span> <span class="mf-micro-text">das buscas locais no celular resultam em compra</span><span class="mf-micro-source">Search Engine Land</span></div>
 </div>
 
