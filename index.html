@@ -82,7 +82,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero-sub strong{color:#fff;font-weight:700}
 .hero-headline{font-size:clamp(2.2rem,8vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:640px;margin:0 auto 14px}
 .hero-secondary{font-size:clamp(.65rem,2.8vw,1.5rem);font-weight:600;color:#cfcfcf;margin-bottom:28px;margin-top:12px;text-transform:uppercase;letter-spacing:.18em;white-space:nowrap}
-.hero-secondary em{font-style:normal;color:#9b5cff;font-weight:700}
+.hero-secondary em{font-style:normal;color:#fff;font-weight:700}
+.hero-headline .shine-30{position:relative;color:#c4a6ff;background:linear-gradient(90deg,#c4a6ff 0%,#c4a6ff 35%,#fff 50%,#c4a6ff 65%,#c4a6ff 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine30 3s ease-in-out infinite}
+@keyframes shine30{0%,100%{background-position:200% center}50%{background-position:0% center}}
 .hero-search{position:relative;width:100%;max-width:540px;margin:0 auto 48px}
 .hs-bar{display:flex;align-items:center;gap:10px;background:#202124;border:1px solid #5f6368;border-radius:24px;padding:12px 16px;transition:border-color .3s,box-shadow .3s}
 .hs-bar.hs-focused{border-color:#8ab4f8;box-shadow:0 0 0 1px #8ab4f8}
@@ -814,7 +816,7 @@ function twRun(el){
   const t=el.dataset.tw;if(!t||el.dataset.twDone)return;el.dataset.twDone='1';
   el.textContent='';el.classList.add('tw-cursor');
   let i=0;const spd=t.length>40?25:35;
-  const iv=setInterval(()=>{el.textContent=t.slice(0,i+1);i++;if(i>=t.length){clearInterval(iv);setTimeout(()=>el.classList.remove('tw-cursor'),500)}},spd);
+  const iv=setInterval(()=>{el.textContent=t.slice(0,i+1);i++;if(i>=t.length){clearInterval(iv);setTimeout(()=>{el.classList.remove('tw-cursor');if(t.includes('30 dias')){el.innerHTML=el.textContent.replace('30 dias','<span class="shine-30">30 dias</span>')}},500)}},spd);
 }
 const twObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){twRun(e.target);twObs.unobserve(e.target)}})},{threshold:.3});
 document.querySelectorAll('[data-tw]').forEach(el=>twObs.observe(el));
