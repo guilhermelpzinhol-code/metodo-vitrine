@@ -242,7 +242,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .marquee-track{display:flex;gap:16px;width:max-content;will-change:transform;animation:marquee 18s linear infinite}
 .marquee-container:hover .marquee-track{animation-play-state:paused}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.site-card{flex-shrink:0;width:320px;border-radius:12px;overflow:hidden;border:1px solid rgba(139,92,246,.15);box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative;background:#111}
+.site-card{flex-shrink:0;width:440px;border-radius:12px;overflow:hidden;border:1px solid rgba(139,92,246,.15);box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative;background:#111}
 .site-card-bar{display:flex;align-items:center;gap:4px;padding:6px 10px;background:rgba(0,0,0,.6);position:absolute;top:0;left:0;right:0;z-index:1}
 .site-card-bar span{width:6px;height:6px;border-radius:50%}
 .site-card-bar span:nth-child(1){background:#ff5f57}
