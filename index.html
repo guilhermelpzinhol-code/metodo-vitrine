@@ -9,44 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@700&family=Bebas+Neue&text=0123456789.,%25★&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="https://i.ibb.co/PvRHwvLb/image.png" fetchpriority="high">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 <div class="bg-dots"></div>
 <div class="bg-glow"><div class="bg-glow-1"></div><div class="bg-glow-2"></div><div class="bg-glow-3"></div><div class="bg-glow-4"></div></div>
 <div class="bg-spotlight"></div>
 <div class="bg-bokeh"><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div><div class="bokeh"></div></div>
-<div id="bg-animated">
-<div class="wa wa1"></div>
-<div class="wa wa2"></div>
-<div class="wa wa3"></div>
-<div class="wa wa4"></div>
-<div class="wa wa5"></div>
-<div class="wa wa6"></div>
-<div class="wa wa7"></div>
-<div id="bg-particles">
-<div class="particle" style="left:5%;--dur:22s;--delay:-3s;--opacity:.25"></div>
-<div class="particle" style="left:14%;--dur:28s;--delay:-8s;--opacity:.2"></div>
-<div class="particle" style="left:23%;--dur:35s;--delay:-15s;--opacity:.22"></div>
-<div class="particle" style="left:32%;--dur:20s;--delay:-2s;--opacity:.18"></div>
-<div class="particle" style="left:41%;--dur:32s;--delay:-18s;--opacity:.22"></div>
-<div class="particle" style="left:50%;--dur:25s;--delay:-7s;--opacity:.2"></div>
-<div class="particle" style="left:59%;--dur:38s;--delay:-22s;--opacity:.24"></div>
-<div class="particle" style="left:67%;--dur:19s;--delay:-5s;--opacity:.18"></div>
-<div class="particle" style="left:75%;--dur:29s;--delay:-13s;--opacity:.22"></div>
-<div class="particle" style="left:83%;--dur:36s;--delay:-9s;--opacity:.19"></div>
-<div class="particle" style="left:91%;--dur:23s;--delay:-1s;--opacity:.21"></div>
-<div class="particle" style="left:9%;--dur:31s;--delay:-16s;--opacity:.23"></div>
-</div>
-<div id="bg-glows">
-<div class="glow-spot" style="top:12%;left:24%;--sp-dur:5s;--sp-delay:0s"></div>
-<div class="glow-spot" style="top:30%;left:57%;--sp-dur:7s;--sp-delay:-2s"></div>
-<div class="glow-spot" style="top:48%;left:27%;--sp-dur:4.5s;--sp-delay:-1s"></div>
-<div class="glow-spot" style="top:65%;left:62%;--sp-dur:8s;--sp-delay:-3s"></div>
-<div class="glow-spot" style="top:20%;left:82%;--sp-dur:6s;--sp-delay:-1.5s"></div>
-<div class="glow-spot" style="top:75%;left:88%;--sp-dur:5.5s;--sp-delay:-2.5s"></div>
-</div>
-</div>
+<canvas id="bg-canvas"></canvas>
 <div class="bottom-blur"></div>
 <div class="progress-bar" id="progressBar"></div>
 
