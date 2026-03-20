@@ -21,7 +21,7 @@ body{font-family:'Inter',sans-serif;background:#06020f;color:#fff;overflow-x:hid
 .bokeh:nth-child(5){width:5px;height:5px;left:78%;bottom:-5px;animation-duration:20s;animation-delay:2s}
 .bokeh:nth-child(6){width:7px;height:7px;left:90%;bottom:-7px;animation-duration:17s;animation-delay:8s}
 @keyframes float{0%{transform:translateY(0) translateX(0);opacity:0}5%{opacity:.6}50%{transform:translateY(-50vh) translateX(15px);opacity:.4}95%{opacity:0}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
-body>*:not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.progress-bar):not(.bottom-blur){position:relative;z-index:1}
+body>*:not(#bg-animated):not(.bg-dots):not(.bg-glow):not(.bg-spotlight):not(.bg-bokeh):not(.chat-fab):not(.chat-window):not(.progress-bar):not(.bottom-blur){position:relative;z-index:1}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 ::selection{background:rgba(123,60,255,.3);color:#fff}
@@ -421,3 +421,28 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 /* Frase de fechamento */
 .mf-closing{font-size:clamp(.85rem,3.2vw,1.05rem);color:rgba(255,255,255,.5);font-weight:600;text-align:center;max-width:560px;margin:48px auto 0;line-height:1.7;font-style:italic}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
+
+/* === Fundo Animado — Ondas de Energia + Partículas === */
+#bg-animated{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;contain:layout style}
+#bg-animated::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(139,92,246,.04) 1px,transparent 1px);background-size:40px 40px}
+/* Ondas verticais */
+.wave{position:absolute;top:-50vh;height:200vh;will-change:transform}
+.wave-1{left:20%;width:320px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.15) 30%,rgba(139,92,246,.2) 50%,rgba(139,92,246,.15) 70%,transparent 100%);filter:blur(60px);opacity:.15;animation:wave-drift-1 18s ease-in-out infinite}
+.wave-2{left:58%;width:260px;background:linear-gradient(180deg,transparent 0%,rgba(167,139,250,.18) 25%,rgba(167,139,250,.22) 50%,rgba(167,139,250,.18) 75%,transparent 100%);filter:blur(72px);opacity:.1;animation:wave-drift-2 24s ease-in-out infinite}
+.wave-3{left:38%;width:360px;background:linear-gradient(180deg,transparent 0%,rgba(109,40,217,.16) 30%,rgba(109,40,217,.22) 50%,rgba(109,40,217,.16) 70%,transparent 100%);filter:blur(56px);opacity:.12;animation:wave-drift-3 28s ease-in-out infinite}
+.wave-4{left:76%;width:210px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.1) 30%,rgba(139,92,246,.14) 50%,rgba(139,92,246,.1) 70%,transparent 100%);filter:blur(66px);opacity:.08;animation:wave-drift-4 21s ease-in-out infinite}
+@keyframes wave-drift-1{0%,100%{transform:translateX(0) scaleX(1)}25%{transform:translateX(40px) scaleX(1.1)}50%{transform:translateX(-30px) scaleX(.9)}75%{transform:translateX(20px) scaleX(1.05)}}
+@keyframes wave-drift-2{0%,100%{transform:translateX(0) scaleX(1)}20%{transform:translateX(-35px) scaleX(.95)}55%{transform:translateX(45px) scaleX(1.08)}80%{transform:translateX(-15px) scaleX(.98)}}
+@keyframes wave-drift-3{0%,100%{transform:translateX(0) scaleX(1)}30%{transform:translateX(25px) scaleX(1.06)}60%{transform:translateX(-40px) scaleX(.92)}85%{transform:translateX(15px) scaleX(1.03)}}
+@keyframes wave-drift-4{0%,100%{transform:translateX(0) scaleX(1)}35%{transform:translateX(-20px) scaleX(1.04)}65%{transform:translateX(30px) scaleX(.96)}}
+/* Partículas */
+#bg-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;bottom:0;background:rgba(167,139,250,var(--opacity,.15));animation:bg-float var(--dur,20s) var(--delay,0s) linear infinite;will-change:transform}
+@keyframes bg-float{0%{transform:translateY(0) rotate(0deg);opacity:0}10%,90%{opacity:var(--opacity,.15)}100%{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+/* Glow points */
+#bg-glows{position:absolute;inset:0}
+.glow-point{position:absolute;width:4px;height:4px;border-radius:50%;background:#A78BFA;box-shadow:0 0 20px 10px rgba(139,92,246,.2),0 0 60px 30px rgba(139,92,246,.08);will-change:transform,opacity;animation:pulse-glow var(--g-dur,6s) var(--g-delay,0s) ease-in-out infinite}
+@keyframes pulse-glow{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.45;transform:scale(1.8)}}
+/* Performance */
+@media(prefers-reduced-motion:reduce){#bg-animated{display:none}}
+@media(max-width:768px){#bg-particles .particle:nth-child(n+16){display:none}.wave-4{display:none}#bg-glows .glow-point:nth-child(n+6){display:none}}
