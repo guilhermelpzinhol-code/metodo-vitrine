@@ -28,10 +28,8 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 @font-face{font-family:'Horizon';src:url('../fonts/Horizon-Font/Horizon.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap}
 /* Progress bar */
 .progress-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;background:linear-gradient(90deg,#7b3cff,#9b5cff);width:0;pointer-events:none}
-/* Bottom gradient */
-.bottom-blur{position:fixed;bottom:0;left:0;right:0;height:440px;z-index:40;pointer-events:none;background:linear-gradient(to top,rgba(6,2,15,.88) 0%,rgba(6,2,15,.3) 50%,transparent 85%);mask-image:linear-gradient(to top,#000 0%,#000 50%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,#000 50%,transparent 100%)}
-.bottom-blur::before{content:'';position:absolute;bottom:0;left:0;right:0;height:100%;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);mask-image:linear-gradient(to top,transparent 0%,#000 30%,#000 70%,transparent 100%);-webkit-mask-image:linear-gradient(to top,transparent 0%,#000 30%,#000 70%,transparent 100%)}
-.bottom-blur::after{content:'';position:absolute;bottom:0;left:0;right:0;height:65%;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);mask-image:linear-gradient(to top,#000 0%,#000 35%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,#000 35%,transparent 100%)}
+/* Bottom blur */
+.bottom-blur{position:fixed;bottom:0;left:0;right:0;height:220px;z-index:40;pointer-events:none;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);mask-image:linear-gradient(to top,#000 0%,#000 40%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,#000 40%,transparent 100%)}
 .container{max-width:1200px;margin:0 auto;padding:0 20px;width:100%}
 .grad-text{background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .accent{font-family:'Horizon','Inter',sans-serif;background:linear-gradient(90deg,#7b3cff,#9b5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
