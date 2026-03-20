@@ -198,7 +198,7 @@ const hsText=document.getElementById('hsText');
 const hsSp=document.getElementById('hsSponsored');
 const hsDim=document.getElementById('hsDimResults');
 let hsStarted=false;
-const hsQuery='melhor serviço de imóveis em São Paulo';
+const hsQuery='melhor serviço em São Paulo';
 function runHeroSearch(){
 if(hsStarted)return;hsStarted=true;
 hsBar.classList.add('hs-focused');
