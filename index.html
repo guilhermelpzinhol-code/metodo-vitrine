@@ -115,21 +115,21 @@
 <div class="mf-grid">
 
 <div class="mf-card" data-mf data-step="01">
-<div class="mf-tag"><svg viewBox="0 0 14 14" fill="none"><path d="M3 10V5.5l2.5-2.5h5.5v7H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 3.5V6h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Posicionamento</div>
+<div class="mf-tag"><svg viewBox="0 0 14 14" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.3"/><path d="M8.5 8.5L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 7V6M5.5 7V4.5M7.5 7V5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>SEO Orgânico</div>
 <h3>SEO & Posicionamento Estratégico</h3>
 <p>Mais de 200 fatores definem quem aparece primeiro. A gente otimiza cada um deles pra você subir no ranking e se manter lá.</p>
 <div class="mf-micro"><span class="mf-micro-num" data-countup="32.3" data-suffix="%" data-decimals="1">0</span> <span class="mf-micro-text">Subir 1 posição no Google aumenta seus cliques em 32.3%</span><span class="mf-micro-source">Backlinko</span></div>
 </div>
 
 <div class="mf-card" data-mf data-step="02">
-<div class="mf-tag"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 1v1M7 10v1M1 6h1M11 6h1M2.9 2.9l.7.7M9.4 9.4l.7.7M2.9 9.1l.7-.7M9.4 4.6l.7-.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Presença Local</div>
+<div class="mf-tag"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5C5.07 1.5 3.5 3.07 3.5 5C3.5 7.5 7 12.5 7 12.5S10.5 7.5 10.5 5C10.5 3.07 8.93 1.5 7 1.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>Perfil Google</div>
 <h3>Google Meu Negócio Dominante</h3>
 <p>46% das buscas no Google são locais. Quando alguém pesquisa seu serviço na cidade, o Google mostra 3 resultados no Maps. A gente coloca você nesse pacote.</p>
 <div class="mf-micro"><span class="mf-micro-num" data-countup="126" data-suffix="%">0</span> <span class="mf-micro-text">Negócios no Google 3-Pack recebem 126% mais tráfego</span><span class="mf-micro-source">SeoProfy</span></div>
 </div>
 
 <div class="mf-card" data-mf data-step="03">
-<div class="mf-tag"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 6.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Conversão</div>
+<div class="mf-tag"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 2.5L7 11.5L8.5 8L12 6.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8L11.5 11.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Site & Conversão</div>
 <h3>Site que Ranqueia e Converte</h3>
 <p>Site bonito que o Google não lê não serve. Site que ranqueia mas não converte também não. O seu faz os dois: agrada o algoritmo e transforma visitante em cliente.</p>
 <div class="mf-micro"><span class="mf-micro-num" data-countup="78" data-suffix="%">0</span> <span class="mf-micro-text">das buscas locais no celular resultam em compra</span><span class="mf-micro-source">Search Engine Land</span></div>
@@ -143,11 +143,30 @@
 <!-- Results Section -->
 <div class="results-section" id="resultsSection">
 <h2 class="results-title" data-anim>Resultados que você vai ver</h2>
-<p class="results-sub" data-anim>Prints direto do painel do Google. Sem edição, sem enganação.</p>
-<div class="rs-stack" data-anim id="rsStack">
-<div class="rs-card" data-rs-pos="0"><img src="img/resultado1.png" alt="192 Chamadas" loading="lazy" decoding="async"></div>
-<div class="rs-card" data-rs-pos="1"><img src="img/resultado2.png" alt="888 Interações" loading="lazy" decoding="async"></div>
-<div class="rs-card" data-rs-pos="2"><img src="img/resultado3.png" alt="763 Interações" loading="lazy" decoding="async"></div>
+<p class="results-sub" data-anim>Dados reais direto do painel do Google. Sem edição, sem enganação.</p>
+<div class="gmb-grid" id="rsStack" data-anim>
+
+<div class="gmb-panel" data-anim data-anim-delay="1">
+<div class="gmb-topbar"><span class="gmb-topbar-title"><svg viewBox="0 0 16 16" fill="none"><path d="M10 4H6L4 6v5h8V6L10 4z" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 4V3h4v1" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linecap="round"/></svg>Desempenho</span><span class="gmb-period-pill"><svg viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>jan. 2026 – mar. 2026</span></div>
+<div class="gmb-tabs"><span>Visão geral</span><span class="gmb-tab-on">Chamadas</span><span>Agend.</span><span>Orientações</span><span>Cliques</span></div>
+<div class="gmb-body"><div class="gmb-num">261</div><div class="gmb-label">Chamadas feitas do seu Perfil da Empresa</div></div>
+<svg class="gmb-spark" viewBox="0 0 280 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4285f4" stop-opacity=".35"/><stop offset="100%" stop-color="#4285f4" stop-opacity="0"/></linearGradient></defs><path d="M0,8 C60,10 100,22 150,40 C190,54 230,62 280,70" stroke="#4285f4" stroke-width="2" fill="none"/><path d="M0,8 C60,10 100,22 150,40 C190,54 230,62 280,70 L280,80 L0,80Z" fill="url(#gf1)"/><circle cx="0" cy="8" r="4" fill="#4285f4"/><circle cx="280" cy="70" r="4" fill="#4285f4" opacity=".6"/></svg>
+</div>
+
+<div class="gmb-panel" data-anim data-anim-delay="2">
+<div class="gmb-topbar"><span class="gmb-topbar-title"><svg viewBox="0 0 16 16" fill="none"><path d="M10 4H6L4 6v5h8V6L10 4z" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 4V3h4v1" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linecap="round"/></svg>Desempenho</span><span class="gmb-period-pill"><svg viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>jan. 2026 – mar. 2026</span></div>
+<div class="gmb-tabs"><span>Visão geral</span><span>Chamadas</span><span>Agend.</span><span>Orientações</span><span class="gmb-tab-on">Cliques no site</span></div>
+<div class="gmb-body"><div class="gmb-num">106</div><div class="gmb-label">Cliques para acessar o site no Perfil da Empresa</div></div>
+<svg class="gmb-spark" viewBox="0 0 280 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gf2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4285f4" stop-opacity=".35"/><stop offset="100%" stop-color="#4285f4" stop-opacity="0"/></linearGradient></defs><path d="M0,14 C60,16 110,28 160,38 C200,46 240,50 280,54" stroke="#4285f4" stroke-width="2" fill="none"/><path d="M0,14 C60,16 110,28 160,38 C200,46 240,50 280,54 L280,80 L0,80Z" fill="url(#gf2)"/><circle cx="0" cy="14" r="4" fill="#4285f4"/><circle cx="280" cy="54" r="4" fill="#4285f4" opacity=".6"/></svg>
+</div>
+
+<div class="gmb-panel" data-anim data-anim-delay="3">
+<div class="gmb-topbar"><span class="gmb-topbar-title"><svg viewBox="0 0 16 16" fill="none"><path d="M10 4H6L4 6v5h8V6L10 4z" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 4V3h4v1" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linecap="round"/></svg>Desempenho</span><span class="gmb-period-pill"><svg viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>jan. 2026 – fev. 2026</span></div>
+<div class="gmb-tabs"><span>Visão geral</span><span class="gmb-tab-on">Chamadas</span><span>Agend.</span><span>Orientações</span><span>Cliques</span></div>
+<div class="gmb-body"><div class="gmb-num">234</div><div class="gmb-label">Chamadas feitas do seu Perfil da Empresa</div><div class="gmb-growth"><svg viewBox="0 0 14 10" fill="none"><path d="M1 8L4.5 4 7.5 6.5 12 1" stroke="#34a853" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 1h2v2" stroke="#34a853" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>+36,2% <span>x jan–fev. 2025</span></div></div>
+<svg class="gmb-spark" viewBox="0 0 280 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gf3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4285f4" stop-opacity=".35"/><stop offset="100%" stop-color="#4285f4" stop-opacity="0"/></linearGradient></defs><path d="M0,8 C55,10 100,20 145,38 C185,52 230,60 280,68" stroke="#4285f4" stroke-width="2" fill="none"/><path d="M0,8 C55,10 100,20 145,38 C185,52 230,60 280,68 L280,80 L0,80Z" fill="url(#gf3)"/><circle cx="0" cy="8" r="4" fill="#4285f4"/><circle cx="280" cy="68" r="4" fill="#4285f4" opacity=".6"/></svg>
+</div>
+
 </div>
 <div class="rs-captions" id="rsCaptions">
 <div class="rs-cap rs-cap-active" data-rs-cap="0"><h3>192 Chamadas</h3><p>+50,9% comparado ao mês anterior</p></div>
