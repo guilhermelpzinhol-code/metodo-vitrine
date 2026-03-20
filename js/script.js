@@ -18,7 +18,7 @@ function twRun(el){
   const t=el.dataset.tw;if(!t||el.dataset.twDone)return;el.dataset.twDone='1';
   el.textContent='';el.classList.add('tw-cursor');
   let i=0;const spd=t.length>40?25:35;
-  const iv=setInterval(()=>{el.textContent=t.slice(0,i+1);i++;if(i>=t.length){clearInterval(iv);setTimeout(()=>{el.classList.remove('tw-cursor');if(t.includes('30 dias')){el.innerHTML='Veja o que<br>é possível em<br><span class="shine-30">30 dias</span>'}},500)}},spd);
+  const iv=setInterval(()=>{el.textContent=t.slice(0,i+1);i++;if(i>=t.length){clearInterval(iv);setTimeout(()=>{el.classList.remove('tw-cursor');if(t.includes('30 dias')){el.innerHTML='Veja o que<br>é possível em<br><span class="shine-30"><span class="shine-30-num">30</span> dias</span>'}},500)}},spd);
 }
 const twObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){twRun(e.target);twObs.unobserve(e.target)}})},{threshold:.3});
 document.querySelectorAll('[data-tw]').forEach(el=>twObs.observe(el));

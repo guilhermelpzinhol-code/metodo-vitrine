@@ -72,6 +72,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero-secondary{font-size:clamp(.65rem,2.8vw,1.5rem);font-weight:600;color:#cfcfcf;margin-bottom:14px;margin-top:0;text-transform:uppercase;letter-spacing:.18em;white-space:nowrap}
 .hero-secondary em{font-style:normal;color:#fff;font-weight:700}
 .hero-headline .shine-30{position:relative;font-weight:900;letter-spacing:-.03em;color:#8b3fff;background:linear-gradient(90deg,#9955ff 0%,#c49aff 35%,#fff 50%,#c49aff 65%,#9955ff 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine30 3s ease-in-out infinite;will-change:background-position}
+.hero-headline .shine-30-num{font-family:'Horizon','Inter',sans-serif;letter-spacing:.02em}
 @keyframes shine30{0%,100%{background-position:200% center}50%{background-position:0% center}}
 .hero-search{position:relative;width:100%;max-width:540px;margin:0 auto 48px}
 .hs-bar{display:flex;align-items:center;gap:10px;background:#202124;border:1px solid #5f6368;border-radius:24px;padding:12px 16px;transition:border-color .3s,box-shadow .3s}
