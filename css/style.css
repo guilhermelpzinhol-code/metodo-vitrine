@@ -423,7 +423,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
 
 /* === Fundo Animado — Ondas de Energia + Partículas === */
-#bg-animated{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#bg-animated{position:fixed;inset:0;z-index:0;pointer-events:none}
 #bg-animated::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(139,92,246,.05) 1px,transparent 1px);background-size:40px 40px;z-index:0}
 /* Ondas verticais */
 .wave{position:absolute;top:0;height:100%;will-change:transform;z-index:1}
