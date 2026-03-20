@@ -29,7 +29,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 /* Progress bar */
 .progress-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;background:linear-gradient(90deg,#7b3cff,#9b5cff);width:0;pointer-events:none}
 /* Bottom gradient */
-.bottom-blur{position:fixed;bottom:0;left:0;right:0;height:320px;z-index:40;pointer-events:none;background:linear-gradient(to top,rgba(6,2,15,1) 0%,rgba(6,2,15,.99) 20%,rgba(6,2,15,.92) 45%,rgba(6,2,15,.5) 70%,transparent 100%);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);mask-image:linear-gradient(to top,#000 0%,#000 65%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,#000 65%,transparent 100%)}
+.bottom-blur{position:fixed;bottom:0;left:0;right:0;height:380px;z-index:40;pointer-events:none;background:linear-gradient(to top,rgba(6,2,15,1) 0%,rgba(6,2,15,.98) 20%,rgba(6,2,15,.85) 50%,transparent 100%),radial-gradient(ellipse 80% 60% at 50% 100%,rgba(123,60,255,.45) 0%,rgba(100,30,220,.2) 40%,transparent 70%);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);mask-image:linear-gradient(to top,#000 0%,#000 60%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,#000 60%,transparent 100%)}
 .container{max-width:1200px;margin:0 auto;padding:0 20px;width:100%}
 .grad-text{background:linear-gradient(180deg,#fff 0%,#ececec 60%,#cfcfcf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .accent{font-family:'Horizon','Inter',sans-serif;background:linear-gradient(90deg,#7b3cff,#9b5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
