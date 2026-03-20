@@ -225,7 +225,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .rc-label{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;line-height:1.4}
 .results-highlight{max-width:500px;margin:0 auto;text-align:center;padding:32px 24px;background:rgba(155,89,245,.05);border:1px solid rgba(155,89,245,.2);border-radius:20px}
 .rh-title{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,5vw,1.8rem);font-weight:800;color:#F5F5F5;margin-bottom:8px;letter-spacing:-.02em}
-.rh-title span{color:#9B59F5}
+.rh-title span{font-family:'Bebas Neue',sans-serif;font-size:1.7em;color:#9B59F5;letter-spacing:.06em;vertical-align:baseline;line-height:1}
 .rh-sub{font-size:.82rem;color:rgba(255,255,255,.5);font-weight:500;line-height:1.6;margin-bottom:24px}
 .rh-bar{height:6px;background:rgba(155,89,245,.12);border-radius:99px;overflow:hidden;position:relative}
 .rh-bar-fill{height:100%;width:0;background:linear-gradient(90deg,#7B2FBE,#9B59F5);border-radius:99px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
