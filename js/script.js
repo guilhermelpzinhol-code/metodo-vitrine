@@ -290,21 +290,23 @@ var cx=cv.getContext('2d');
 function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}
 rsz();window.addEventListener('resize',rsz);
 var wv=[
-{fy:.12,amp:22,fr:.006,sp:.00045,ph:0,   al:.42},
-{fy:.25,amp:17,fr:.009,sp:.00062,ph:2.1, al:.32},
-{fy:.38,amp:24,fr:.005,sp:.00038,ph:4.2, al:.38},
-{fy:.52,amp:19,fr:.008,sp:.00055,ph:1.0, al:.35},
-{fy:.65,amp:15,fr:.01, sp:.00070,ph:3.3, al:.30},
-{fy:.78,amp:20,fr:.007,sp:.00048,ph:5.1, al:.33},
-{fy:.90,amp:16,fr:.009,sp:.00058,ph:2.7, al:.28},
+{fy:.12,amp:22,fr:.006,sp:.00045,ph:0,   al:.6},
+{fy:.25,amp:17,fr:.009,sp:.00062,ph:2.1, al:.45},
+{fy:.38,amp:24,fr:.005,sp:.00038,ph:4.2, al:.55},
+{fy:.52,amp:19,fr:.008,sp:.00055,ph:1.0, al:.5},
+{fy:.65,amp:15,fr:.01, sp:.00070,ph:3.3, al:.45},
+{fy:.78,amp:20,fr:.007,sp:.00048,ph:5.1, al:.48},
+{fy:.90,amp:16,fr:.009,sp:.00058,ph:2.7, al:.4},
 ];
 function draw(){
 cx.clearRect(0,0,cv.width,cv.height);
 var now=Date.now();
 wv.forEach(function(l){
 cx.beginPath();
-cx.strokeStyle='rgba(139,92,246,'+l.al+')';
-cx.lineWidth=1.5;
+cx.strokeStyle='rgba(167,139,250,'+l.al+')';
+cx.lineWidth=2;
+cx.shadowColor='rgba(139,92,246,0.4)';
+cx.shadowBlur=6;
 for(var x=0;x<=cv.width;x+=3){
 var y=l.fy*cv.height+Math.sin(x*l.fr+now*l.sp+l.ph)*l.amp;
 if(x===0)cx.moveTo(x,y);else cx.lineTo(x,y);
