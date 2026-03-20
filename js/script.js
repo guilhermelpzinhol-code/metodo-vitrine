@@ -284,7 +284,7 @@ els.forEach(el=>cObs.observe(el));
 
 /* GMB panels entrance */
 (function(){
-var panels=document.querySelectorAll('.gmb-panel');
+var panels=document.querySelectorAll('.gmb-item');
 if(!panels.length)return;
 var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var d=parseFloat(e.target.dataset.animDelay||0)*120;setTimeout(function(){e.target.classList.add('visible')},d);o.unobserve(e.target)}})},{threshold:.15});
 panels.forEach(function(p){o.observe(p)});
