@@ -28,7 +28,7 @@ document.querySelectorAll('[data-tw]').forEach(el=>twObs.observe(el));
 const waTimeEl=document.getElementById('waTime');
 const waLockTimeEl=document.getElementById('waLockTime');
 const waLockDateEl=document.getElementById('waLockDate');
-(function(){const t=formatTime();if(waTimeEl)waTimeEl.textContent=t;if(waLockTimeEl)waLockTimeEl.textContent=t;
+(function(){const d=new Date();const t=formatTime(d);if(waTimeEl)waTimeEl.textContent=t;if(waLockTimeEl)waLockTimeEl.textContent=t;
 if(waLockDateEl){const dias=['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];const meses=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];waLockDateEl.textContent=dias[d.getDay()]+', '+d.getDate()+' de '+meses[d.getMonth()]}
 })()
 const waList=document.getElementById('waList');
