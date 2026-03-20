@@ -423,14 +423,14 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
 
 /* === Fundo Animado — Ondas de Energia + Partículas === */
-#bg-animated{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;contain:layout style}
-#bg-animated::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(139,92,246,.04) 1px,transparent 1px);background-size:40px 40px}
+#bg-animated{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#bg-animated::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(139,92,246,.05) 1px,transparent 1px);background-size:40px 40px;z-index:0}
 /* Ondas verticais */
-.wave{position:absolute;top:-50vh;height:200vh;will-change:transform}
-.wave-1{left:20%;width:320px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.15) 30%,rgba(139,92,246,.2) 50%,rgba(139,92,246,.15) 70%,transparent 100%);filter:blur(60px);opacity:.15;animation:wave-drift-1 18s ease-in-out infinite}
-.wave-2{left:58%;width:260px;background:linear-gradient(180deg,transparent 0%,rgba(167,139,250,.18) 25%,rgba(167,139,250,.22) 50%,rgba(167,139,250,.18) 75%,transparent 100%);filter:blur(72px);opacity:.1;animation:wave-drift-2 24s ease-in-out infinite}
-.wave-3{left:38%;width:360px;background:linear-gradient(180deg,transparent 0%,rgba(109,40,217,.16) 30%,rgba(109,40,217,.22) 50%,rgba(109,40,217,.16) 70%,transparent 100%);filter:blur(56px);opacity:.12;animation:wave-drift-3 28s ease-in-out infinite}
-.wave-4{left:76%;width:210px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.1) 30%,rgba(139,92,246,.14) 50%,rgba(139,92,246,.1) 70%,transparent 100%);filter:blur(66px);opacity:.08;animation:wave-drift-4 21s ease-in-out infinite}
+.wave{position:absolute;top:0;height:100%;will-change:transform;z-index:1}
+.wave-1{left:20%;width:320px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.5) 30%,rgba(139,92,246,.6) 50%,rgba(139,92,246,.5) 70%,transparent 100%);filter:blur(80px);opacity:.25;animation:wave-drift-1 18s ease-in-out infinite}
+.wave-2{left:58%;width:260px;background:linear-gradient(180deg,transparent 0%,rgba(167,139,250,.5) 25%,rgba(167,139,250,.6) 50%,rgba(167,139,250,.5) 75%,transparent 100%);filter:blur(90px);opacity:.2;animation:wave-drift-2 24s ease-in-out infinite}
+.wave-3{left:38%;width:360px;background:linear-gradient(180deg,transparent 0%,rgba(109,40,217,.5) 30%,rgba(109,40,217,.6) 50%,rgba(109,40,217,.5) 70%,transparent 100%);filter:blur(70px);opacity:.22;animation:wave-drift-3 28s ease-in-out infinite}
+.wave-4{left:76%;width:210px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.4) 30%,rgba(139,92,246,.5) 50%,rgba(139,92,246,.4) 70%,transparent 100%);filter:blur(85px);opacity:.18;animation:wave-drift-4 21s ease-in-out infinite}
 @keyframes wave-drift-1{0%,100%{transform:translateX(0) scaleX(1)}25%{transform:translateX(40px) scaleX(1.1)}50%{transform:translateX(-30px) scaleX(.9)}75%{transform:translateX(20px) scaleX(1.05)}}
 @keyframes wave-drift-2{0%,100%{transform:translateX(0) scaleX(1)}20%{transform:translateX(-35px) scaleX(.95)}55%{transform:translateX(45px) scaleX(1.08)}80%{transform:translateX(-15px) scaleX(.98)}}
 @keyframes wave-drift-3{0%,100%{transform:translateX(0) scaleX(1)}30%{transform:translateX(25px) scaleX(1.06)}60%{transform:translateX(-40px) scaleX(.92)}85%{transform:translateX(15px) scaleX(1.03)}}
