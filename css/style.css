@@ -475,6 +475,61 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .gmb-company-loc svg{width:9px;height:9px;stroke:rgba(255,255,255,.32);flex-shrink:0}
 @media(min-width:768px){.gmb-grid{grid-template-columns:1fr 1fr 1fr}}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
+/* Site card info */
+.site-card-info{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px 10px;background:#0c0917}
+.sci-niche{font-size:.72rem;font-weight:600;color:rgba(167,139,250,.8);font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
+.sci-city{font-size:.65rem;color:rgba(255,255,255,.3)}
+/* Results journey */
+.rj-track{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;padding:8px 4px 20px;scrollbar-width:none;width:100%;max-width:1140px}
+.rj-track::-webkit-scrollbar{display:none}
+.rj-step{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto;width:clamp(200px,30vw,280px)}
+.rj-badge{font-size:.6rem;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:6px;font-weight:700}
+.rj-badge--before{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);color:rgba(239,68,68,.8)}
+.rj-badge--start{background:rgba(123,60,255,.08);border:1px solid rgba(123,60,255,.25);color:rgba(167,139,250,.8)}
+.rj-badge--mid{background:rgba(123,60,255,.12);border:1px solid rgba(123,60,255,.3);color:#a78bfa}
+.rj-badge--after{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#10B981}
+.rj-panel{border-radius:16px;overflow:hidden;position:relative;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.rj-panel::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(123,60,255,.2)}
+.rj-panel--highlight::before{box-shadow:inset 0 0 0 1.5px rgba(16,185,129,.4)}
+.rj-img{width:100%;display:block;object-fit:cover}
+.rj-glow{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:80%;height:40px;filter:blur(20px);pointer-events:none;z-index:0}
+.rj-glow--red{background:rgba(239,68,68,.35)}
+.rj-glow--purple{background:rgba(123,60,255,.4)}
+.rj-glow--green{background:rgba(16,185,129,.35)}
+.rj-meta{display:flex;flex-direction:column;align-items:center;gap:3px}
+.rj-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em}
+.rj-num--red{color:#ef4444}
+.rj-num--green{color:#10B981;text-shadow:0 0 20px rgba(16,185,129,.4)}
+.rj-label{font-size:.65rem;color:rgba(255,255,255,.35);font-family:'JetBrains Mono',monospace}
+.rj-delta{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;font-weight:700;font-family:'JetBrains Mono',monospace}
+.rj-delta--red{color:#ef4444}
+.rj-delta--green{color:#10B981}
+.rj-delta svg{width:10px;height:10px}
+.rj-arrow{flex:0 0 auto;align-self:center;margin-top:-40px;opacity:.7}
+.rj-arrow svg{width:32px;height:12px}
+/* Exclusividade */
+.excl-card{background:linear-gradient(135deg,rgba(20,6,44,.9) 0%,rgba(8,2,20,.95) 100%);border:1px solid rgba(123,60,255,.2);border-left:3px solid #7b3cff;border-radius:16px;padding:22px 24px;display:flex;align-items:flex-start;gap:18px;position:relative;overflow:hidden;max-width:620px;margin:36px auto 0}
+.excl-icon svg{width:36px;height:36px;flex-shrink:0}
+.excl-content{flex:1}
+.excl-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
+.excl-body{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.7}
+.excl-dot{position:absolute;top:14px;right:14px;width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 8px rgba(16,185,129,.7);animation:excl-pulse 2s ease-in-out infinite}
+@keyframes excl-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+/* Pricing */
+.price-block{text-align:center;padding:36px 20px 0;position:relative;z-index:3}
+.price-label{font-size:.68rem;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px}
+.price-value{font-family:'Syne',sans-serif;font-size:clamp(1rem,4vw,1.15rem);color:rgba(255,255,255,.55);line-height:1;margin-bottom:16px}
+.price-value strong{font-size:clamp(2.8rem,8vw,3.6rem);color:#fff;letter-spacing:-.04em;font-weight:800}
+.price-value span{font-size:.9rem;color:rgba(255,255,255,.4)}
+.price-includes{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:.75rem;color:rgba(255,255,255,.5)}
+.price-includes span{display:inline-flex;align-items:center;gap:5px}
+.price-includes svg{width:12px;height:12px;flex-shrink:0}
+/* Guarantee full block */
+.guarantee-block{text-align:center;background:linear-gradient(135deg,rgba(16,185,129,.07) 0%,rgba(5,150,105,.04) 100%);border:1px solid rgba(16,185,129,.2);border-radius:20px;padding:32px 28px;max-width:520px;margin:32px auto 0;position:relative;z-index:3}
+.gb-shield svg{width:56px;height:56px;filter:drop-shadow(0 0 14px rgba(16,185,129,.3));margin-bottom:14px}
+.gb-title{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,4vw,1.4rem);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}
+.gb-title span{color:#10B981}
+.gb-sub{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.75}
 
 /* === Fundo Animado — Mesh de Ondas SVG === */
 #bg-canvas{position:fixed;inset:0;z-index:10;pointer-events:none;width:100%;height:100%}
