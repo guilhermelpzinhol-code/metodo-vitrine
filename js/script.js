@@ -325,3 +325,17 @@ requestAnimationFrame(draw);
 }
 draw();
 })();
+
+// VSL player overlay
+(function(){
+var overlay=document.getElementById('vslOverlay');
+var playBtn=document.getElementById('vslPlay');
+var iframe=document.getElementById('vslIframe');
+// Substitua a URL abaixo pelo seu embed de vídeo (YouTube/Vimeo/etc.)
+var VIDEO_URL='';
+if(!overlay||!playBtn)return;
+playBtn.addEventListener('click',function(){
+if(VIDEO_URL){iframe.src=VIDEO_URL+'&autoplay=1';}
+overlay.classList.add('hidden');
+});
+})();
