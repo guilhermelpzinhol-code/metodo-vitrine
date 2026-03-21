@@ -54,9 +54,9 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 .cta-btn:focus-visible{outline:2px solid #7b3cff;outline-offset:3px}
 button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .cta-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-[data-anim]{opacity:0;transform:translateY(36px);transition:opacity 1.3s cubic-bezier(.16,1,.3,1),transform 1.3s cubic-bezier(.16,1,.3,1)}
+[data-anim]{opacity:0;transform:translateY(44px);transition:opacity 1.8s cubic-bezier(.16,1,.3,1),transform 1.8s cubic-bezier(.16,1,.3,1)}
 [data-anim].visible{opacity:1;transform:translateY(0)}
-[data-anim-delay="1"]{transition-delay:.18s}[data-anim-delay="2"]{transition-delay:.38s}[data-anim-delay="3"]{transition-delay:.58s}[data-anim-delay="4"]{transition-delay:.78s}
+[data-anim-delay="1"]{transition-delay:.3s}[data-anim-delay="2"]{transition-delay:.6s}[data-anim-delay="3"]{transition-delay:.9s}[data-anim-delay="4"]{transition-delay:1.2s}
 .tw-cursor::after{content:'|';color:#9b5cff;font-weight:300;animation:twBlink .6s step-end infinite;margin-left:1px}
 @keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden}

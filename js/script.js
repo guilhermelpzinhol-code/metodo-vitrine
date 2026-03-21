@@ -10,7 +10,7 @@ const wH=window.innerHeight;
 pEls.forEach(el=>{const s=parseFloat(el.dataset.parallax)||.1;const r=el.getBoundingClientRect();const o=(r.top+r.height/2-wH/2)*s;el.style.transform='translateY('+o+'px)'});
 sTick=false});sTick=true}},{passive:true});
 
-const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -10% 0px'});
+const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -18% 0px'});
 document.querySelectorAll('[data-anim]').forEach(el=>rObs.observe(el));
 
 /* Typewriter */
