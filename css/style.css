@@ -68,7 +68,18 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 .hero .logo{margin:0 auto 0;position:relative;overflow:visible}
 .hero .logo img{height:clamp(80px,20vw,130px)}
-.hero-sub{font-size:clamp(.7rem,2.8vw,.95rem);font-weight:500;color:#cfcfcf;letter-spacing:.05em;margin-bottom:clamp(36px,7vh,64px);white-space:nowrap}
+/* Hero VSL headline */
+.hero-headline-vsl{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.5rem,6vw,2.6rem);font-weight:800;line-height:1.2;letter-spacing:-.01em;color:#fff;max-width:580px;margin:0 auto 28px;text-align:center}
+.hhv-alert{color:transparent;background:linear-gradient(90deg,#9933ff,#c084fc,#9933ff);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine30 3s ease-in-out infinite;font-weight:900}
+.hero-headline-vsl em{font-style:normal;color:#a78bfa;-webkit-text-fill-color:#a78bfa}
+.hero-vsl-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0 auto 20px}
+/* Search demo section */
+.search-demo-section{position:relative;padding:60px 20px 70px;text-align:center}
+.search-demo-inner{position:relative;z-index:3;max-width:600px;margin:0 auto}
+/* Muted badge text white */
+.vsl-muted-top{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.04em;text-align:center}
+.vsl-muted-bottom{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;text-align:center;animation:vsl-blink 2s ease-in-out infinite}
+.hero-sub{font-size:clamp(.7rem,2.8vw,.95rem);font-weight:500;color:#cfcfcf;letter-spacing:.05em;margin-bottom:clamp(16px,4vh,32px);white-space:nowrap}
 .hero-sub strong{color:#fff;font-weight:700}
 .hero-headline{font-size:clamp(3.2rem,12vw,5.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:800px;margin:0 auto clamp(64px,14vh,140px)}
 .hero-secondary{font-size:clamp(.65rem,2.8vw,1.5rem);font-weight:600;color:#cfcfcf;margin-bottom:14px;margin-top:0;text-transform:uppercase;letter-spacing:.18em;white-space:nowrap}
@@ -230,12 +241,10 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 /* VSL muted badge */
 .vsl-muted-badge{display:flex;flex-direction:column;align-items:center;gap:10px;background:rgba(20,6,48,.82);border:1px solid rgba(123,60,255,.35);border-radius:16px;padding:20px 28px;backdrop-filter:blur(8px);animation:vsl-badge-in .5s cubic-bezier(.16,1,.3,1) both}
 @keyframes vsl-badge-in{from{opacity:0;transform:scale(.88) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.vsl-muted-top{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.04em;text-align:center}
 .vsl-muted-icon{position:relative;display:flex;align-items:center;justify-content:center;width:64px;height:64px}
 .vsl-muted-icon svg{width:44px;height:44px;position:relative;z-index:2;filter:drop-shadow(0 0 10px rgba(167,139,250,.5))}
 .vsl-muted-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(123,60,255,.4);animation:vsl-ring-pulse 1.8s ease-in-out infinite}
 @keyframes vsl-ring-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.18);opacity:.15}}
-.vsl-muted-bottom{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;color:rgba(167,139,250,.9);letter-spacing:.06em;text-transform:uppercase;text-align:center;animation:vsl-blink 2s ease-in-out infinite}
 @keyframes vsl-blink{0%,100%{opacity:1}50%{opacity:.5}}
 .vsl-hint{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;color:rgba(167,139,250,.4);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;margin-top:4px}
 .vsl-hint svg{width:14px;height:14px;flex-shrink:0}
@@ -528,8 +537,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 /* Pricing */
 .price-block{text-align:center;padding:36px 20px 0;position:relative;z-index:3}
 .price-label{font-size:.68rem;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px}
-.price-value{font-family:'Syne',sans-serif;font-size:clamp(1rem,4vw,1.15rem);color:rgba(255,255,255,.55);line-height:1;margin-bottom:16px}
-.price-value strong{font-size:clamp(2.8rem,8vw,3.6rem);color:#fff;letter-spacing:-.04em;font-weight:800}
+.price-value{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1rem,4vw,1.15rem);color:rgba(255,255,255,.55);line-height:1;margin-bottom:16px}
+.price-value strong{font-size:clamp(3.2rem,9vw,4.2rem);color:#fff;letter-spacing:-.02em;font-weight:900;font-family:'Barlow Condensed',sans-serif}
 .price-value span{font-size:.9rem;color:rgba(255,255,255,.4)}
 .price-includes{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:.75rem;color:rgba(255,255,255,.5)}
 .price-includes span{display:inline-flex;align-items:center;gap:5px}
@@ -537,7 +546,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 /* Guarantee full block */
 .guarantee-block{text-align:center;background:linear-gradient(135deg,rgba(16,185,129,.07) 0%,rgba(5,150,105,.04) 100%);border:1px solid rgba(16,185,129,.2);border-radius:20px;padding:32px 28px;max-width:520px;margin:32px auto 0;position:relative;z-index:3}
 .gb-shield svg{width:56px;height:56px;filter:drop-shadow(0 0 14px rgba(16,185,129,.3));margin-bottom:14px}
-.gb-title{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,4vw,1.4rem);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}
+.gb-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,5vw,1.9rem);font-weight:900;color:#fff;letter-spacing:-.01em;line-height:1.2;margin-bottom:10px}
 .gb-title span{color:#10B981}
 .gb-sub{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.75}
 
