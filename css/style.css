@@ -506,7 +506,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 /* Sticky scroll results */
 .rv-scroll-wrap{position:relative;height:calc(6 * 100vh);width:100%;display:block}
 .rv-sticky{position:sticky;top:0;left:0;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2}
-.rv-step{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px 20px;opacity:0;transform:translateY(28px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.rv-step{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px 24px;opacity:0;transform:translateY(28px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);pointer-events:none;width:100%;box-sizing:border-box}
 .rv-step.rv-active{opacity:1;transform:translateY(0);pointer-events:auto}
 .rv-step.rv-exit{opacity:0;transform:translateY(-28px)}
 .rv-step-company{font-family:'Inter',sans-serif;font-size:clamp(1.3rem,5vw,1.8rem);font-weight:700;color:#fff;text-align:center;margin:0}
@@ -521,8 +521,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .rv-tag{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.01em;padding:6px 16px;border-radius:20px;align-self:center}
 .rv-tag--before{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);color:rgba(255,120,100,.95)}
 .rv-tag--after{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.35);color:#34d399}
-.rv-img-wrap{position:relative;width:100%;border-radius:14px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.65)}
-.rv-img{width:100%;height:auto;display:block;object-fit:contain}
+.rv-img-wrap{position:relative;width:min(440px,88vw);max-height:calc(100vh - 140px);border-radius:14px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.65);flex-shrink:0}
+.rv-img{width:100%;max-height:calc(100vh - 160px);display:block;object-fit:contain}
 .rv-img-glow{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:60%;height:40px;filter:blur(24px);pointer-events:none}
 .rv-img-glow--red{background:rgba(239,68,68,.4)}
 .rv-img-glow--green{background:rgba(16,185,129,.4)}
