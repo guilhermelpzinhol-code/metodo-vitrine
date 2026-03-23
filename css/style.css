@@ -300,11 +300,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @keyframes swipeArrowPulse{0%,100%{opacity:.5;transform:translateY(-60%) translateX(0)}50%{opacity:1;transform:translateY(-60%) translateX(4px)}}
 .marquee-track{display:flex;gap:16px;width:max-content;scroll-snap-type:x mandatory;-webkit-scroll-snap-type:x mandatory;padding:0}
 .site-card{flex-shrink:0;width:min(92vw,380px);border-radius:14px;overflow:hidden;border:1px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;background:#111;scroll-snap-align:center}
-.site-card-bar{display:flex;align-items:center;gap:5px;padding:6px 10px;background:rgba(0,0,0,.6);position:absolute;top:0;left:0;right:0;z-index:1}
-.site-card-bar span{width:7px;height:7px;border-radius:50%}
-.site-card-bar span:nth-child(1){background:#ff5f57}
-.site-card-bar span:nth-child(2){background:#ffbd2e}
-.site-card-bar span:nth-child(3){background:#28c840}
+.site-card-bar{display:none}
 .site-card img{width:100%;height:auto;display:block}
 .method-bonus-label{font-family:'Horizon',sans-serif;font-size:clamp(1.3rem,6vw,2.4rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,#d4b8ff 50%,#7b3cff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-label.mbl-show{opacity:1;transform:translateY(0)}
@@ -500,9 +496,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:768px){.gmb-grid{grid-template-columns:1fr 1fr 1fr}}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
 /* Site card info */
-.site-card-info{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:#0c0917}
-.sci-niche{font-size:.82rem;font-weight:600;color:rgba(167,139,250,.9);font-family:'Inter',sans-serif;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sci-city{font-size:.75rem;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0}
+.site-card-info{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:8px;padding:7px 12px;background:#0c0917}
+.sci-niche{font-size:.72rem;font-weight:600;color:rgba(167,139,250,.9);font-family:'Inter',sans-serif;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sci-city{font-size:.65rem;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0}
 /* Results journey */
 /* Scroll-reveal results feed */
 /* Sticky scroll results */
