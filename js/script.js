@@ -225,7 +225,7 @@ let mbStarted=false;
 const mbObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!mbStarted){
 mbStarted=true;mbObs.unobserve(e.target);
 const title=document.getElementById('mbTitle');
-const text='E o Melhor...';
+const text='O que faz o Google te escolher...';
 let ci=0;title.classList.add('tw-cursor');
 const iv=setInterval(()=>{title.textContent=text.slice(0,ci+1);ci++;
 if(ci>=text.length){clearInterval(iv);setTimeout(()=>title.classList.remove('tw-cursor'),500);
