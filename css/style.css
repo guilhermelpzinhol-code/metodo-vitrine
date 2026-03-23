@@ -501,9 +501,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:768px){.gmb-grid{grid-template-columns:1fr 1fr 1fr}}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
 /* Site card info */
-.site-card-info{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:6px;padding:5px 10px;background:#0c0917}
-.sci-niche{font-size:.6rem;font-weight:600;color:rgba(167,139,250,.8);font-family:'JetBrains Mono',monospace;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sci-city{font-size:.58rem;color:rgba(255,255,255,.3);white-space:nowrap;flex-shrink:0}
+.site-card-info{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:6px;padding:3px 8px 4px;background:#0c0917}
+.sci-niche{font-size:.55rem;font-weight:600;color:rgba(167,139,250,.75);font-family:'Inter',sans-serif;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sci-city{font-size:.52rem;color:rgba(255,255,255,.28);font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0}
 /* Results journey */
 /* Scroll-reveal results feed */
 /* Sticky scroll results */
