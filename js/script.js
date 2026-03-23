@@ -230,7 +230,9 @@ let ci=0;title.classList.add('tw-cursor');
 const iv=setInterval(()=>{title.textContent=text.slice(0,ci+1);ci++;
 if(ci>=text.length){clearInterval(iv);setTimeout(()=>title.classList.remove('tw-cursor'),500);
 setTimeout(()=>{
-document.getElementById('mbVideo').classList.add('mbv-show');
+const mbVideoEl=document.getElementById('mbVideo');mbVideoEl.classList.add('mbv-show');
+const swipeArrow=mbVideoEl.querySelector('.swipe-arrow');
+if(swipeArrow){mbVideoEl.addEventListener('scroll',function hide(){swipeArrow.style.transition='opacity .4s';swipeArrow.style.opacity='0';setTimeout(()=>swipeArrow.style.display='none',420);mbVideoEl.removeEventListener('scroll',hide);},{passive:true,once:true});}
 document.getElementById('mbLabel').classList.add('mbl-show');
 document.getElementById('mbSub').classList.add('mbl-show');
 },600);
