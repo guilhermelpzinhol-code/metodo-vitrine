@@ -290,6 +290,14 @@ var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInters
 panels.forEach(function(p){o.observe(p)});
 })();
 
+/* Scroll-reveal results */
+(function(){
+var items=document.querySelectorAll('[data-rv]');
+if(!items.length)return;
+var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-visible');o.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+items.forEach(function(el){o.observe(el)});
+})();
+
 /* Animated wave background */
 (function(){
 var cv=document.getElementById('bg-canvas');
