@@ -295,8 +295,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .marquee-container::before{display:none}
 .marquee-container::after{content:'';display:block;position:absolute;top:0;right:0;bottom:12px;width:64px;background:linear-gradient(to left,#06020f 30%,transparent);pointer-events:none;z-index:3}
 .swipe-arrow{position:absolute;right:10px;top:50%;transform:translateY(-60%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;animation:swipeArrowPulse 1.6s ease-in-out infinite}
-.swipe-arrow svg{width:26px;height:26px;stroke:rgba(167,139,250,.75);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.swipe-arrow span{font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(167,139,250,.5)}
+.swipe-arrow svg{width:44px;height:44px;stroke:rgba(167,139,250,.85);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.swipe-arrow span{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(167,139,250,.6)}
 @keyframes swipeArrowPulse{0%,100%{opacity:.5;transform:translateY(-60%) translateX(0)}50%{opacity:1;transform:translateY(-60%) translateX(4px)}}
 .marquee-track{display:flex;gap:16px;width:max-content;scroll-snap-type:x mandatory;-webkit-scroll-snap-type:x mandatory;padding:0}
 .site-card{flex-shrink:0;width:min(88vw,360px);border-radius:14px;overflow:hidden;border:1px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;background:#111;scroll-snap-align:center}
