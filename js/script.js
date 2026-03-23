@@ -290,12 +290,35 @@ var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInters
 panels.forEach(function(p){o.observe(p)});
 })();
 
-/* Scroll-reveal results */
+/* Sticky scroll results storytelling */
 (function(){
-var items=document.querySelectorAll('[data-rv]');
-if(!items.length)return;
-var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-visible');o.unobserve(e.target)}})},{threshold:0.05,rootMargin:'0px 0px -60px 0px'});
-items.forEach(function(el){o.observe(el)});
+var wrap=document.getElementById('rvWrap');
+var steps=document.querySelectorAll('.rv-step');
+var dots=document.querySelectorAll('.rv-dot');
+if(!wrap||!steps.length)return;
+var cur=-1;
+function show(n){
+if(n===cur)return;
+steps.forEach(function(s,i){
+s.classList.remove('rv-active','rv-exit');
+if(i===n){s.classList.add('rv-active');}
+else if(i<n){s.classList.add('rv-exit');}
+});
+dots.forEach(function(d,i){d.classList.toggle('rv-dot-on',i===n);});
+cur=n;
+}
+show(0);
+function onScroll(){
+var rect=wrap.getBoundingClientRect();
+var scrolled=-rect.top;
+var total=wrap.offsetHeight-window.innerHeight;
+if(scrolled<0){show(0);return;}
+if(scrolled>=total){show(steps.length-1);return;}
+var idx=Math.min(steps.length-1,Math.floor((scrolled/total)*steps.length));
+show(idx);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
 })();
 
 /* Animated wave background */

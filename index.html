@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@700&family=Bebas+Neue&family=Barlow+Condensed:wght@700;800;900&text=0123456789.,%25★&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="https://i.ibb.co/PvRHwvLb/image.png" fetchpriority="high">
-<link rel="stylesheet" href="css/style.css?v=29">
+<link rel="stylesheet" href="css/style.css?v=30">
 </head>
 <body>
 <div class="bg-dots"></div>
@@ -170,67 +170,54 @@
 <h2 class="results-title">Resultados do Método <span class="grad-text">VITRINE</span></h2>
 <p class="results-sub">Capturas direto do painel Google Business. Sem edição, sem enganação.</p>
 </div>
-<div class="rv-feed">
-
-<!-- Empresa 1 -->
-<div class="rv-company-sep" data-rv><div class="rv-company-line"></div><span>UMA Medicina SST &nbsp;·&nbsp; Santos, SP</span><div class="rv-company-line"></div></div>
-
-<div class="rv-item" data-rv>
+<!-- Sticky scroll storytelling -->
+<div class="rv-scroll-wrap" id="rvWrap">
+<div class="rv-sticky" id="rvSticky">
+<!-- progress dots -->
+<div class="rv-dots" id="rvDots">
+<span class="rv-dot" data-dot="0"></span>
+<span class="rv-dot" data-dot="1"></span>
+<span class="rv-dot" data-dot="2"></span>
+<span class="rv-dot" data-dot="3"></span>
+<span class="rv-dot" data-dot="4"></span>
+<span class="rv-dot" data-dot="5"></span>
+</div>
+<!-- Step 0: Company 1 label -->
+<div class="rv-step" data-step="0">
+<p class="rv-step-company">UMA Medicina SST</p>
+<p class="rv-step-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Santos, SP</p>
+</div>
+<!-- Step 1: result1 antes -->
+<div class="rv-step" data-step="1">
 <div class="rv-tag rv-tag--before">Antes de aplicar o Método Vitrine</div>
-<div class="rv-img-wrap">
-<img src="img/result1.jpg" alt="UMA Medicina SST - antes" class="rv-img" loading="lazy" decoding="async">
-<div class="rv-img-glow rv-img-glow--red"></div>
+<div class="rv-img-wrap"><img src="img/result1.jpg" alt="UMA Medicina SST antes" class="rv-img" loading="lazy" decoding="async"><div class="rv-img-glow rv-img-glow--red"></div></div>
+<div class="rv-caption"><span class="rv-co-name">UMA Medicina SST</span><span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Santos, SP</span></div>
 </div>
-<div class="rv-caption">
-<span class="rv-co-name">UMA Medicina SST</span>
-<span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Santos, SP</span>
-</div>
-</div>
-
-<div class="rv-arrow-sep" data-rv><svg viewBox="0 0 24 40" fill="none"><path d="M12 2v30M12 32l-6-7M12 32l6-7" stroke="rgba(123,60,255,.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-<div class="rv-item rv-item--after" data-rv>
+<!-- Step 2: result2 depois -->
+<div class="rv-step" data-step="2">
 <div class="rv-tag rv-tag--after">60 Dias após o Método Vitrine</div>
-<div class="rv-img-wrap">
-<img src="img/result2.jpg" alt="UMA Medicina SST - 60 dias" class="rv-img" loading="lazy" decoding="async">
-<div class="rv-img-glow rv-img-glow--green"></div>
+<div class="rv-img-wrap rv-img-wrap--after"><img src="img/result2.jpg" alt="UMA Medicina SST 60 dias" class="rv-img" loading="lazy" decoding="async"><div class="rv-img-glow rv-img-glow--green"></div></div>
+<div class="rv-caption"><span class="rv-co-name">UMA Medicina SST</span><span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Santos, SP</span></div>
 </div>
-<div class="rv-caption">
-<span class="rv-co-name">UMA Medicina SST</span>
-<span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Santos, SP</span>
+<!-- Step 3: Company 2 label -->
+<div class="rv-step" data-step="3">
+<p class="rv-step-company">Escritório Dra. LILIANE</p>
+<p class="rv-step-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Belo Horizonte, MG</p>
 </div>
-</div>
-
-<!-- Empresa 2 -->
-<div class="rv-company-sep rv-company-sep--2" data-rv><div class="rv-company-line"></div><span>Escritório Dra. LILIANE &nbsp;·&nbsp; Belo Horizonte, MG</span><div class="rv-company-line"></div></div>
-
-<div class="rv-item" data-rv>
+<!-- Step 4: result3 antes -->
+<div class="rv-step" data-step="4">
 <div class="rv-tag rv-tag--before">60 Dias Antes do Método VITRINE</div>
-<div class="rv-img-wrap">
-<img src="img/result3.jpg" alt="Dra. Liliane - antes" class="rv-img" loading="lazy" decoding="async">
-<div class="rv-img-glow rv-img-glow--red"></div>
+<div class="rv-img-wrap"><img src="img/result3.jpg" alt="Dra. Liliane antes" class="rv-img" loading="lazy" decoding="async"><div class="rv-img-glow rv-img-glow--red"></div></div>
+<div class="rv-caption"><span class="rv-co-name">Escritório Dra. LILIANE</span><span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Belo Horizonte, MG</span></div>
 </div>
-<div class="rv-caption">
-<span class="rv-co-name">Escritório Dra. LILIANE</span>
-<span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Belo Horizonte, MG</span>
-</div>
-</div>
-
-<div class="rv-arrow-sep" data-rv><svg viewBox="0 0 24 40" fill="none"><path d="M12 2v30M12 32l-6-7M12 32l6-7" stroke="rgba(123,60,255,.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-
-<div class="rv-item rv-item--after" data-rv>
+<!-- Step 5: result4 depois -->
+<div class="rv-step" data-step="5">
 <div class="rv-tag rv-tag--after">90 Dias com o Método Vitrine</div>
-<div class="rv-img-wrap">
-<img src="img/result4.jpg" alt="Dra. Liliane - 90 dias" class="rv-img" loading="lazy" decoding="async">
-<div class="rv-img-glow rv-img-glow--green"></div>
+<div class="rv-img-wrap rv-img-wrap--after"><img src="img/result4.jpg" alt="Dra. Liliane 90 dias" class="rv-img" loading="lazy" decoding="async"><div class="rv-img-glow rv-img-glow--green"></div></div>
+<div class="rv-caption"><span class="rv-co-name">Escritório Dra. LILIANE</span><span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Belo Horizonte, MG</span></div>
 </div>
-<div class="rv-caption">
-<span class="rv-co-name">Escritório Dra. LILIANE</span>
-<span class="rv-co-city"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1C4.34 1 3 2.34 3 4c0 2.25 3 7 3 7s3-4.75 3-7c0-1.66-1.34-3-3-3z" stroke="currentColor"/><circle cx="6" cy="4" r="1" stroke="currentColor"/></svg>Belo Horizonte, MG</span>
-</div>
-</div>
-
-</div>
+</div><!-- rv-sticky -->
+</div><!-- rv-scroll-wrap -->
 </div>
 
 <div class="method-bonus" id="methodBonus">
