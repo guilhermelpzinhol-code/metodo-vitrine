@@ -496,10 +496,10 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:768px){.gmb-grid{grid-template-columns:1fr 1fr 1fr}}
 @media(min-width:769px){.gd-stats{grid-template-columns:1fr 1fr 1fr}}
 /* Site card info */
-.site-card-info{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:10px 12px;background:transparent;width:100%;box-sizing:border-box}
-.sci-niche{font-size:.82rem;font-weight:700;color:rgba(167,139,250,.95);font-family:'Inter',sans-serif;letter-spacing:.01em;white-space:nowrap}
+.site-card-info{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:7px 12px 6px;background:transparent;width:100%;box-sizing:border-box}
+.sci-niche{font-size:.82rem;font-weight:700;color:rgba(167,139,250,.95);font-family:'Inter',sans-serif;letter-spacing:.01em;white-space:nowrap;line-height:1}
 .sci-niche::after{content:'·';margin:0 7px;color:rgba(255,255,255,.25);font-weight:400}
-.sci-city{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.5);font-family:'Inter',sans-serif;white-space:nowrap}
+.sci-city{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.5);font-family:'Inter',sans-serif;white-space:nowrap;line-height:1}
 /* Results journey */
 /* Scroll-reveal results feed */
 /* Sticky scroll results */
