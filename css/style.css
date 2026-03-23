@@ -300,7 +300,6 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @keyframes swipeArrowPulse{0%,100%{opacity:.5;transform:translateY(-60%) translateX(0)}50%{opacity:1;transform:translateY(-60%) translateX(4px)}}
 .marquee-track{display:flex;gap:16px;width:max-content;scroll-snap-type:x mandatory;-webkit-scroll-snap-type:x mandatory;padding:0}
 .site-card{flex-shrink:0;width:min(92vw,380px);border-radius:14px;overflow:hidden;border:1px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;background:#111;scroll-snap-align:center}
-.site-card:nth-child(n+6){display:none}
 .site-card-bar{display:flex;align-items:center;gap:5px;padding:6px 10px;background:rgba(0,0,0,.6);position:absolute;top:0;left:0;right:0;z-index:1}
 .site-card-bar span{width:7px;height:7px;border-radius:50%}
 .site-card-bar span:nth-child(1){background:#ff5f57}
