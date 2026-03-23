@@ -299,14 +299,14 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .swipe-arrow span{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(167,139,250,.6)}
 @keyframes swipeArrowPulse{0%,100%{opacity:.5;transform:translateY(-60%) translateX(0)}50%{opacity:1;transform:translateY(-60%) translateX(4px)}}
 .marquee-track{display:flex;gap:16px;width:max-content;scroll-snap-type:x mandatory;-webkit-scroll-snap-type:x mandatory;padding:0}
-.site-card{flex-shrink:0;width:min(88vw,360px);border-radius:14px;overflow:hidden;border:1px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;background:#111;scroll-snap-align:center}
+.site-card{flex-shrink:0;width:min(92vw,380px);border-radius:14px;overflow:hidden;border:1px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;background:#111;scroll-snap-align:center}
 .site-card:nth-child(n+6){display:none}
-.site-card-bar{display:flex;align-items:center;gap:5px;padding:8px 12px;background:rgba(0,0,0,.6);position:absolute;top:0;left:0;right:0;z-index:1}
-.site-card-bar span{width:8px;height:8px;border-radius:50%}
+.site-card-bar{display:flex;align-items:center;gap:5px;padding:6px 10px;background:rgba(0,0,0,.6);position:absolute;top:0;left:0;right:0;z-index:1}
+.site-card-bar span{width:7px;height:7px;border-radius:50%}
 .site-card-bar span:nth-child(1){background:#ff5f57}
 .site-card-bar span:nth-child(2){background:#ffbd2e}
 .site-card-bar span:nth-child(3){background:#28c840}
-.site-card img{width:100%;height:auto;display:block;object-fit:contain}
+.site-card img{width:100%;height:min(62vw,240px);display:block;object-fit:cover;object-position:top center}
 .method-bonus-label{font-family:'Horizon',sans-serif;font-size:clamp(1.3rem,6vw,2.4rem);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .5s .3s,transform .5s .3s;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,#d4b8ff 50%,#7b3cff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .method-bonus-label.mbl-show{opacity:1;transform:translateY(0)}
 .mbl-sub{display:block;font-family:'Inter',sans-serif;font-size:clamp(.75rem,2.2vw,.95rem);font-weight:400;text-transform:none;letter-spacing:.01em;line-height:1.6;margin-top:8px;background:linear-gradient(135deg,rgba(255,255,255,.7) 0%,rgba(196,168,255,.65) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
