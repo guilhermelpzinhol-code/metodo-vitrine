@@ -290,19 +290,20 @@ var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInters
 panels.forEach(function(p){o.observe(p)});
 })();
 
-/* Sticky scroll results storytelling */
+/* Sticky scroll results — faux-sticky (works with overflow-x:hidden on body) */
 (function(){
 var wrap=document.getElementById('rvWrap');
+var sticky=document.getElementById('rvSticky');
 var steps=document.querySelectorAll('.rv-step');
 var dots=document.querySelectorAll('.rv-dot');
-if(!wrap||!steps.length)return;
+if(!wrap||!sticky||!steps.length)return;
 var cur=-1;
 function show(n){
 if(n===cur)return;
 steps.forEach(function(s,i){
 s.classList.remove('rv-active','rv-exit');
-if(i===n){s.classList.add('rv-active');}
-else if(i<n){s.classList.add('rv-exit');}
+if(i===n)s.classList.add('rv-active');
+else if(i<n)s.classList.add('rv-exit');
 });
 dots.forEach(function(d,i){d.classList.toggle('rv-dot-on',i===n);});
 cur=n;
@@ -312,10 +313,19 @@ function onScroll(){
 var rect=wrap.getBoundingClientRect();
 var scrolled=-rect.top;
 var total=wrap.offsetHeight-window.innerHeight;
-if(scrolled<0){show(0);return;}
-if(scrolled>=total){show(steps.length-1);return;}
+if(scrolled<=0){
+sticky.classList.remove('rv-fixed','rv-end');
+show(0);
+}else if(scrolled>=total){
+sticky.classList.remove('rv-fixed');
+sticky.classList.add('rv-end');
+show(steps.length-1);
+}else{
+sticky.classList.add('rv-fixed');
+sticky.classList.remove('rv-end');
 var idx=Math.min(steps.length-1,Math.floor((scrolled/total)*steps.length));
 show(idx);
+}
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
