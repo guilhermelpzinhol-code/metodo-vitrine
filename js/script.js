@@ -13,6 +13,20 @@ sTick=false});sTick=true}},{passive:true});
 const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -18% 0px'});
 document.querySelectorAll('[data-anim]').forEach(el=>rObs.observe(el));
 
+/* Activate off-screen animations only when visible */
+if('IntersectionObserver' in window){
+  var animObs=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting) e.target.classList.add('cta-anim');
+    else e.target.classList.remove('cta-anim');
+  });},{rootMargin:'100px'});
+  document.querySelectorAll('.cta-btn').forEach(function(el){animObs.observe(el);});
+  var dotObs=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting) e.target.classList.add('excl-anim');
+    else e.target.classList.remove('excl-anim');
+  });},{rootMargin:'100px'});
+  document.querySelectorAll('.excl-dot').forEach(function(el){dotObs.observe(el);});
+}
+
 /* Typewriter */
 function twRun(el){
   const t=el.dataset.tw;if(!t||el.dataset.twDone)return;el.dataset.twDone='1';
@@ -418,6 +432,10 @@ onScroll();
 (function(){
   var cv=document.getElementById('bg-canvas');
   if(!cv)return;
+  /* Skip animation if user prefers reduced motion */
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    cv.style.background='#07020f';return;
+  }
   var cx=cv.getContext('2d');
   var W,H,raf;
   var t=0,lastFrame=0,tick=0;
@@ -491,53 +509,32 @@ onScroll();
 
   function paintRibbon(pts,grd,aura,edge){
     var pulse=0.85+Math.sin(t*1.3)*0.15;
-    /* Wide outer glow */
+    /* Single glow pass — shadowBlur 16 (was 5 passes: 70+28+18+10+20) */
     cx.save();
     cx.shadowColor='rgba(100,20,220,'+(aura*pulse)+')';
-    cx.shadowBlur=70;
+    cx.shadowBlur=16;
     fillShape(pts);
-    cx.fillStyle='rgba(60,8,150,'+(aura*pulse*0.20)+')';
-    cx.fill();
-    cx.restore();
-    /* Secondary glow — tighter, brighter */
-    cx.save();
-    cx.shadowColor='rgba(160,80,255,'+(aura*pulse*0.55)+')';
-    cx.shadowBlur=28;
-    fillShape(pts);
-    cx.fillStyle='rgba(0,0,0,0)';
+    cx.fillStyle='rgba(60,8,150,'+(aura*pulse*0.22)+')';
     cx.fill();
     cx.restore();
     /* Body */
     fillShape(pts);
     cx.fillStyle=grd;
     cx.fill();
-    /* Top edge — bright shimmer */
-    cx.save();
-    cx.shadowColor='rgba(220,190,255,'+(edge*(0.7+Math.sin(t*2.1)*0.3))+')';
-    cx.shadowBlur=18;
+    /* Top edge — no shadow */
     cx.strokeStyle='rgba(210,178,255,'+edge+')';
     cx.lineWidth=2.0;
     strokeLine(pts.top);
     cx.stroke();
-    /* Bottom edge — subtle */
-    cx.shadowColor='rgba(120,60,200,'+(edge*0.35)+')';
-    cx.shadowBlur=10;
-    cx.strokeStyle='rgba(140,80,220,'+(edge*0.28)+')';
-    cx.lineWidth=1.2;
-    strokeLine(pts.bot);
-    cx.stroke();
-    /* Inner highlight — 55% between top and spine */
+    /* Inner highlight — no shadow */
     var hl=[];
     for(var k=0;k<=N;k++){
       hl.push({x:pts.top[k].x*0.55+pts.spine[k].x*0.45,y:pts.top[k].y*0.55+pts.spine[k].y*0.45});
     }
-    cx.shadowColor='rgba(240,218,255,'+(edge*0.55)+')';
-    cx.shadowBlur=20;
-    cx.strokeStyle='rgba(228,205,255,'+(edge*0.38)+')';
-    cx.lineWidth=2.8;
+    cx.strokeStyle='rgba(228,205,255,'+(edge*0.36)+')';
+    cx.lineWidth=2.2;
     strokeLine(hl);
     cx.stroke();
-    cx.restore();
   }
 
   function draw(now){
