@@ -232,6 +232,12 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vsl-muted-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(123,60,255,.5);animation:vsl-ring-pulse 1.8s ease-in-out infinite}
 @keyframes vsl-ring-pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.22);opacity:.12}}
 @keyframes vsl-blink{0%,100%{opacity:1}50%{opacity:.45}}
+/* Volume wave signals animation */
+@keyframes vol-wave{0%,100%{opacity:0}18%,62%{opacity:1}}
+.vol-w{opacity:0}
+.vol-w1{animation:vol-wave 2.4s ease-in-out infinite 0s}
+.vol-w2{animation:vol-wave 2.4s ease-in-out infinite .48s}
+.vol-w3{animation:vol-wave 2.4s ease-in-out infinite .96s}
 .vsl-hint{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;color:rgba(167,139,250,.65);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;margin-top:4px}
 .vsl-hint svg{width:14px;height:14px;flex-shrink:0}
 /* Results section */
