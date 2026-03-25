@@ -362,7 +362,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .chat-fab:active{transform:scale(.95)}
 .chat-fab:hover{box-shadow:0 6px 28px rgba(0,0,0,.2),0 0 0 3px rgba(123,60,255,.1)}
 .chat-fab svg{width:18px;height:18px;fill:none;stroke:#7b3cff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.chat-fab-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:#7b3cff;color:#fff;font-size:.55rem;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #000;animation:badgePop 3s ease-in-out infinite}
+.chat-fab-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:#7b3cff;color:#fff;font-size:.55rem;font-weight:800;display:none;align-items:center;justify-content:center;border:2px solid #000;animation:badgePop 3s ease-in-out infinite}
+.chat-fab-badge.visible{display:flex}
 @keyframes badgePop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .chat-fab.hidden{display:none}
 .chat-window{position:fixed;bottom:12px;right:12px;z-index:201;width:calc(100% - 24px);height:calc(100dvh - 100px);max-width:100%;display:flex;flex-direction:column;background:#0d0d16;border-radius:16px;overflow:hidden;border:1px solid rgba(123,60,255,.2);transform:translateY(110%);opacity:0;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s;pointer-events:none}

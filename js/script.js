@@ -187,6 +187,7 @@ setTimeout(()=>addM('Vamos, quero saber mais','right'),9500);
 setTimeout(()=>addTyp(),11000);
 setTimeout(()=>addM('Perfeito! Toca no botão abaixo e vamos conversar agora.','left'),12500);
 setTimeout(()=>addCTA(),13500)}
+setTimeout(()=>{const b=cFab.querySelector('.chat-fab-badge');if(b)b.classList.add('visible')},5000);
 cFab.addEventListener('click',()=>{cWin.classList.add('open');cFab.classList.add('hidden');if(!cOpened){cOpened=true;runSeq()}});
 cCls.addEventListener('click',()=>{cWin.classList.remove('open');cFab.classList.remove('hidden')});
 document.addEventListener('click',e=>{if(cWin.classList.contains('open')&&!cWin.contains(e.target)&&!cFab.contains(e.target)){cWin.classList.remove('open');cFab.classList.remove('hidden')}});
