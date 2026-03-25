@@ -69,10 +69,10 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero .logo img{height:clamp(80px,20vw,130px)}
 /* Hero VSL headline */
 .hero-headline-vsl{font-family:'Inter',sans-serif;font-size:clamp(1.35rem,5.5vw,2.2rem);font-weight:500;line-height:1.35;letter-spacing:-.01em;color:rgba(255,255,255,.88);max-width:540px;margin:0 auto 28px;text-align:center}
-.hhv-alert{display:block;text-align:center;font-family:'Inter',sans-serif;font-weight:700;font-style:italic;font-size:clamp(3rem,10.5vw,5.5rem);letter-spacing:-.02em;margin-bottom:14px;background:linear-gradient(180deg,#9333ea 0%,#7c3aed 40%,#8b5cf6 70%,#a78bfa 90%,#c4b5fd 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;line-height:1}
+.hhv-alert{display:block;text-align:center;font-family:'Inter',sans-serif;font-weight:800;font-style:italic;font-size:clamp(3rem,10.5vw,5.5rem);letter-spacing:-.02em;margin-bottom:14px;background:linear-gradient(180deg,#6d28d9 0%,#7c3aed 25%,#7c3aed 55%,#8b5cf6 78%,#a78bfa 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;line-height:1}
 .hhv-alert::after{display:none}
 .hero-headline-vsl em{font-style:normal;color:#a78bfa;-webkit-text-fill-color:#a78bfa}
-.hhv-realmente{background:linear-gradient(180deg,#9333ea 0%,#7c3aed 40%,#8b5cf6 70%,#a78bfa 90%,#c4b5fd 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;font-weight:800;font-style:normal;text-transform:uppercase;letter-spacing:.02em}
+.hhv-realmente{background:linear-gradient(180deg,#6d28d9 0%,#7c3aed 25%,#7c3aed 55%,#8b5cf6 78%,#a78bfa 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;font-weight:800;font-style:normal;text-transform:uppercase;letter-spacing:.02em}
 .hero-vsl-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0 auto 20px}
 /* Search demo section */
 .search-demo-section{position:relative;padding:60px 20px 70px;text-align:center}

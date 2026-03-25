@@ -333,49 +333,60 @@ window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 })();
 
-/* Animated aurora nebula background */
+/* Animated aurora light beams background */
 (function(){
 var cv=document.getElementById('bg-canvas');
 if(!cv||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 var cx=cv.getContext('2d');
-var rTimer,rafId,time=0;
-var dpr=Math.min(window.devicePixelRatio||1,2);
-function w(){return window.innerWidth}
-function h(){return window.innerHeight}
+var rTimer,t=0;
+function W(){return cv.width}
+function H(){return cv.height}
 function rsz(){
-dpr=Math.min(window.devicePixelRatio||1,2);
-var s=window.innerWidth<768?.7:1;
-cv.width=Math.round(w()*dpr*s);
-cv.height=Math.round(h()*dpr*s);
+var dpr=Math.min(window.devicePixelRatio||1,2);
+var s=window.innerWidth<768?.6:1;
+cv.width=Math.round(window.innerWidth*dpr*s);
+cv.height=Math.round(window.innerHeight*dpr*s);
 cv.style.width='100vw';cv.style.height='100vh';
-cx.scale(dpr*s,dpr*s);
 }
 window.addEventListener('resize',function(){clearTimeout(rTimer);rTimer=setTimeout(rsz,200)},{passive:true});
 rsz();
-var blobs=[
-{bx:.3,by:.3,r:400,c:'124,58,237', al:.18,sX:.15,sY:.12,pX:0,  pY:.5},
-{bx:.7,by:.5,r:500,c:'37,99,235',  al:.14,sX:.10,sY:.18,pX:1.2,pY:.3},
-{bx:.5,by:.7,r:350,c:'76,29,149',  al:.20,sX:.20,sY:.10,pX:2.4,pY:1.8},
-{bx:.2,by:.6,r:450,c:'109,40,217', al:.14,sX:.12,sY:.15,pX:3.6,pY:2.1},
-{bx:.8,by:.3,r:300,c:'6,182,212',  al:.09,sX:.18,sY:.14,pX:4.8,pY:3.0},
+/* Each beam: center y fraction, wave amplitude, freq, speed, phase, half-thickness px, color rgb, alpha */
+var beams=[
+{y:.52,amp:.05,freq:.0018,sp:.00012,ph:0,  th:160,c:[124,58,237], al:.40},
+{y:.60,amp:.04,freq:.0025,sp:.00008,ph:1.8,th:100,c:[109,40,217], al:.32},
+{y:.67,amp:.06,freq:.0020,sp:.00016,ph:3.5,th:140,c:[91,33,182],  al:.28},
+{y:.47,amp:.03,freq:.0030,sp:.00007,ph:5.2,th:70, c:[139,92,246], al:.20},
+{y:.73,amp:.05,freq:.0015,sp:.00014,ph:2.3,th:120,c:[76,29,149],  al:.24},
+{y:.56,amp:.02,freq:.0040,sp:.00020,ph:4.0,th:50, c:[167,139,250],al:.15},
 ];
+function drawBeam(b){
+var Wv=W(),Hv=H(),step=4,pts=[],i,x;
+for(x=0;x<=Wv;x+=step){
+pts.push([x, b.y*Hv+Math.sin(x*b.freq+t*b.sp+b.ph)*b.amp*Hv]);
+}
+var midY=b.y*Hv;
+var grad=cx.createLinearGradient(0,midY-b.th,0,midY+b.th);
+var c=b.c,a=b.al;
+grad.addColorStop(0,'rgba('+c[0]+','+c[1]+','+c[2]+',0)');
+grad.addColorStop(.28,'rgba('+c[0]+','+c[1]+','+c[2]+','+(a*.55)+')');
+grad.addColorStop(.5,'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')');
+grad.addColorStop(.72,'rgba('+c[0]+','+c[1]+','+c[2]+','+(a*.55)+')');
+grad.addColorStop(1,'rgba('+c[0]+','+c[1]+','+c[2]+',0)');
+cx.beginPath();
+cx.moveTo(pts[0][0],pts[0][1]-b.th);
+for(i=1;i<pts.length;i++)cx.lineTo(pts[i][0],pts[i][1]-b.th);
+for(i=pts.length-1;i>=0;i--)cx.lineTo(pts[i][0],pts[i][1]+b.th);
+cx.closePath();
+cx.fillStyle=grad;
+cx.fill();
+}
 function draw(){
-time+=.003;
-cx.clearRect(0,0,w(),h());
-cx.fillStyle='#000';cx.fillRect(0,0,w(),h());
+t++;
+cx.fillStyle='#000';cx.fillRect(0,0,W(),H());
 cx.globalCompositeOperation='lighter';
-blobs.forEach(function(b){
-var bx=b.bx*w()+Math.sin(time*b.sX+b.pX)*w()*.2;
-var by=b.by*h()+Math.cos(time*b.sY+b.pY)*h()*.2;
-var g=cx.createRadialGradient(bx,by,0,bx,by,b.r);
-g.addColorStop(0,'rgba('+b.c+','+b.al+')');
-g.addColorStop(.5,'rgba('+b.c+','+(b.al*.5)+')');
-g.addColorStop(1,'rgba('+b.c+',0)');
-cx.fillStyle=g;
-cx.fillRect(0,0,w(),h());
-});
+beams.forEach(drawBeam);
 cx.globalCompositeOperation='source-over';
-rafId=requestAnimationFrame(draw);
+requestAnimationFrame(draw);
 }
 draw();
 })();
