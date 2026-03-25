@@ -64,7 +64,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .search-demo-inner{position:relative;z-index:3;max-width:600px;margin:0 auto}
 /* Muted badge text white */
 .vsl-muted-top{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:.01em;text-align:center;line-height:1.2}
-.vsl-muted-bottom{font-family:'Inter',sans-serif;font-size:1rem;font-weight:800;color:#c084fc;letter-spacing:.04em;text-transform:uppercase;text-align:center;animation:vsl-blink 2s ease-in-out infinite}
+.vsl-muted-bottom{font-family:'Inter',sans-serif;font-size:1rem;font-weight:800;color:#fff;letter-spacing:.04em;text-transform:uppercase;text-align:center}
 .hero-sub{font-family:'Syne','Inter',sans-serif;font-size:clamp(.72rem,2.4vw,.88rem);font-weight:700;color:rgba(255,255,255,.72);letter-spacing:.12em;text-transform:uppercase;margin-bottom:clamp(14px,3.5vh,28px)}
 .hero-sub strong{color:#fff;font-weight:700}
 .hero-headline{font-size:clamp(3.2rem,12vw,5.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:800px;margin:0 auto clamp(64px,14vh,140px)}
@@ -218,6 +218,14 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vsl-phone-bar span:nth-child(2){width:40px;height:4px;border-radius:4px}
 .vsl-video-area{position:relative;aspect-ratio:9/16;background:#060310}
 .vsl-video-area iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+/* VSL Resume overlay */
+.vsl-resume-overlay{position:absolute;inset:0;z-index:20;background:#6d28d9;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 36px;animation:vsl-badge-in .35s cubic-bezier(.16,1,.3,1) both}
+.vsl-resume-overlay[hidden]{display:none}
+.vsl-resume-body{padding:0 22px;display:flex;flex-direction:column;gap:18px}
+.vsl-resume-title{color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;margin:0}
+.vsl-resume-btn{display:flex;align-items:center;gap:14px;background:none;border:none;cursor:pointer;padding:0;color:#fff;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;text-align:left}
+.vsl-resume-icon{width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vsl-resume-icon svg{width:20px;height:20px}
 .vsl-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(ellipse at center,rgba(30,10,60,.6) 0%,rgba(6,3,16,.85) 100%);cursor:pointer;transition:opacity .3s}
 .vsl-overlay.hidden{opacity:0;pointer-events:none}
 .vsl-play-btn{background:none;border:none;cursor:pointer;padding:0;transition:transform .2s}
@@ -225,10 +233,10 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vsl-play-btn svg{width:72px;height:72px;filter:drop-shadow(0 0 20px rgba(123,60,255,.5))}
 .vsl-play-label{font-size:.72rem;color:rgba(255,255,255,.5);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
 /* VSL muted badge */
-.vsl-muted-badge{display:flex;flex-direction:column;align-items:center;gap:14px;background:#160430;border:2px solid rgba(123,60,255,.65);border-radius:14px;padding:22px 36px;box-shadow:0 0 32px rgba(100,20,220,.35),inset 0 0 24px rgba(80,10,160,.20);animation:vsl-badge-in .5s cubic-bezier(.16,1,.3,1) both;min-width:200px}
+.vsl-muted-badge{display:flex;flex-direction:column;align-items:center;gap:14px;background:#160430;border-radius:14px;padding:22px 36px;box-shadow:0 10px 40px rgba(0,0,0,.65);animation:vsl-badge-in .5s cubic-bezier(.16,1,.3,1) both;min-width:200px}
 @keyframes vsl-badge-in{from{opacity:0;transform:scale(.88) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.vsl-muted-icon{position:relative;display:flex;align-items:center;justify-content:center;width:72px;height:72px}
-.vsl-muted-icon svg{width:54px;height:54px;position:relative;z-index:2;filter:drop-shadow(0 0 12px rgba(192,132,252,.55))}
+.vsl-muted-icon{position:relative;display:flex;align-items:center;justify-content:center;width:88px;height:88px}
+.vsl-muted-icon svg{width:68px;height:68px;position:relative;z-index:2;filter:drop-shadow(0 0 10px rgba(192,132,252,.45))}
 .vsl-muted-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(123,60,255,.5);animation:vsl-ring-pulse 1.8s ease-in-out infinite}
 @keyframes vsl-ring-pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.22);opacity:.12}}
 @keyframes vsl-blink{0%,100%{opacity:1}50%{opacity:.45}}

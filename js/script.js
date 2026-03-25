@@ -639,18 +639,78 @@ onScroll();
 })();
 /* ─────────────────────────────────────────────────────── */
 
-// VSL player overlay
+// VSL player + resume logic
 (function(){
-var overlay=document.getElementById('vslOverlay');
+  var overlay=document.getElementById('vslOverlay');
+  var resumeOverlay=document.getElementById('vslResumeOverlay');
+  var btnContinue=document.getElementById('vslBtnContinue');
+  var btnRestart=document.getElementById('vslBtnRestart');
+  var iframe=document.getElementById('vslIframe');
+  // Set your video embed URL here when ready (append &autoplay=1&t=SEC for resume)
+  var VIDEO_URL='';
+  var STORAGE_KEY='vsl_progress_t';
+  var MIN_RESUME_SEC=8; /* minimum seconds watched before showing resume prompt */
 
-var iframe=document.getElementById('vslIframe');
-// Substitua a URL abaixo pelo seu embed de vídeo (YouTube/Vimeo/etc.)
-var VIDEO_URL='';
-if(!overlay)return;
-overlay.addEventListener('click',function(){
-if(VIDEO_URL){iframe.src=VIDEO_URL+'&autoplay=1';}
-overlay.classList.add('hidden');
-});
+  /* Mark video as started (called when overlay is clicked) */
+  function markStarted(sec){
+    try{localStorage.setItem(STORAGE_KEY,String(Math.round(sec||0)));}catch(e){}
+  }
+  function getSavedTime(){
+    try{var v=parseInt(localStorage.getItem(STORAGE_KEY)||'0',10);return isNaN(v)?0:v;}catch(e){return 0;}
+  }
+  function clearSaved(){
+    try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+  }
+
+  /* Show resume overlay if user has prior progress */
+  function checkResume(){
+    var t=getSavedTime();
+    if(t>=MIN_RESUME_SEC&&resumeOverlay){
+      resumeOverlay.removeAttribute('hidden');
+      return true;
+    }
+    return false;
+  }
+
+  function launchVideo(sec){
+    if(!overlay)return;
+    if(VIDEO_URL){
+      var url=VIDEO_URL+(sec>0?'&t='+sec:'')+'&autoplay=1';
+      iframe.src=url;
+    }
+    overlay.classList.add('hidden');
+    if(resumeOverlay)resumeOverlay.setAttribute('hidden','');
+    markStarted(sec);
+  }
+
+  /* Resume overlay buttons */
+  if(btnContinue)btnContinue.addEventListener('click',function(){launchVideo(getSavedTime());});
+  if(btnRestart)btnRestart.addEventListener('click',function(){clearSaved();launchVideo(0);});
+
+  /* Muted overlay click → first play */
+  if(overlay)overlay.addEventListener('click',function(){
+    launchVideo(0);
+    markStarted(0);
+  });
+
+  /* On load: check for saved progress */
+  if(!checkResume()){
+    /* no prior progress — normal state, muted badge visible */
+  }
+
+  /* Visibility change: if user hid tab while video was "active", re-show resume prompt */
+  var videoActive=false;
+  if(overlay){
+    overlay.addEventListener('click',function(){videoActive=true;},true);
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden&&videoActive){
+      var t=getSavedTime();
+      if(t>=MIN_RESUME_SEC&&resumeOverlay){
+        resumeOverlay.removeAttribute('hidden');
+      }
+    }
+  });
 })();
 
 // CSS Animated 3D Wave is now handling the background natively
