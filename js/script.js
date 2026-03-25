@@ -334,7 +334,7 @@ window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 })();
 
-/* ── Aurora Vitrine Background — 2 ribbons + stars ─────── */
+/* ── Aurora Vitrine Background — 3 ribbons + stars ─────── */
 (function(){
   var cv=document.getElementById('bg-canvas');
   if(!cv)return;
@@ -342,13 +342,13 @@ onScroll();
   var W,H,raf;
   var t=0,lastFrame=0,tick=0;
   var stars=[];
-  var gA=null,gB=null;
+  var gA=null,gB=null,gC=null;
   var N=55;
 
   function resize(){
     W=cv.width=window.innerWidth;
     H=cv.height=window.innerHeight;
-    gA=gB=null;
+    gA=gB=gC=null;
     buildStars();
   }
 
@@ -378,7 +378,7 @@ onScroll();
       var tn=bTan(p0,c1,c2,p3,s);
       var len=Math.sqrt(tn.x*tn.x+tn.y*tn.y)||1;
       var nx=-tn.y/len,ny=tn.x/len;
-      var w=hw*(Math.sin(s*Math.PI)*0.22+0.78);
+      var w=hw*(Math.sin(s*Math.PI)*0.28+0.72);
       top.push({x:pt.x+nx*w,y:pt.y+ny*w});
       bot.push({x:pt.x-nx*w,y:pt.y-ny*w});
       spine.push(pt);
@@ -407,35 +407,35 @@ onScroll();
     return g;
   }
 
-  function paintRibbon(pts,hw,grd,aura,edge){
+  function paintRibbon(pts,grd,aura,edge){
     /* Aura */
     cx.save();
     cx.shadowColor='rgba(88,12,195,'+aura+')';
-    cx.shadowBlur=40;
+    cx.shadowBlur=48;
     fillShape(pts);
-    cx.fillStyle='rgba(58,6,135,'+(aura*0.18)+')';
+    cx.fillStyle='rgba(58,6,135,'+(aura*0.15)+')';
     cx.fill();
     cx.restore();
     /* Body */
     fillShape(pts);
     cx.fillStyle=grd;
     cx.fill();
-    /* Top edge */
+    /* Top edge highlight */
     cx.save();
-    cx.shadowColor='rgba(205,175,255,'+(edge*0.55)+')';
-    cx.shadowBlur=10;
-    cx.strokeStyle='rgba(192,160,255,'+edge+')';
+    cx.shadowColor='rgba(210,180,255,'+(edge*0.6)+')';
+    cx.shadowBlur=12;
+    cx.strokeStyle='rgba(196,164,255,'+edge+')';
     cx.lineWidth=1.8;
     strokeLine(pts.top);
     cx.stroke();
-    /* Inner highlight — 60% to spine */
+    /* Inner highlight at 60% toward spine */
     var hl=[];
     for(var k=0;k<=N;k++){
       hl.push({x:pts.top[k].x*0.6+pts.spine[k].x*0.4,y:pts.top[k].y*0.6+pts.spine[k].y*0.4});
     }
-    cx.shadowColor='rgba(225,205,255,'+(edge*0.45)+')';
-    cx.shadowBlur=15;
-    cx.strokeStyle='rgba(215,195,255,'+(edge*0.32)+')';
+    cx.shadowColor='rgba(230,210,255,'+(edge*0.50)+')';
+    cx.shadowBlur=16;
+    cx.strokeStyle='rgba(218,198,255,'+(edge*0.34)+')';
     cx.lineWidth=2.5;
     strokeLine(hl);
     cx.stroke();
@@ -462,47 +462,69 @@ onScroll();
       cx.fill();
     }
 
-    /* ── Ribbon A — main: bottom-left → top-right (S-curve) ── */
-    var f1=Math.sin(t*0.32)*50,f2=Math.cos(t*0.25)*38,br=Math.sin(t*0.18)*22;
+    /* ── Ribbon A — main: bottom-left → top-right ── */
+    var f1=Math.sin(t*0.38)*68+Math.cos(t*0.19)*24;
+    var f2=Math.cos(t*0.29)*52+Math.sin(t*0.15)*18;
+    var br=Math.sin(t*0.22)*30;
     var aP0={x:W*-0.05,y:H*0.88+br};
-    var aC1={x:W*0.26+f1,y:H*0.30+f2};
-    var aC2={x:W*0.72-f2,y:H*0.70-f1};
-    var aP3={x:W*1.05,y:H*0.10+br*0.4};
-    var hwA=Math.min(W,H)*0.10;
+    var aC1={x:W*0.24+f1,y:H*0.28+f2};
+    var aC2={x:W*0.74-f2,y:H*0.72-f1};
+    var aP3={x:W*1.05,y:H*0.08+br*0.4};
+    var hwA=Math.min(W,H)*0.105;
     var pA=buildPts(aP0,aC1,aC2,aP3,hwA);
-    if(!gA||tick%120===0){
+    if(!gA||tick%100===0){
       gA=makeGrd(pA,[
-        [0,   'rgba(188,138,252,0.46)'],
-        [0.1, 'rgba(122,42,228,0.50)'],
-        [0.3, 'rgba(68,8,172,0.56)'],
-        [0.5, 'rgba(36,2,116,0.60)'],
-        [0.7, 'rgba(60,12,166,0.56)'],
-        [0.9, 'rgba(88,28,188,0.50)'],
-        [1,   'rgba(152,92,248,0.36)']
+        [0,   'rgba(192,142,255,0.48)'],
+        [0.1, 'rgba(126,46,232,0.52)'],
+        [0.3, 'rgba(72,10,178,0.58)'],
+        [0.5, 'rgba(38,4,120,0.62)'],
+        [0.7, 'rgba(62,14,170,0.58)'],
+        [0.9, 'rgba(92,32,192,0.52)'],
+        [1,   'rgba(158,96,252,0.38)']
       ]);
     }
-    paintRibbon(pA,hwA,gA,0.50,0.25);
+    paintRibbon(pA,gA,0.52,0.28);
 
-    /* ── Ribbon B — crossing: top-left → bottom-right, thinner ── */
-    var g1=Math.cos(t*0.28)*42,g2=Math.sin(t*0.22)*32;
-    var bP0={x:W*-0.08,y:H*0.22+g1};
-    var bC1={x:W*0.38+g2,y:H*0.60+g1*0.5};
-    var bC2={x:W*0.62-g1*0.4,y:H*0.40-g2*0.3};
-    var bP3={x:W*1.06,y:H*0.76+g2*0.3};
-    var hwB=Math.min(W,H)*0.048;
+    /* ── Ribbon B — crossing: top-left → bottom-right ── */
+    var g1=Math.cos(t*0.33)*58+Math.sin(t*0.17)*20;
+    var g2=Math.sin(t*0.26)*44+Math.cos(t*0.12)*16;
+    var bP0={x:W*-0.08,y:H*0.20+g1};
+    var bC1={x:W*0.36+g2,y:H*0.62+g1*0.5};
+    var bC2={x:W*0.64-g1*0.4,y:H*0.38-g2*0.3};
+    var bP3={x:W*1.06,y:H*0.78+g2*0.3};
+    var hwB=Math.min(W,H)*0.052;
     var pB=buildPts(bP0,bC1,bC2,bP3,hwB);
-    if(!gB||tick%120===60){
+    if(!gB||tick%100===50){
       gB=makeGrd(pB,[
-        [0,   'rgba(152,112,232,0.24)'],
-        [0.3, 'rgba(76,16,172,0.30)'],
-        [0.5, 'rgba(46,4,122,0.34)'],
-        [0.7, 'rgba(70,14,162,0.30)'],
-        [1,   'rgba(132,72,222,0.18)']
+        [0,   'rgba(156,116,238,0.26)'],
+        [0.3, 'rgba(78,18,178,0.32)'],
+        [0.5, 'rgba(48,6,126,0.36)'],
+        [0.7, 'rgba(72,16,168,0.32)'],
+        [1,   'rgba(136,76,228,0.20)']
       ]);
     }
-    paintRibbon(pB,hwB,gB,0.22,0.11);
+    paintRibbon(pB,gB,0.24,0.13);
 
-    t+=0.008;
+    /* ── Ribbon C — thin fast diagonal, bottom-right → top-left ── */
+    var h1=Math.sin(t*0.44)*46+Math.cos(t*0.21)*16;
+    var h2=Math.cos(t*0.37)*36+Math.sin(t*0.16)*12;
+    var cP0={x:W*1.08,y:H*0.82+h1};
+    var cC1={x:W*0.68-h2,y:H*0.25+h1*0.4};
+    var cC2={x:W*0.32+h1*0.3,y:H*0.72-h2*0.4};
+    var cP3={x:W*-0.06,y:H*0.16+h2*0.3};
+    var hwC=Math.min(W,H)*0.030;
+    var pC=buildPts(cP0,cC1,cC2,cP3,hwC);
+    if(!gC||tick%100===25){
+      gC=makeGrd(pC,[
+        [0,   'rgba(200,160,255,0.18)'],
+        [0.4, 'rgba(100,30,200,0.22)'],
+        [0.6, 'rgba(80,16,170,0.24)'],
+        [1,   'rgba(160,110,255,0.14)']
+      ]);
+    }
+    paintRibbon(pC,gC,0.14,0.08);
+
+    t+=0.010;
   }
 
   document.addEventListener('visibilitychange',function(){

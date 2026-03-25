@@ -297,7 +297,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .mb-guarantee-title strong{color:#10B981;font-weight:800;letter-spacing:.03em;white-space:nowrap}
 .mb-guarantee-sub{font-size:.68rem;color:rgba(255,255,255,.62);line-height:1.5}
 /* Sticky scroll testimonials — WhatsApp iPhone style */
-.testimonials{position:relative;text-align:center;height:350vh;content-visibility:auto;contain-intrinsic-size:auto 350vh;width:100%}
+.testimonials{position:relative;text-align:center;height:350vh;width:100%}
 .testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,#06020f,transparent);pointer-events:none;z-index:3}
 .testimonials::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#06020f);pointer-events:none;z-index:3}
 .testimonials-header{padding:0 20px 40px;position:sticky;top:0;z-index:2;padding-top:max(64px,12vh);background:linear-gradient(180deg,#06020f 0%,#06020f 60%,transparent 100%)}
