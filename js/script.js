@@ -432,10 +432,6 @@ onScroll();
 (function(){
   var cv=document.getElementById('bg-canvas');
   if(!cv)return;
-  /* Skip animation if user prefers reduced motion */
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-    cv.style.background='#07020f';return;
-  }
   var cx=cv.getContext('2d');
   var W,H,raf;
   var t=0,lastFrame=0,tick=0;
