@@ -475,7 +475,7 @@ onScroll();
       /* tapered ends + breathe + wave undulation along ribbon */
       var taper=Math.sin(s*Math.PI);
       var w=hw*(taper*0.42+0.58)*(0.88+Math.sin(t*0.7+s*Math.PI*2)*0.12);
-      var wave=Math.sin(s*Math.PI*3.5+t*2.4)*hw*0.28;
+      var wave=Math.sin(s*Math.PI*5.5+t*5.2)*hw*0.42;
       top.push({x:pt.x+nx*(w+wave),y:pt.y+ny*(w+wave)});
       bot.push({x:pt.x-nx*(w-wave*0.5),y:pt.y-ny*(w-wave*0.5)});
       spine.push(pt);
@@ -616,7 +616,7 @@ onScroll();
     }
     paintRibbon(pC,gC,0.14,0.10);
 
-    t+=0.016;
+    t+=0.022;
   }
 
   document.addEventListener('visibilitychange',function(){

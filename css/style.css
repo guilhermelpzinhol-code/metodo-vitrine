@@ -43,7 +43,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 [data-anim-delay="1"]{transition-delay:.3s}[data-anim-delay="2"]{transition-delay:.6s}[data-anim-delay="3"]{transition-delay:.9s}[data-anim-delay="4"]{transition-delay:1.2s}
 .tw-cursor::after{content:'|';color:#9b5cff;font-weight:300;animation:twBlink .6s step-end infinite;margin-left:1px}
 @keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden;background:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.60) 75%,transparent 100%)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden;background:linear-gradient(180deg,#000 0%,#000 28%,rgba(0,0,0,.65) 52%,rgba(0,0,0,.20) 72%,transparent 88%)}
 .hero::before{display:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent 0%,#06020f 70%);pointer-events:none;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:6px;padding:6px 14px;font-size:.6rem;font-weight:600;color:rgba(255,255,255,.45);margin:0 auto 8px;background:rgba(255,255,255,.03);letter-spacing:.08em;text-transform:uppercase;position:relative;overflow:hidden}
