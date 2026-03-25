@@ -69,13 +69,11 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .hero .logo{margin:0 auto 0;position:relative;overflow:visible}
 .hero .logo img{height:clamp(80px,20vw,130px)}
 /* Hero VSL headline */
-.hero-headline-vsl{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.5rem,6vw,2.6rem);font-weight:800;line-height:1.2;letter-spacing:-.01em;color:#fff;max-width:580px;margin:0 auto 28px;text-align:center}
-.hhv-alert{display:block;text-align:center;font-weight:900;font-style:italic;font-size:clamp(2.8rem,10vw,5rem);letter-spacing:.02em;margin-bottom:10px;color:#7c3aed;-webkit-text-fill-color:#7c3aed;text-shadow:0 0 20px rgba(124,58,237,.45),0 0 50px rgba(124,58,237,.2),0 0 80px rgba(124,58,237,.1)}
+.hero-headline-vsl{font-family:'Inter',sans-serif;font-size:clamp(1.35rem,5.5vw,2.2rem);font-weight:500;line-height:1.35;letter-spacing:-.01em;color:rgba(255,255,255,.88);max-width:540px;margin:0 auto 28px;text-align:center}
+.hhv-alert{display:block;text-align:center;font-family:'Inter',sans-serif;font-weight:900;font-style:italic;font-size:clamp(3rem,10.5vw,5.5rem);letter-spacing:-.02em;margin-bottom:14px;color:#7c3aed;-webkit-text-fill-color:#7c3aed;text-shadow:0 0 24px rgba(124,58,237,.5),0 0 60px rgba(124,58,237,.22),0 0 100px rgba(124,58,237,.1);line-height:1}
 .hhv-alert::after{display:none}
-@keyframes hhv-sweep{0%,100%{background-position:100% center}50%{background-position:0% center}}
-@keyframes hhv-beam{0%{background-position:150% center}60%{background-position:-50% center}100%{background-position:-50% center}}
 .hero-headline-vsl em{font-style:normal;color:#a78bfa;-webkit-text-fill-color:#a78bfa}
-.hhv-realmente{color:#7c3aed;-webkit-text-fill-color:#7c3aed;font-weight:900;font-style:normal;text-transform:uppercase}
+.hhv-realmente{color:#7c3aed;-webkit-text-fill-color:#7c3aed;font-weight:800;font-style:normal;text-transform:uppercase;letter-spacing:.02em}
 .hero-vsl-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0 auto 20px}
 /* Search demo section */
 .search-demo-section{position:relative;padding:60px 20px 70px;text-align:center}
@@ -574,5 +572,5 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .gb-sub{font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.75}
 
 /* === Fundo Animado — Mesh de Ondas SVG === */
-#bg-canvas{position:fixed;inset:0;z-index:10;pointer-events:none;width:100%;height:100%}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;width:100%;height:100%;opacity:.65}
 @media(prefers-reduced-motion:reduce){#bg-canvas{display:none}}
