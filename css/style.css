@@ -318,6 +318,9 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 }
 .testimonial-card.tc-active{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
 .testimonial-card.tc-done{opacity:0;transform:translate(-50%, calc(-50% - 56px)) scale(.96);transition-duration:.35s}
+/* Exit-blur veil — appears at bottom of viewport during testimonials → next section transition */
+#tcExitBlur{position:fixed;bottom:0;left:0;right:0;height:55vh;backdrop-filter:blur(26px) brightness(.82);-webkit-backdrop-filter:blur(26px) brightness(.82);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 30%,black 58%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 30%,black 58%);background:linear-gradient(to bottom,transparent 30%,rgba(6,2,15,.18) 100%);opacity:0;transition:opacity .48s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:9999}
+#tcExitBlur.tc-eb-on{opacity:1}
 /* WA iPhone header */
 .wa-tc-header{display:flex;align-items:center;gap:10px;padding:14px 16px;background:#1f2c34}
 .wa-tc-back{color:#fff;display:flex;align-items:center;flex-shrink:0}

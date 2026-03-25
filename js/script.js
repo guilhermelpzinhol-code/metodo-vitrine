@@ -213,11 +213,15 @@ barObs.observe(rhBar.parentElement);
     window.removeEventListener('touchmove',onTM);
     window.removeEventListener('touchend',onTE);
     window.removeEventListener('wheel',onW);
-    var dest=dir==='down'
-      ?lockY+sec.offsetHeight+50
-      :Math.max(0,lockY-window.innerHeight);
-    /* use instant then smooth to avoid re-trigger edge case */
-    window.scrollTo({top:dest,behavior:'smooth'});
+    if(dir==='down'){
+      /* Show bottom-blur veil for elegant UX transition */
+      var veil=document.getElementById('tcExitBlur');
+      if(veil)veil.classList.add('tc-eb-on');
+      window.scrollTo({top:lockY+sec.offsetHeight+50,behavior:'smooth'});
+      setTimeout(function(){if(veil)veil.classList.remove('tc-eb-on');},980);
+    } else {
+      window.scrollTo({top:Math.max(0,lockY-window.innerHeight),behavior:'smooth'});
+    }
   }
 
   /* Touch handlers */
