@@ -239,10 +239,14 @@ barObs.observe(rhBar.parentElement);
 
   /* Scroll watcher */
   var snapping=false;
+  var lastSY=window.pageYOffset;
   window.addEventListener('scroll',function(){
+    var currSY=window.pageYOffset;
+    var goingDown=currSY>lastSY;
+    lastSY=currSY;
     if(locked){
       /* Snap back if browser managed to move the page */
-      if(!snapping&&Math.abs(window.pageYOffset-lockY)>2){
+      if(!snapping&&Math.abs(currSY-lockY)>2){
         snapping=true;
         window.scrollTo(0,lockY);
         setTimeout(function(){snapping=false;},200);
@@ -250,6 +254,7 @@ barObs.observe(rhBar.parentElement);
       return;
     }
     if(cooldown)return;
+    if(!goingDown)return; /* never re-lock when scrolling UP (prevents bouncing from last section) */
     var top=sec.getBoundingClientRect().top;
     if(top<=2&&top>-window.innerHeight){doLock();}
   },{passive:true});
