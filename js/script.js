@@ -333,63 +333,187 @@ window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 })();
 
-/* Animated aurora light beams background */
+/* ── Aurora Vitrine Background — 2 ribbons + stars ─────── */
 (function(){
-var cv=document.getElementById('bg-canvas');
-if(!cv||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-var cx=cv.getContext('2d');
-var rTimer,t=0;
-function W(){return cv.width}
-function H(){return cv.height}
-function rsz(){
-var dpr=Math.min(window.devicePixelRatio||1,2);
-var s=window.innerWidth<768?.6:1;
-cv.width=Math.round(window.innerWidth*dpr*s);
-cv.height=Math.round(window.innerHeight*dpr*s);
-cv.style.width='100vw';cv.style.height='100vh';
-}
-window.addEventListener('resize',function(){clearTimeout(rTimer);rTimer=setTimeout(rsz,200)},{passive:true});
-rsz();
-/* Each beam: center y fraction, wave amplitude, freq, speed, phase, half-thickness px, color rgb, alpha */
-var beams=[
-{y:.52,amp:.05,freq:.0018,sp:.00012,ph:0,  th:160,c:[124,58,237], al:.40},
-{y:.60,amp:.04,freq:.0025,sp:.00008,ph:1.8,th:100,c:[109,40,217], al:.32},
-{y:.67,amp:.06,freq:.0020,sp:.00016,ph:3.5,th:140,c:[91,33,182],  al:.28},
-{y:.47,amp:.03,freq:.0030,sp:.00007,ph:5.2,th:70, c:[139,92,246], al:.20},
-{y:.73,amp:.05,freq:.0015,sp:.00014,ph:2.3,th:120,c:[76,29,149],  al:.24},
-{y:.56,amp:.02,freq:.0040,sp:.00020,ph:4.0,th:50, c:[167,139,250],al:.15},
-];
-function drawBeam(b){
-var Wv=W(),Hv=H(),step=4,pts=[],i,x;
-for(x=0;x<=Wv;x+=step){
-pts.push([x, b.y*Hv+Math.sin(x*b.freq+t*b.sp+b.ph)*b.amp*Hv]);
-}
-var midY=b.y*Hv;
-var grad=cx.createLinearGradient(0,midY-b.th,0,midY+b.th);
-var c=b.c,a=b.al;
-grad.addColorStop(0,'rgba('+c[0]+','+c[1]+','+c[2]+',0)');
-grad.addColorStop(.28,'rgba('+c[0]+','+c[1]+','+c[2]+','+(a*.55)+')');
-grad.addColorStop(.5,'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')');
-grad.addColorStop(.72,'rgba('+c[0]+','+c[1]+','+c[2]+','+(a*.55)+')');
-grad.addColorStop(1,'rgba('+c[0]+','+c[1]+','+c[2]+',0)');
-cx.beginPath();
-cx.moveTo(pts[0][0],pts[0][1]-b.th);
-for(i=1;i<pts.length;i++)cx.lineTo(pts[i][0],pts[i][1]-b.th);
-for(i=pts.length-1;i>=0;i--)cx.lineTo(pts[i][0],pts[i][1]+b.th);
-cx.closePath();
-cx.fillStyle=grad;
-cx.fill();
-}
-function draw(){
-t++;
-cx.fillStyle='#000';cx.fillRect(0,0,W(),H());
-cx.globalCompositeOperation='lighter';
-beams.forEach(drawBeam);
-cx.globalCompositeOperation='source-over';
-requestAnimationFrame(draw);
-}
-draw();
+  var cv=document.getElementById('bg-canvas');
+  if(!cv)return;
+  var cx=cv.getContext('2d');
+  var W,H,raf;
+  var t=0,lastFrame=0,tick=0;
+  var stars=[];
+  var gA=null,gB=null;
+  var N=55;
+
+  function resize(){
+    W=cv.width=window.innerWidth;
+    H=cv.height=window.innerHeight;
+    gA=gB=null;
+    buildStars();
+  }
+
+  function buildStars(){
+    stars=[];
+    var n=Math.min(50,Math.floor(W*H/13000));
+    for(var i=0;i<n;i++){
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*0.85+0.2,p:Math.random()*Math.PI*2,s:Math.random()*0.014+0.007});
+    }
+  }
+
+  function bPt(p0,c1,c2,p3,s){
+    var m=1-s;
+    return{x:m*m*m*p0.x+3*m*m*s*c1.x+3*m*s*s*c2.x+s*s*s*p3.x,y:m*m*m*p0.y+3*m*m*s*c1.y+3*m*s*s*c2.y+s*s*s*p3.y};
+  }
+
+  function bTan(p0,c1,c2,p3,s){
+    var m=1-s;
+    return{x:3*(m*m*(c1.x-p0.x)+2*m*s*(c2.x-c1.x)+s*s*(p3.x-c2.x)),y:3*(m*m*(c1.y-p0.y)+2*m*s*(c2.y-c1.y)+s*s*(p3.y-c2.y))};
+  }
+
+  function buildPts(p0,c1,c2,p3,hw){
+    var top=[],bot=[],spine=[];
+    for(var i=0;i<=N;i++){
+      var s=i/N;
+      var pt=bPt(p0,c1,c2,p3,s);
+      var tn=bTan(p0,c1,c2,p3,s);
+      var len=Math.sqrt(tn.x*tn.x+tn.y*tn.y)||1;
+      var nx=-tn.y/len,ny=tn.x/len;
+      var w=hw*(Math.sin(s*Math.PI)*0.22+0.78);
+      top.push({x:pt.x+nx*w,y:pt.y+ny*w});
+      bot.push({x:pt.x-nx*w,y:pt.y-ny*w});
+      spine.push(pt);
+    }
+    return{top:top,bot:bot,spine:spine};
+  }
+
+  function fillShape(pts){
+    cx.beginPath();
+    cx.moveTo(pts.top[0].x,pts.top[0].y);
+    for(var k=1;k<=N;k++) cx.lineTo(pts.top[k].x,pts.top[k].y);
+    for(var k=N;k>=0;k--) cx.lineTo(pts.bot[k].x,pts.bot[k].y);
+    cx.closePath();
+  }
+
+  function strokeLine(arr){
+    cx.beginPath();
+    cx.moveTo(arr[0].x,arr[0].y);
+    for(var k=1;k<arr.length;k++) cx.lineTo(arr[k].x,arr[k].y);
+  }
+
+  function makeGrd(pts,stops){
+    var i=Math.floor(N/2);
+    var g=cx.createLinearGradient(pts.top[i].x,pts.top[i].y,pts.bot[i].x,pts.bot[i].y);
+    for(var j=0;j<stops.length;j++) g.addColorStop(stops[j][0],stops[j][1]);
+    return g;
+  }
+
+  function paintRibbon(pts,hw,grd,aura,edge){
+    /* Aura */
+    cx.save();
+    cx.shadowColor='rgba(88,12,195,'+aura+')';
+    cx.shadowBlur=40;
+    fillShape(pts);
+    cx.fillStyle='rgba(58,6,135,'+(aura*0.18)+')';
+    cx.fill();
+    cx.restore();
+    /* Body */
+    fillShape(pts);
+    cx.fillStyle=grd;
+    cx.fill();
+    /* Top edge */
+    cx.save();
+    cx.shadowColor='rgba(205,175,255,'+(edge*0.55)+')';
+    cx.shadowBlur=10;
+    cx.strokeStyle='rgba(192,160,255,'+edge+')';
+    cx.lineWidth=1.8;
+    strokeLine(pts.top);
+    cx.stroke();
+    /* Inner highlight — 60% to spine */
+    var hl=[];
+    for(var k=0;k<=N;k++){
+      hl.push({x:pts.top[k].x*0.6+pts.spine[k].x*0.4,y:pts.top[k].y*0.6+pts.spine[k].y*0.4});
+    }
+    cx.shadowColor='rgba(225,205,255,'+(edge*0.45)+')';
+    cx.shadowBlur=15;
+    cx.strokeStyle='rgba(215,195,255,'+(edge*0.32)+')';
+    cx.lineWidth=2.5;
+    strokeLine(hl);
+    cx.stroke();
+    cx.restore();
+  }
+
+  function draw(now){
+    raf=requestAnimationFrame(draw);
+    if(now-lastFrame<34)return;
+    lastFrame=now;
+    tick++;
+
+    cx.clearRect(0,0,W,H);
+    cx.fillStyle='#000';
+    cx.fillRect(0,0,W,H);
+
+    /* Stars — pulsing micro-dots */
+    for(var i=0;i<stars.length;i++){
+      var st=stars[i];
+      var al=(Math.sin(t*st.s*75+st.p)*0.22+0.32)*0.72;
+      cx.beginPath();
+      cx.arc(st.x,st.y,st.r,0,Math.PI*2);
+      cx.fillStyle='rgba(190,168,255,'+al+')';
+      cx.fill();
+    }
+
+    /* ── Ribbon A — main: bottom-left → top-right (S-curve) ── */
+    var f1=Math.sin(t*0.32)*50,f2=Math.cos(t*0.25)*38,br=Math.sin(t*0.18)*22;
+    var aP0={x:W*-0.05,y:H*0.88+br};
+    var aC1={x:W*0.26+f1,y:H*0.30+f2};
+    var aC2={x:W*0.72-f2,y:H*0.70-f1};
+    var aP3={x:W*1.05,y:H*0.10+br*0.4};
+    var hwA=Math.min(W,H)*0.10;
+    var pA=buildPts(aP0,aC1,aC2,aP3,hwA);
+    if(!gA||tick%120===0){
+      gA=makeGrd(pA,[
+        [0,   'rgba(188,138,252,0.46)'],
+        [0.1, 'rgba(122,42,228,0.50)'],
+        [0.3, 'rgba(68,8,172,0.56)'],
+        [0.5, 'rgba(36,2,116,0.60)'],
+        [0.7, 'rgba(60,12,166,0.56)'],
+        [0.9, 'rgba(88,28,188,0.50)'],
+        [1,   'rgba(152,92,248,0.36)']
+      ]);
+    }
+    paintRibbon(pA,hwA,gA,0.50,0.25);
+
+    /* ── Ribbon B — crossing: top-left → bottom-right, thinner ── */
+    var g1=Math.cos(t*0.28)*42,g2=Math.sin(t*0.22)*32;
+    var bP0={x:W*-0.08,y:H*0.22+g1};
+    var bC1={x:W*0.38+g2,y:H*0.60+g1*0.5};
+    var bC2={x:W*0.62-g1*0.4,y:H*0.40-g2*0.3};
+    var bP3={x:W*1.06,y:H*0.76+g2*0.3};
+    var hwB=Math.min(W,H)*0.048;
+    var pB=buildPts(bP0,bC1,bC2,bP3,hwB);
+    if(!gB||tick%120===60){
+      gB=makeGrd(pB,[
+        [0,   'rgba(152,112,232,0.24)'],
+        [0.3, 'rgba(76,16,172,0.30)'],
+        [0.5, 'rgba(46,4,122,0.34)'],
+        [0.7, 'rgba(70,14,162,0.30)'],
+        [1,   'rgba(132,72,222,0.18)']
+      ]);
+    }
+    paintRibbon(pB,hwB,gB,0.22,0.11);
+
+    t+=0.008;
+  }
+
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden)cancelAnimationFrame(raf);
+    else{lastFrame=0;raf=requestAnimationFrame(draw);}
+  });
+
+  resize();
+  window.addEventListener('resize',resize,false);
+  raf=requestAnimationFrame(draw);
 })();
+/* ─────────────────────────────────────────────────────── */
 
 // VSL player overlay
 (function(){
@@ -404,3 +528,5 @@ if(VIDEO_URL){iframe.src=VIDEO_URL+'&autoplay=1';}
 overlay.classList.add('hidden');
 });
 })();
+
+// CSS Animated 3D Wave is now handling the background natively
