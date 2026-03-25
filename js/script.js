@@ -472,11 +472,12 @@ onScroll();
       var tn=bTan(p0,c1,c2,p3,s);
       var len=Math.sqrt(tn.x*tn.x+tn.y*tn.y)||1;
       var nx=-tn.y/len,ny=tn.x/len;
-      /* tapered ends + breathe */
+      /* tapered ends + breathe + wave undulation along ribbon */
       var taper=Math.sin(s*Math.PI);
-      var w=hw*(taper*0.38+0.62)*(0.90+Math.sin(t*0.7+s*Math.PI*2)*0.10);
-      top.push({x:pt.x+nx*w,y:pt.y+ny*w});
-      bot.push({x:pt.x-nx*w,y:pt.y-ny*w});
+      var w=hw*(taper*0.42+0.58)*(0.88+Math.sin(t*0.7+s*Math.PI*2)*0.12);
+      var wave=Math.sin(s*Math.PI*3.5+t*2.4)*hw*0.28;
+      top.push({x:pt.x+nx*(w+wave),y:pt.y+ny*(w+wave)});
+      bot.push({x:pt.x-nx*(w-wave*0.5),y:pt.y-ny*(w-wave*0.5)});
       spine.push(pt);
     }
     return{top:top,bot:bot,spine:spine};
@@ -554,68 +555,68 @@ onScroll();
     }
 
     /* ── Ribbon A — main: bottom-left → top-right ── */
-    var f1=Math.sin(t*0.42)*95+Math.cos(t*0.21)*38+Math.sin(t*0.09)*14;
-    var f2=Math.cos(t*0.34)*78+Math.sin(t*0.17)*30+Math.cos(t*0.07)*10;
-    var br=Math.sin(t*0.25)*38+Math.cos(t*0.13)*16;
+    var f1=Math.sin(t*0.42)*120+Math.cos(t*0.21)*48+Math.sin(t*0.09)*16;
+    var f2=Math.cos(t*0.34)*95+Math.sin(t*0.17)*38+Math.cos(t*0.07)*12;
+    var br=Math.sin(t*0.25)*44+Math.cos(t*0.13)*18;
     var aP0={x:W*-0.05,y:H*0.90+br};
     var aC1={x:W*0.22+f1,y:H*0.26+f2};
     var aC2={x:W*0.76-f2,y:H*0.74-f1};
     var aP3={x:W*1.05,y:H*0.06+br*0.4};
-    var hwA=Math.min(W,H)*0.118*(0.88+Math.sin(t*0.55)*0.12);
+    var hwA=Math.min(W,H)*0.120*(0.88+Math.sin(t*0.55)*0.12);
     var pA=buildPts(aP0,aC1,aC2,aP3,hwA);
     if(!gA||tick%60===0){
       gA=makeGrd(pA,[
-        [0,   'rgba(180,120,240,0.30)'],
-        [0.08,'rgba(120,40,210,0.36)'],
-        [0.28,'rgba(72,10,170,0.44)'],
-        [0.50,'rgba(38,4,118,0.48)'],
-        [0.72,'rgba(62,14,160,0.44)'],
-        [0.92,'rgba(90,30,185,0.36)'],
-        [1,   'rgba(150,85,230,0.24)']
+        [0,   'rgba(200,140,255,0.42)'],
+        [0.08,'rgba(138,48,235,0.55)'],
+        [0.28,'rgba(82,12,185,0.66)'],
+        [0.50,'rgba(44,5,132,0.70)'],
+        [0.72,'rgba(70,16,175,0.66)'],
+        [0.92,'rgba(102,36,200,0.55)'],
+        [1,   'rgba(165,100,245,0.36)']
       ]);
     }
-    paintRibbon(pA,gA,0.35,0.22);
+    paintRibbon(pA,gA,0.52,0.32);
 
     /* ── Ribbon B — crossing: top-left → bottom-right ── */
-    var g1=Math.cos(t*0.37)*72+Math.sin(t*0.20)*28+Math.cos(t*0.08)*10;
-    var g2=Math.sin(t*0.30)*56+Math.cos(t*0.14)*22+Math.sin(t*0.06)*8;
+    var g1=Math.cos(t*0.37)*85+Math.sin(t*0.20)*32+Math.cos(t*0.08)*12;
+    var g2=Math.sin(t*0.30)*68+Math.cos(t*0.14)*26+Math.sin(t*0.06)*9;
     var bP0={x:W*-0.08,y:H*0.18+g1};
     var bC1={x:W*0.34+g2,y:H*0.64+g1*0.55};
     var bC2={x:W*0.66-g1*0.45,y:H*0.36-g2*0.35};
     var bP3={x:W*1.06,y:H*0.80+g2*0.3};
-    var hwB=Math.min(W,H)*0.062*(0.90+Math.sin(t*0.68)*0.10);
+    var hwB=Math.min(W,H)*0.065*(0.90+Math.sin(t*0.68)*0.10);
     var pB=buildPts(bP0,bC1,bC2,bP3,hwB);
     if(!gB||tick%60===30){
       gB=makeGrd(pB,[
-        [0,   'rgba(148,105,220,0.18)'],
-        [0.25,'rgba(72,16,165,0.24)'],
-        [0.50,'rgba(44,6,122,0.28)'],
-        [0.75,'rgba(68,14,155,0.24)'],
-        [1,   'rgba(125,70,210,0.14)']
+        [0,   'rgba(165,120,240,0.28)'],
+        [0.25,'rgba(82,20,178,0.38)'],
+        [0.50,'rgba(50,7,135,0.44)'],
+        [0.75,'rgba(76,18,168,0.38)'],
+        [1,   'rgba(138,80,225,0.22)']
       ]);
     }
-    paintRibbon(pB,gB,0.16,0.10);
+    paintRibbon(pB,gB,0.24,0.16);
 
     /* ── Ribbon C — thin fast: bottom-right → top-left ── */
-    var h1=Math.sin(t*0.50)*58+Math.cos(t*0.24)*22+Math.sin(t*0.10)*8;
-    var h2=Math.cos(t*0.43)*46+Math.sin(t*0.19)*18+Math.cos(t*0.08)*6;
+    var h1=Math.sin(t*0.50)*65+Math.cos(t*0.24)*26+Math.sin(t*0.10)*9;
+    var h2=Math.cos(t*0.43)*52+Math.sin(t*0.19)*20+Math.cos(t*0.08)*7;
     var cP0={x:W*1.08,y:H*0.84+h1};
     var cC1={x:W*0.66-h2,y:H*0.22+h1*0.42};
     var cC2={x:W*0.30+h1*0.32,y:H*0.76-h2*0.38};
     var cP3={x:W*-0.06,y:H*0.14+h2*0.28};
-    var hwC=Math.min(W,H)*0.040*(0.88+Math.sin(t*0.82)*0.12);
+    var hwC=Math.min(W,H)*0.044*(0.88+Math.sin(t*0.82)*0.12);
     var pC=buildPts(cP0,cC1,cC2,cP3,hwC);
     if(!gC||tick%60===15){
       gC=makeGrd(pC,[
-        [0,   'rgba(185,145,240,0.14)'],
-        [0.35,'rgba(92,28,192,0.18)'],
-        [0.65,'rgba(72,14,162,0.20)'],
-        [1,   'rgba(152,95,230,0.10)']
+        [0,   'rgba(200,158,252,0.20)'],
+        [0.35,'rgba(105,34,208,0.28)'],
+        [0.65,'rgba(82,16,178,0.30)'],
+        [1,   'rgba(168,108,242,0.16)']
       ]);
     }
-    paintRibbon(pC,gC,0.10,0.07);
+    paintRibbon(pC,gC,0.14,0.10);
 
-    t+=0.013;
+    t+=0.016;
   }
 
   document.addEventListener('visibilitychange',function(){

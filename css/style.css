@@ -2,9 +2,7 @@
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:clip;line-height:1.6;position:relative;background-image:radial-gradient(rgba(255,255,255,.022) 1px,transparent 1px);background-size:28px 28px}
 #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;background:#000;pointer-events:none}
-body>*:not(#bg-canvas):not(.bg-top-mask):not(.bottom-blur):not(.progress-bar):not(.chat-fab):not(.chat-window){position:relative;z-index:10}
-/* Top gradient mask — solid black at hero, fades to reveal ribbons below */
-.bg-top-mask{position:fixed;top:0;left:0;right:0;height:80vh;z-index:1;pointer-events:none;background:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.72) 58%,rgba(0,0,0,.28) 78%,transparent 100%)}
+body>*:not(#bg-canvas):not(.bottom-blur):not(.progress-bar):not(.chat-fab):not(.chat-window){position:relative;z-index:10}
 a{text-decoration:none;color:inherit}
 button{border:none;background:none;cursor:pointer;font-family:inherit}
 ::selection{background:rgba(123,60,255,.3);color:#fff}
@@ -45,7 +43,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 [data-anim-delay="1"]{transition-delay:.3s}[data-anim-delay="2"]{transition-delay:.6s}[data-anim-delay="3"]{transition-delay:.9s}[data-anim-delay="4"]{transition-delay:1.2s}
 .tw-cursor::after{content:'|';color:#9b5cff;font-weight:300;animation:twBlink .6s step-end infinite;margin-left:1px}
 @keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:80px 20px 100px;overflow:hidden;background:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.60) 75%,transparent 100%)}
 .hero::before{display:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent 0%,#06020f 70%);pointer-events:none;z-index:2}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:6px;padding:6px 14px;font-size:.6rem;font-weight:600;color:rgba(255,255,255,.45);margin:0 auto 8px;background:rgba(255,255,255,.03);letter-spacing:.08em;text-transform:uppercase;position:relative;overflow:hidden}
