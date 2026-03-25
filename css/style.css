@@ -1,6 +1,6 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden;line-height:1.6;position:relative;background-image:radial-gradient(rgba(255,255,255,.022) 1px,transparent 1px);background-size:28px 28px}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:clip;line-height:1.6;position:relative;background-image:radial-gradient(rgba(255,255,255,.022) 1px,transparent 1px);background-size:28px 28px}
 #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;background:#000;pointer-events:none}
 body>*:not(#bg-canvas):not(.bottom-blur):not(.progress-bar):not(.chat-fab):not(.chat-window){position:relative;z-index:10}
 a{text-decoration:none;color:inherit}
@@ -60,8 +60,8 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .search-demo-section{position:relative;padding:60px 20px 70px;text-align:center}
 .search-demo-inner{position:relative;z-index:3;max-width:600px;margin:0 auto}
 /* Muted badge text white */
-.vsl-muted-top{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.04em;text-align:center}
-.vsl-muted-bottom{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;text-align:center;animation:vsl-blink 2s ease-in-out infinite}
+.vsl-muted-top{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:.01em;text-align:center;line-height:1.2}
+.vsl-muted-bottom{font-family:'Inter',sans-serif;font-size:1rem;font-weight:800;color:#c084fc;letter-spacing:.04em;text-transform:uppercase;text-align:center;animation:vsl-blink 2s ease-in-out infinite}
 .hero-sub{font-family:'Syne','Inter',sans-serif;font-size:clamp(.72rem,2.4vw,.88rem);font-weight:700;color:rgba(255,255,255,.72);letter-spacing:.12em;text-transform:uppercase;margin-bottom:clamp(14px,3.5vh,28px)}
 .hero-sub strong{color:#fff;font-weight:700}
 .hero-headline{font-size:clamp(3.2rem,12vw,5.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:800px;margin:0 auto clamp(64px,14vh,140px)}
@@ -222,13 +222,13 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .vsl-play-btn svg{width:72px;height:72px;filter:drop-shadow(0 0 20px rgba(123,60,255,.5))}
 .vsl-play-label{font-size:.72rem;color:rgba(255,255,255,.5);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
 /* VSL muted badge */
-.vsl-muted-badge{display:flex;flex-direction:column;align-items:center;gap:10px;background:rgba(20,6,48,.82);border:1px solid rgba(123,60,255,.35);border-radius:16px;padding:20px 28px;backdrop-filter:blur(8px);animation:vsl-badge-in .5s cubic-bezier(.16,1,.3,1) both}
+.vsl-muted-badge{display:flex;flex-direction:column;align-items:center;gap:14px;background:#160430;border:2px solid rgba(123,60,255,.65);border-radius:14px;padding:22px 36px;box-shadow:0 0 32px rgba(100,20,220,.35),inset 0 0 24px rgba(80,10,160,.20);animation:vsl-badge-in .5s cubic-bezier(.16,1,.3,1) both;min-width:200px}
 @keyframes vsl-badge-in{from{opacity:0;transform:scale(.88) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.vsl-muted-icon{position:relative;display:flex;align-items:center;justify-content:center;width:64px;height:64px}
-.vsl-muted-icon svg{width:44px;height:44px;position:relative;z-index:2;filter:drop-shadow(0 0 10px rgba(167,139,250,.5))}
-.vsl-muted-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(123,60,255,.4);animation:vsl-ring-pulse 1.8s ease-in-out infinite}
-@keyframes vsl-ring-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.18);opacity:.15}}
-@keyframes vsl-blink{0%,100%{opacity:1}50%{opacity:.5}}
+.vsl-muted-icon{position:relative;display:flex;align-items:center;justify-content:center;width:72px;height:72px}
+.vsl-muted-icon svg{width:54px;height:54px;position:relative;z-index:2;filter:drop-shadow(0 0 12px rgba(192,132,252,.55))}
+.vsl-muted-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(123,60,255,.5);animation:vsl-ring-pulse 1.8s ease-in-out infinite}
+@keyframes vsl-ring-pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.22);opacity:.12}}
+@keyframes vsl-blink{0%,100%{opacity:1}50%{opacity:.45}}
 .vsl-hint{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;color:rgba(167,139,250,.65);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;margin-top:4px}
 .vsl-hint svg{width:14px;height:14px;flex-shrink:0}
 /* Results section */
@@ -273,7 +273,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .marquee-container::-webkit-scrollbar{display:none}
 .marquee-container.mbv-show{opacity:1;transform:translateY(0)}
 .marquee-container::before{display:none}
-.marquee-container::after{content:'';display:block;position:absolute;top:0;right:0;bottom:12px;width:64px;background:linear-gradient(to left,#06020f 30%,transparent);pointer-events:none;z-index:3}
+.marquee-container::after{display:none}
 .swipe-arrow{position:absolute;right:10px;top:50%;transform:translateY(-60%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;animation:swipeArrowPulse 1.6s ease-in-out infinite}
 .swipe-arrow svg{width:44px;height:44px;stroke:rgba(255,255,255,.92);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .swipe-arrow span{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.78)}
@@ -297,23 +297,24 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .mb-guarantee-title strong{color:#10B981;font-weight:800;letter-spacing:.03em;white-space:nowrap}
 .mb-guarantee-sub{font-size:.68rem;color:rgba(255,255,255,.62);line-height:1.5}
 /* Sticky scroll testimonials — WhatsApp iPhone style */
-.testimonials{position:relative;text-align:center;height:350vh;width:100%}
-.testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,#06020f,transparent);pointer-events:none;z-index:3}
-.testimonials::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#06020f);pointer-events:none;z-index:3}
-.testimonials-header{padding:0 20px 40px;position:sticky;top:0;z-index:2;padding-top:max(64px,12vh);background:linear-gradient(180deg,#06020f 0%,#06020f 60%,transparent 100%)}
+.testimonials{position:relative;text-align:center;height:100vh;overflow:hidden}
+.testimonials-header{position:absolute;top:0;left:0;right:0;padding:max(40px,7vh) 20px 0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(6,2,15,.9) 0%,transparent 100%)}
 .testimonials-header h2{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
-.testimonials-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:1}
+.testimonials-sticky{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:1}
 .testimonial-card{
   position:absolute;
+  top:50%;left:50%;
   width:calc(100% - 32px);max-width:380px;
   border-radius:24px;overflow:hidden;text-align:left;
-  opacity:0;transform:translateY(60px) scale(.95);
-  transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);
+  opacity:0;
+  transform:translate(-50%, calc(-50% + 72px)) scale(.93);
+  transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
   box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);
-  will-change:transform,opacity
+  will-change:transform,opacity;
+  pointer-events:none
 }
-.testimonial-card.tc-active{opacity:1;transform:translateY(0) scale(1)}
-.testimonial-card.tc-done{opacity:0;transform:translateY(-40px) scale(.97)}
+.testimonial-card.tc-active{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.testimonial-card.tc-done{opacity:0;transform:translate(-50%, calc(-50% - 56px)) scale(.96);transition-duration:.35s}
 /* WA iPhone header */
 .wa-tc-header{display:flex;align-items:center;gap:10px;padding:14px 16px;background:#1f2c34}
 .wa-tc-back{color:#fff;display:flex;align-items:center;flex-shrink:0}
@@ -338,7 +339,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 .before-after{position:relative;display:flex;flex-direction:column;align-items:center}
 .before-after::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,#06020f,transparent);pointer-events:none;z-index:1}
 .before-after::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#06020f);pointer-events:none;z-index:1}
-.final-cta{padding:80px 0;text-align:center;position:relative;overflow:hidden;content-visibility:auto;contain-intrinsic-size:auto 600px;display:flex;flex-direction:column;align-items:center}
+.final-cta{padding:32px 0 80px;text-align:center;position:relative;overflow:hidden;content-visibility:auto;contain-intrinsic-size:auto 600px;display:flex;flex-direction:column;align-items:center}
 .final-cta::after{content:'';position:absolute;top:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,#06020f,transparent);pointer-events:none;z-index:0}
 .final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(123,60,255,.06) 0%,transparent 65%);pointer-events:none}
 .final-cta .container{position:relative;z-index:1}
@@ -401,7 +402,7 @@ button:focus-visible{outline:2px solid #7b3cff;outline-offset:2px}
 @media(min-width:769px){
 .container{padding:0 80px}
 .hero{padding:80px 80px 120px}.hero .logo{font-size:clamp(1.2rem,2vw,1.6rem)}.hero-search{max-width:620px}.hs-bar{padding:14px 20px}.hs-sponsored{max-width:620px}
-.niches,.method,.testimonials,.final-cta{padding:120px 0}
+.niches,.method,.testimonials{padding:120px 0}.final-cta{padding-top:48px}
 .wa-phone{max-width:375px}
 .mf-grid{grid-template-columns:1fr 1fr 1fr;gap:16px}.mf-card{padding:0 28px 28px}.mf-tag{margin:24px 0 20px}
 .rs-stack{width:500px}.results-grid{max-width:700px;gap:20px}.result-card{padding:32px 24px}.results-highlight{max-width:700px;padding:40px 36px}

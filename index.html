@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@700&family=Bebas+Neue&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="https://i.ibb.co/PvRHwvLb/image.png" fetchpriority="high">
-<link rel="stylesheet" href="css/style.css?v=65">
+<link rel="stylesheet" href="css/style.css?v=72">
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
@@ -30,7 +30,15 @@
 <div class="vsl-muted-badge" id="vslMutedBadge">
 <p class="vsl-muted-top">Seu vídeo já começou</p>
 <div class="vsl-muted-icon">
-<svg viewBox="0 0 48 48" fill="none"><path d="M8 17H2v14h6l10 10V7L8 17z" fill="rgba(167,139,250,.9)"/><path d="M36 24c0-4.42-2.52-8.24-6.24-10.12" stroke="rgba(167,139,250,.4)" stroke-width="2.5" stroke-linecap="round"/><path d="M42 24c0-7.9-4.48-14.76-11.04-18.24" stroke="rgba(167,139,250,.2)" stroke-width="2.5" stroke-linecap="round"/><line x1="4" y1="4" x2="44" y2="44" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/></svg>
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- speaker body -->
+  <path d="M10 23H3v18h7l13 13V10L10 23z" fill="#fff"/>
+  <!-- sound waves (muted/dimmed) -->
+  <path d="M46 32c0-5.5-3.1-10.3-7.8-12.7" stroke="rgba(255,255,255,.35)" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M53 32c0-9.9-5.6-18.5-13.8-22.8" stroke="rgba(255,255,255,.18)" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- big red slash (mute diagonal) -->
+  <line x1="5" y1="5" x2="59" y2="59" stroke="#c084fc" stroke-width="4" stroke-linecap="round"/>
+</svg>
 <div class="vsl-muted-ring"></div>
 </div>
 <p class="vsl-muted-bottom">Clique para ouvir</p>
@@ -394,6 +402,6 @@ Abrir Chat
 </div>
 </div>
 
-<script src="js/script.js?v=5" defer></script>
+<script src="js/script.js?v=11" defer></script>
 </body>
 </html>

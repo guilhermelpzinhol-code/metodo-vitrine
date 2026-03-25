@@ -148,23 +148,103 @@ barObs.observe(rhBar.parentElement);
 
 /* FAQ */
 
-/* Sticky scroll testimonials */
-const tcSection=document.getElementById('testimonialsSection');
-const tcCards=tcSection?tcSection.querySelectorAll('.testimonial-card'):[];
-if(tcCards.length){
-function updateTC(){
-const rect=tcSection.getBoundingClientRect();
-const sH=tcSection.offsetHeight;
-const wH=window.innerHeight;
-const scrolled=-rect.top;
-const progress=Math.max(0,Math.min(1,scrolled/(sH-wH)));
-const total=tcCards.length;
-const idx=Math.min(Math.floor(progress*total),total-1);
-tcCards.forEach((c,i)=>{c.classList.remove('tc-active','tc-done');if(i===idx)c.classList.add('tc-active');else if(i<idx)c.classList.add('tc-done')});
-}
-let tcScrollActive=false;
-const tcVisObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!tcScrollActive){window.addEventListener('scroll',updateTC,{passive:true});tcScrollActive=true;updateTC()}else if(!e.isIntersecting&&tcScrollActive){window.removeEventListener('scroll',updateTC);tcScrollActive=false}})},{threshold:0,rootMargin:'200px 0px 200px 0px'});
-if(tcSection)tcVisObs.observe(tcSection);}
+/* Testimonials — scroll interception (works on all browsers/mobile) */
+(function(){
+  var sec=document.getElementById('testimonialsSection');
+  if(!sec)return;
+  var cards=Array.prototype.slice.call(sec.querySelectorAll('.testimonial-card'));
+  if(!cards.length)return;
+  var TOTAL=cards.length,cur=0,locked=false,lockY=0,busy=false,tY0=0;
+  var cooldown=false; /* prevents re-lock during exit scroll */
+
+  function show(i){
+    cur=Math.max(0,Math.min(TOTAL-1,i));
+    for(var j=0;j<TOTAL;j++){
+      cards[j].classList.remove('tc-active','tc-done');
+      if(j===cur)cards[j].classList.add('tc-active');
+      else if(j<cur)cards[j].classList.add('tc-done');
+    }
+  }
+
+  function go(dir){
+    if(busy)return;
+    busy=true;
+    setTimeout(function(){busy=false;},600);
+    if(dir>0){
+      if(cur<TOTAL-1){show(cur+1);}
+      else{doRelease('down');}
+    } else {
+      if(cur>0){show(cur-1);}
+      else{doRelease('up');}
+    }
+  }
+
+  function doLock(){
+    if(locked||cooldown)return;
+    locked=true;
+    lockY=Math.round(sec.getBoundingClientRect().top+window.pageYOffset);
+    window.scrollTo(0,lockY); /* snap to exact section top */
+    show(0);
+    window.addEventListener('touchstart',onTS,{passive:true});
+    window.addEventListener('touchmove',onTM,{passive:false});
+    window.addEventListener('touchend',onTE,{passive:true});
+    window.addEventListener('wheel',onW,{passive:false});
+  }
+
+  function doRelease(dir){
+    locked=false;
+    cooldown=true;
+    setTimeout(function(){cooldown=false;},1800); /* block re-lock during exit */
+    window.removeEventListener('touchstart',onTS);
+    window.removeEventListener('touchmove',onTM);
+    window.removeEventListener('touchend',onTE);
+    window.removeEventListener('wheel',onW);
+    var dest=dir==='down'
+      ?lockY+sec.offsetHeight+50
+      :Math.max(0,lockY-window.innerHeight);
+    /* use instant then smooth to avoid re-trigger edge case */
+    window.scrollTo({top:dest,behavior:'smooth'});
+  }
+
+  /* Touch handlers */
+  function onTS(e){tY0=e.touches[0].clientY;}
+  function onTM(e){e.preventDefault();} /* BLOCKS mobile scroll while locked */
+  function onTE(e){
+    var d=tY0-e.changedTouches[0].clientY;
+    if(Math.abs(d)>36)go(d>0?1:-1);
+  }
+
+  /* Wheel handler */
+  var wt=null;
+  function onW(e){
+    e.preventDefault();
+    clearTimeout(wt);
+    var dy=e.deltaY;
+    wt=setTimeout(function(){go(dy>0?1:-1);},60);
+  }
+
+  /* Scroll watcher */
+  var snapping=false;
+  window.addEventListener('scroll',function(){
+    if(locked){
+      /* Snap back if browser managed to move the page */
+      if(!snapping&&Math.abs(window.pageYOffset-lockY)>2){
+        snapping=true;
+        window.scrollTo(0,lockY);
+        setTimeout(function(){snapping=false;},200);
+      }
+      return;
+    }
+    if(cooldown)return;
+    var top=sec.getBoundingClientRect().top;
+    if(top<=2&&top>-window.innerHeight){doLock();}
+  },{passive:true});
+
+  window.addEventListener('load',function(){
+    var top=sec.getBoundingClientRect().top;
+    if(top<=2&&top>-window.innerHeight){doLock();}
+  });
+})();
 
 /* Chat */
 const cFab=document.getElementById('chatFab'),cWin=document.getElementById('chatWindow'),cCls=document.getElementById('chatClose'),cBody=document.getElementById('chatBody');
@@ -343,7 +423,7 @@ onScroll();
   var t=0,lastFrame=0,tick=0;
   var stars=[];
   var gA=null,gB=null,gC=null;
-  var N=55;
+  var N=60;
 
   function resize(){
     W=cv.width=window.innerWidth;
@@ -354,9 +434,9 @@ onScroll();
 
   function buildStars(){
     stars=[];
-    var n=Math.min(50,Math.floor(W*H/13000));
+    var n=Math.min(55,Math.floor(W*H/11000));
     for(var i=0;i<n;i++){
-      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*0.85+0.2,p:Math.random()*Math.PI*2,s:Math.random()*0.014+0.007});
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.1+0.2,p:Math.random()*Math.PI*2,s:Math.random()*0.016+0.007});
     }
   }
 
@@ -378,7 +458,9 @@ onScroll();
       var tn=bTan(p0,c1,c2,p3,s);
       var len=Math.sqrt(tn.x*tn.x+tn.y*tn.y)||1;
       var nx=-tn.y/len,ny=tn.x/len;
-      var w=hw*(Math.sin(s*Math.PI)*0.28+0.72);
+      /* tapered ends + breathe */
+      var taper=Math.sin(s*Math.PI);
+      var w=hw*(taper*0.38+0.62)*(0.90+Math.sin(t*0.7+s*Math.PI*2)*0.10);
       top.push({x:pt.x+nx*w,y:pt.y+ny*w});
       bot.push({x:pt.x-nx*w,y:pt.y-ny*w});
       spine.push(pt);
@@ -408,35 +490,51 @@ onScroll();
   }
 
   function paintRibbon(pts,grd,aura,edge){
-    /* Aura */
+    var pulse=0.85+Math.sin(t*1.3)*0.15;
+    /* Wide outer glow */
     cx.save();
-    cx.shadowColor='rgba(88,12,195,'+aura+')';
-    cx.shadowBlur=48;
+    cx.shadowColor='rgba(100,20,220,'+(aura*pulse)+')';
+    cx.shadowBlur=70;
     fillShape(pts);
-    cx.fillStyle='rgba(58,6,135,'+(aura*0.15)+')';
+    cx.fillStyle='rgba(60,8,150,'+(aura*pulse*0.20)+')';
+    cx.fill();
+    cx.restore();
+    /* Secondary glow — tighter, brighter */
+    cx.save();
+    cx.shadowColor='rgba(160,80,255,'+(aura*pulse*0.55)+')';
+    cx.shadowBlur=28;
+    fillShape(pts);
+    cx.fillStyle='rgba(0,0,0,0)';
     cx.fill();
     cx.restore();
     /* Body */
     fillShape(pts);
     cx.fillStyle=grd;
     cx.fill();
-    /* Top edge highlight */
+    /* Top edge — bright shimmer */
     cx.save();
-    cx.shadowColor='rgba(210,180,255,'+(edge*0.6)+')';
-    cx.shadowBlur=12;
-    cx.strokeStyle='rgba(196,164,255,'+edge+')';
-    cx.lineWidth=1.8;
+    cx.shadowColor='rgba(220,190,255,'+(edge*(0.7+Math.sin(t*2.1)*0.3))+')';
+    cx.shadowBlur=18;
+    cx.strokeStyle='rgba(210,178,255,'+edge+')';
+    cx.lineWidth=2.0;
     strokeLine(pts.top);
     cx.stroke();
-    /* Inner highlight at 60% toward spine */
+    /* Bottom edge — subtle */
+    cx.shadowColor='rgba(120,60,200,'+(edge*0.35)+')';
+    cx.shadowBlur=10;
+    cx.strokeStyle='rgba(140,80,220,'+(edge*0.28)+')';
+    cx.lineWidth=1.2;
+    strokeLine(pts.bot);
+    cx.stroke();
+    /* Inner highlight — 55% between top and spine */
     var hl=[];
     for(var k=0;k<=N;k++){
-      hl.push({x:pts.top[k].x*0.6+pts.spine[k].x*0.4,y:pts.top[k].y*0.6+pts.spine[k].y*0.4});
+      hl.push({x:pts.top[k].x*0.55+pts.spine[k].x*0.45,y:pts.top[k].y*0.55+pts.spine[k].y*0.45});
     }
-    cx.shadowColor='rgba(230,210,255,'+(edge*0.50)+')';
-    cx.shadowBlur=16;
-    cx.strokeStyle='rgba(218,198,255,'+(edge*0.34)+')';
-    cx.lineWidth=2.5;
+    cx.shadowColor='rgba(240,218,255,'+(edge*0.55)+')';
+    cx.shadowBlur=20;
+    cx.strokeStyle='rgba(228,205,255,'+(edge*0.38)+')';
+    cx.lineWidth=2.8;
     strokeLine(hl);
     cx.stroke();
     cx.restore();
@@ -455,76 +553,76 @@ onScroll();
     /* Stars — pulsing micro-dots */
     for(var i=0;i<stars.length;i++){
       var st=stars[i];
-      var al=(Math.sin(t*st.s*75+st.p)*0.22+0.32)*0.72;
+      var al=(Math.sin(t*st.s*70+st.p)*0.28+0.36)*0.80;
       cx.beginPath();
       cx.arc(st.x,st.y,st.r,0,Math.PI*2);
-      cx.fillStyle='rgba(190,168,255,'+al+')';
+      cx.fillStyle='rgba(200,175,255,'+al+')';
       cx.fill();
     }
 
     /* ── Ribbon A — main: bottom-left → top-right ── */
-    var f1=Math.sin(t*0.38)*68+Math.cos(t*0.19)*24;
-    var f2=Math.cos(t*0.29)*52+Math.sin(t*0.15)*18;
-    var br=Math.sin(t*0.22)*30;
-    var aP0={x:W*-0.05,y:H*0.88+br};
-    var aC1={x:W*0.24+f1,y:H*0.28+f2};
-    var aC2={x:W*0.74-f2,y:H*0.72-f1};
-    var aP3={x:W*1.05,y:H*0.08+br*0.4};
-    var hwA=Math.min(W,H)*0.105;
+    var f1=Math.sin(t*0.42)*95+Math.cos(t*0.21)*38+Math.sin(t*0.09)*14;
+    var f2=Math.cos(t*0.34)*78+Math.sin(t*0.17)*30+Math.cos(t*0.07)*10;
+    var br=Math.sin(t*0.25)*38+Math.cos(t*0.13)*16;
+    var aP0={x:W*-0.05,y:H*0.90+br};
+    var aC1={x:W*0.22+f1,y:H*0.26+f2};
+    var aC2={x:W*0.76-f2,y:H*0.74-f1};
+    var aP3={x:W*1.05,y:H*0.06+br*0.4};
+    var hwA=Math.min(W,H)*0.118*(0.88+Math.sin(t*0.55)*0.12);
     var pA=buildPts(aP0,aC1,aC2,aP3,hwA);
-    if(!gA||tick%100===0){
+    if(!gA||tick%60===0){
       gA=makeGrd(pA,[
-        [0,   'rgba(192,142,255,0.48)'],
-        [0.1, 'rgba(126,46,232,0.52)'],
-        [0.3, 'rgba(72,10,178,0.58)'],
-        [0.5, 'rgba(38,4,120,0.62)'],
-        [0.7, 'rgba(62,14,170,0.58)'],
-        [0.9, 'rgba(92,32,192,0.52)'],
-        [1,   'rgba(158,96,252,0.38)']
+        [0,   'rgba(210,155,255,0.52)'],
+        [0.08,'rgba(148,60,242,0.60)'],
+        [0.28,'rgba(88,14,196,0.72)'],
+        [0.50,'rgba(48,6,140,0.78)'],
+        [0.72,'rgba(76,18,188,0.72)'],
+        [0.92,'rgba(110,40,210,0.60)'],
+        [1,   'rgba(175,108,255,0.42)']
       ]);
     }
-    paintRibbon(pA,gA,0.52,0.28);
+    paintRibbon(pA,gA,0.62,0.38);
 
     /* ── Ribbon B — crossing: top-left → bottom-right ── */
-    var g1=Math.cos(t*0.33)*58+Math.sin(t*0.17)*20;
-    var g2=Math.sin(t*0.26)*44+Math.cos(t*0.12)*16;
-    var bP0={x:W*-0.08,y:H*0.20+g1};
-    var bC1={x:W*0.36+g2,y:H*0.62+g1*0.5};
-    var bC2={x:W*0.64-g1*0.4,y:H*0.38-g2*0.3};
-    var bP3={x:W*1.06,y:H*0.78+g2*0.3};
-    var hwB=Math.min(W,H)*0.052;
+    var g1=Math.cos(t*0.37)*72+Math.sin(t*0.20)*28+Math.cos(t*0.08)*10;
+    var g2=Math.sin(t*0.30)*56+Math.cos(t*0.14)*22+Math.sin(t*0.06)*8;
+    var bP0={x:W*-0.08,y:H*0.18+g1};
+    var bC1={x:W*0.34+g2,y:H*0.64+g1*0.55};
+    var bC2={x:W*0.66-g1*0.45,y:H*0.36-g2*0.35};
+    var bP3={x:W*1.06,y:H*0.80+g2*0.3};
+    var hwB=Math.min(W,H)*0.062*(0.90+Math.sin(t*0.68)*0.10);
     var pB=buildPts(bP0,bC1,bC2,bP3,hwB);
-    if(!gB||tick%100===50){
+    if(!gB||tick%60===30){
       gB=makeGrd(pB,[
-        [0,   'rgba(156,116,238,0.26)'],
-        [0.3, 'rgba(78,18,178,0.32)'],
-        [0.5, 'rgba(48,6,126,0.36)'],
-        [0.7, 'rgba(72,16,168,0.32)'],
-        [1,   'rgba(136,76,228,0.20)']
+        [0,   'rgba(172,128,248,0.34)'],
+        [0.25,'rgba(90,22,192,0.44)'],
+        [0.50,'rgba(56,8,144,0.50)'],
+        [0.75,'rgba(84,20,182,0.44)'],
+        [1,   'rgba(150,88,238,0.28)']
       ]);
     }
-    paintRibbon(pB,gB,0.24,0.13);
+    paintRibbon(pB,gB,0.30,0.18);
 
-    /* ── Ribbon C — thin fast diagonal, bottom-right → top-left ── */
-    var h1=Math.sin(t*0.44)*46+Math.cos(t*0.21)*16;
-    var h2=Math.cos(t*0.37)*36+Math.sin(t*0.16)*12;
-    var cP0={x:W*1.08,y:H*0.82+h1};
-    var cC1={x:W*0.68-h2,y:H*0.25+h1*0.4};
-    var cC2={x:W*0.32+h1*0.3,y:H*0.72-h2*0.4};
-    var cP3={x:W*-0.06,y:H*0.16+h2*0.3};
-    var hwC=Math.min(W,H)*0.030;
+    /* ── Ribbon C — thin fast: bottom-right → top-left ── */
+    var h1=Math.sin(t*0.50)*58+Math.cos(t*0.24)*22+Math.sin(t*0.10)*8;
+    var h2=Math.cos(t*0.43)*46+Math.sin(t*0.19)*18+Math.cos(t*0.08)*6;
+    var cP0={x:W*1.08,y:H*0.84+h1};
+    var cC1={x:W*0.66-h2,y:H*0.22+h1*0.42};
+    var cC2={x:W*0.30+h1*0.32,y:H*0.76-h2*0.38};
+    var cP3={x:W*-0.06,y:H*0.14+h2*0.28};
+    var hwC=Math.min(W,H)*0.040*(0.88+Math.sin(t*0.82)*0.12);
     var pC=buildPts(cP0,cC1,cC2,cP3,hwC);
-    if(!gC||tick%100===25){
+    if(!gC||tick%60===15){
       gC=makeGrd(pC,[
-        [0,   'rgba(200,160,255,0.18)'],
-        [0.4, 'rgba(100,30,200,0.22)'],
-        [0.6, 'rgba(80,16,170,0.24)'],
-        [1,   'rgba(160,110,255,0.14)']
+        [0,   'rgba(215,170,255,0.28)'],
+        [0.35,'rgba(112,38,218,0.36)'],
+        [0.65,'rgba(88,20,188,0.38)'],
+        [1,   'rgba(178,120,255,0.22)']
       ]);
     }
-    paintRibbon(pC,gC,0.14,0.08);
+    paintRibbon(pC,gC,0.20,0.12);
 
-    t+=0.010;
+    t+=0.013;
   }
 
   document.addEventListener('visibilitychange',function(){
