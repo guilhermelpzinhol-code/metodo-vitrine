@@ -630,4 +630,38 @@ onScroll();
 })();
 
 
+// VSL player
+(function(){
+  var overlay=document.getElementById('vslOverlay');
+  var resumeOverlay=document.getElementById('vslResumeOverlay');
+  var btnContinue=document.getElementById('vslBtnContinue');
+  var btnRestart=document.getElementById('vslBtnRestart');
+  var iframe=document.getElementById('vslIframe');
+  var BASE='https://www.youtube.com/embed/NPGz6f27HlE?rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0&iv_load_policy=3&disablekb=1';
+  var STORAGE_KEY='vsl_progress_t';
+  var MIN_RESUME_SEC=8;
+  function save(s){try{localStorage.setItem(STORAGE_KEY,String(Math.round(s||0)));}catch(e){}}
+  function load(){try{var v=parseInt(localStorage.getItem(STORAGE_KEY)||'0',10);return isNaN(v)?0:v;}catch(e){return 0;}}
+  function clear(){try{localStorage.removeItem(STORAGE_KEY);}catch(e){}}
+  function launch(sec){
+    iframe.src=BASE+(sec>0?'&start='+sec:'')+'&autoplay=1';
+    if(overlay)overlay.classList.add('hidden');
+    if(resumeOverlay)resumeOverlay.setAttribute('hidden','');
+    save(sec);
+  }
+  if(btnContinue)btnContinue.addEventListener('click',function(){launch(load());});
+  if(btnRestart)btnRestart.addEventListener('click',function(){clear();launch(0);});
+  if(overlay)overlay.addEventListener('click',function(){launch(0);});
+  var t=load();
+  if(t>=MIN_RESUME_SEC&&resumeOverlay){resumeOverlay.removeAttribute('hidden');}
+  var started=false;
+  if(overlay)overlay.addEventListener('click',function(){started=true;},true);
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden&&started){
+      var s=load();
+      if(s>=MIN_RESUME_SEC&&resumeOverlay){resumeOverlay.removeAttribute('hidden');}
+    }
+  });
+})();
+
 // CSS Animated 3D Wave is now handling the background natively
