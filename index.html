@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://i.ibb.co" crossorigin>
 <link rel="dns-prefetch" href="https://i.ibb.co">
+<script src="https://www.youtube.com/iframe_api" async></script>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet"></noscript>
 <link rel="preload" as="image" href="img/logo.webp" fetchpriority="high" type="image/webp">
@@ -31,8 +32,6 @@
 <div class="vsl-phone-bar"><span></span><span></span><span></span></div>
 <div class="vsl-video-area">
 <iframe id="vslIframe" src="about:blank" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="Método Vitrine - VSL"></iframe>
-<div class="vsl-yt-cover" aria-hidden="true"></div>
-<button class="vsl-fs-btn" id="vslFsBtn" aria-label="Tela cheia"><svg viewBox="0 0 24 24"><path d="M3 3h6v2H5v4H3zm12 0h6v6h-2V5h-4zM3 21v-6h2v4h4v2zm16 0h-6v-2h4v-4h2z"/></svg></button>
 <div class="vsl-resume-overlay" id="vslResumeOverlay" hidden>
   <div class="vsl-resume-body">
     <p class="vsl-resume-title">Você já começou a assistir esse vídeo</p>
@@ -56,6 +55,16 @@
 <p class="vsl-muted-bottom">Clique para ouvir</p>
 </div>
 </div>
+</div>
+</div>
+<div class="vsl-custom-controls">
+  <div class="vsl-progress-wrap" id="vslProgressWrap">
+    <div class="vsl-progress-bar" id="vslProgressBar"></div>
+  </div>
+  <div class="vsl-ctrl-row">
+    <button class="vsl-ctrl-btn" id="vslPlayBtn" aria-label="Play/Pause"><svg id="vslPlayIcon" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg></button>
+    <button class="vsl-ctrl-btn" id="vslFsBtn" aria-label="Tela cheia"><svg viewBox="0 0 24 24"><path d="M3 3h6v2H5v4H3zm12 0h6v6h-2V5h-4zM3 21v-6h2v4h4v2zm16 0h-6v-2h4v-4h2z"/></svg></button>
+  </div>
 </div>
 </div>
 <p class="vsl-hint"><svg viewBox="0 0 16 16" fill="none"><path d="M8 1v7M8 1L5 4M8 1l3 3" stroke="rgba(167,139,250,.5)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10v2a2 2 0 002 2h6a2 2 0 002-2v-2" stroke="rgba(167,139,250,.3)" stroke-width="1.3" stroke-linecap="round"/></svg>Assista com som ligado</p>
