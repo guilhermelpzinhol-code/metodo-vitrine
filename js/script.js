@@ -664,4 +664,20 @@ onScroll();
   });
 })();
 
+
+// VSL fullscreen button
+(function(){
+  var btn=document.getElementById('vslFsBtn');
+  var area=btn&&btn.closest('.vsl-video-area');
+  if(!btn||!area)return;
+  btn.addEventListener('click',function(){
+    var el=area;
+    if(el.requestFullscreen)el.requestFullscreen();
+    else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+  });
+  document.addEventListener('fullscreenchange',function(){
+    btn.style.display=document.fullscreenElement?'none':'';
+  });
+})();
+
 // CSS Animated 3D Wave is now handling the background natively
