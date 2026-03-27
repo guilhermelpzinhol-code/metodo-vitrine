@@ -661,12 +661,23 @@ onScroll();
   });},{threshold:.3});
   vpObs.observe(video);
 
-  // Click overlay to unmute
+  // Progress tracking
+  var pb=document.getElementById('vslProgressBar');
+  var fb=document.getElementById('vslFrameBar');
+  video.addEventListener('timeupdate',function(){
+    if(!video.duration)return;
+    var pct=(video.currentTime/video.duration)*100;
+    if(pb)pb.style.width=pct+'%';
+    if(fb)fb.style.width=pct+'%';
+  });
+
+  // Click overlay: restart from beginning + unmute
   if(overlay){
     overlay.addEventListener('click',function(){
       video.muted=false;
+      video.currentTime=0;
       overlay.classList.add('hidden');
-      if(video.paused)video.play().catch(function(){});
+      video.play().catch(function(){});
     });
   }
 
