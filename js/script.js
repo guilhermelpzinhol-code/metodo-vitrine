@@ -630,109 +630,61 @@ onScroll();
 })();
 
 
-// VSL player + YouTube IFrame API
-var ytPlayer=null;
-var vslStarted=false;
-var vslProgressInterval=null;
-var STORAGE_KEY='vsl_progress_t';
-var MIN_RESUME_SEC=8;
-function vslSave(s){try{localStorage.setItem(STORAGE_KEY,String(Math.round(s||0)));}catch(e){}}
-function vslLoad(){try{var v=parseInt(localStorage.getItem(STORAGE_KEY)||'0',10);return isNaN(v)?0:v;}catch(e){return 0;}}
-function vslClear(){try{localStorage.removeItem(STORAGE_KEY);}catch(e){}}
-
-function setPlayIcon(playing){
-  var btn=document.getElementById('vslPlayBtn');
-  if(!btn)return;
-  btn.innerHTML=playing
-    ?'<svg viewBox="0 0 24 24" fill="#fff"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'
-    :'<svg viewBox="0 0 24 24" fill="#fff"><polygon points="6,4 20,12 6,20"/></svg>';
-}
-
-function startProgressTracker(){
-  if(vslProgressInterval)clearInterval(vslProgressInterval);
-  vslProgressInterval=setInterval(function(){
-    if(!ytPlayer||typeof ytPlayer.getCurrentTime!=='function')return;
-    var cur=ytPlayer.getCurrentTime()||0;
-    var dur=ytPlayer.getDuration()||1;
-    var pct=Math.min(100,(cur/dur)*100);
-    var bar=document.getElementById('vslProgressBar');
-    if(bar)bar.style.width=pct+'%';
-    vslSave(cur);
-  },1000);
-}
-
-window.onYouTubeIframeAPIReady=function(){
-  var iframe=document.getElementById('vslIframe');
-  if(!iframe)return;
-  ytPlayer=new YT.Player('vslIframe',{
-    events:{
-      onStateChange:function(e){
-        setPlayIcon(e.data===YT.PlayerState.PLAYING);
-        if(e.data===YT.PlayerState.PLAYING){startProgressTracker();}
-        else if(e.data===YT.PlayerState.PAUSED||e.data===YT.PlayerState.ENDED){
-          if(vslProgressInterval){clearInterval(vslProgressInterval);vslProgressInterval=null;}
-        }
-      }
-    }
-  });
-};
-
-function vslLaunch(sec){
-  var overlay=document.getElementById('vslOverlay');
-  var resumeOverlay=document.getElementById('vslResumeOverlay');
-  var BASE='https://www.youtube.com/embed/NPGz6f27HlE?rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0&iv_load_policy=3&disablekb=1&enablejsapi=1&origin='+encodeURIComponent(location.origin);
-  var iframe=document.getElementById('vslIframe');
-  if(iframe)iframe.src=BASE+(sec>0?'&start='+sec:'')+'&autoplay=1';
-  if(overlay)overlay.classList.add('hidden');
-  if(resumeOverlay)resumeOverlay.setAttribute('hidden','');
-  vslStarted=true;
-  vslSave(sec);
-  setPlayIcon(true);
-}
-
+// Native VSL Player
 (function(){
+  var video=document.getElementById('vslVideo');
   var overlay=document.getElementById('vslOverlay');
-  var resumeOverlay=document.getElementById('vslResumeOverlay');
-  var btnContinue=document.getElementById('vslBtnContinue');
-  var btnRestart=document.getElementById('vslBtnRestart');
+  var area=document.getElementById('vslVideoArea');
   var playBtn=document.getElementById('vslPlayBtn');
   var fsBtn=document.getElementById('vslFsBtn');
+  if(!video)return;
 
-  if(btnContinue)btnContinue.addEventListener('click',function(){vslLaunch(vslLoad());});
-  if(btnRestart)btnRestart.addEventListener('click',function(){vslClear();vslLaunch(0);});
-  if(overlay)overlay.addEventListener('click',function(){vslLaunch(0);});
+  var PAUSE_SVG='<svg viewBox="0 0 24 24" fill="#fff"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+  var PLAY_SVG='<svg viewBox="0 0 24 24" fill="#fff"><polygon points="6,4 20,12 6,20"/></svg>';
 
-  if(playBtn)playBtn.addEventListener('click',function(){
-    if(!ytPlayer||typeof ytPlayer.getPlayerState!=='function')return;
-    var s=ytPlayer.getPlayerState();
-    if(s===YT.PlayerState.PLAYING)ytPlayer.pauseVideo();
-    else ytPlayer.playVideo();
-  });
+  function syncIcon(){
+    if(!playBtn)return;
+    playBtn.innerHTML=video.paused?PLAY_SVG:PAUSE_SVG;
+    if(area){area.classList.toggle('vsl-paused',video.paused);}
+  }
 
-  if(fsBtn)fsBtn.addEventListener('click',function(){
-    var area=document.querySelector('.vsl-video-area');
-    if(!area)return;
-    if(area.requestFullscreen)area.requestFullscreen();
-    else if(area.webkitRequestFullscreen)area.webkitRequestFullscreen();
-  });
+  video.addEventListener('play',syncIcon);
+  video.addEventListener('pause',syncIcon);
 
-  var t=vslLoad();
-  if(t>=MIN_RESUME_SEC&&resumeOverlay){resumeOverlay.removeAttribute('hidden');}
-
-  document.addEventListener('visibilitychange',function(){
-    if(!document.hidden&&vslStarted){
-      var s=vslLoad();
-      if(s>=MIN_RESUME_SEC&&resumeOverlay){resumeOverlay.removeAttribute('hidden');}
+  // Auto-play muted when visible
+  var started=false;
+  var vpObs=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting&&!started){
+      started=true;
+      video.play().catch(function(){});
     }
-  });
+  });},{threshold:.3});
+  vpObs.observe(video);
 
-  var pw=document.getElementById('vslProgressWrap');
-  if(pw)pw.addEventListener('click',function(e){
-    if(!ytPlayer||typeof ytPlayer.getDuration!=='function')return;
-    var rect=pw.getBoundingClientRect();
-    var pct=(e.clientX-rect.left)/rect.width;
-    ytPlayer.seekTo(ytPlayer.getDuration()*pct,true);
-  });
+  // Click overlay to unmute
+  if(overlay){
+    overlay.addEventListener('click',function(){
+      video.muted=false;
+      overlay.classList.add('hidden');
+      if(video.paused)video.play().catch(function(){});
+    });
+  }
+
+  // Play/Pause button
+  if(playBtn){
+    playBtn.addEventListener('click',function(){
+      if(video.paused)video.play().catch(function(){});
+      else video.pause();
+    });
+  }
+
+  // Fullscreen button
+  if(fsBtn){
+    fsBtn.addEventListener('click',function(){
+      var el=area||video;
+      if(el.requestFullscreen)el.requestFullscreen();
+      else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+      else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();
+    });
+  }
 })();
-
-// CSS Animated 3D Wave is now handling the background natively
