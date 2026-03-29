@@ -698,4 +698,41 @@ onScroll();
       else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();
     });
   }
+
+  // Resume overlay logic (segundo aviso)
+  var STORAGE_KEY='vsl_progress_t';
+  var MIN_RESUME=8;
+  var resumeOv=document.getElementById('vslResumeOverlay');
+  var btnCont=document.getElementById('vslBtnContinue');
+  var btnRest=document.getElementById('vslBtnRestart');
+  var savedT=0;
+  try{savedT=parseInt(localStorage.getItem(STORAGE_KEY)||'0');}catch(e){}
+
+  // Salvar progresso
+  video.addEventListener('timeupdate',function(){
+    if(video.currentTime>MIN_RESUME&&!video.muted){
+      try{localStorage.setItem(STORAGE_KEY,String(Math.round(video.currentTime)));}catch(e){}
+    }
+  });
+
+  // Mostrar resume se tem progresso salvo
+  if(savedT>=MIN_RESUME&&resumeOv){
+    resumeOv.removeAttribute('hidden');
+    if(overlay)overlay.style.display='none';
+  }
+
+  if(btnCont)btnCont.addEventListener('click',function(){
+    video.muted=false;
+    video.currentTime=savedT;
+    if(resumeOv)resumeOv.setAttribute('hidden','');
+    video.play().catch(function(){});
+  });
+
+  if(btnRest)btnRest.addEventListener('click',function(){
+    try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+    video.muted=false;
+    video.currentTime=0;
+    if(resumeOv)resumeOv.setAttribute('hidden','');
+    video.play().catch(function(){});
+  });
 })();
