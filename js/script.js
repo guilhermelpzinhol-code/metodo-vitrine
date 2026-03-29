@@ -641,17 +641,26 @@ onScroll();
 
   var PAUSE_SVG='<svg viewBox="0 0 24 24" fill="#fff"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
   var PLAY_SVG='<svg viewBox="0 0 24 24" fill="#fff"><polygon points="6,4 20,12 6,20"/></svg>';
+  var STORAGE_KEY='vsl_progress_t';
+  var MIN_RESUME=8;
+  var resumeOv=document.getElementById('vslResumeOverlay');
+  var btnCont=document.getElementById('vslBtnContinue');
+  var btnRest=document.getElementById('vslBtnRestart');
 
   function syncIcon(){
     if(!playBtn)return;
     playBtn.innerHTML=video.paused?PLAY_SVG:PAUSE_SVG;
-    if(area){area.classList.toggle('vsl-paused',video.paused);}
+    if(area)area.classList.toggle('vsl-paused',video.paused);
   }
-
   video.addEventListener('play',syncIcon);
   video.addEventListener('pause',syncIcon);
 
-  // Auto-play muted when visible
+  function doUnmute(){
+    video.muted=false;
+    video.volume=1;
+  }
+
+  // Autoplay muted quando visível
   var started=false;
   var vpObs=new IntersectionObserver(function(es){es.forEach(function(e){
     if(e.isIntersecting&&!started){
@@ -661,7 +670,7 @@ onScroll();
   });},{threshold:.3});
   vpObs.observe(video);
 
-  // Progress tracking
+  // Progress — barra + localStorage (salva sempre)
   var pb=document.getElementById('vslProgressBar');
   var fb=document.getElementById('vslFrameBar');
   video.addEventListener('timeupdate',function(){
@@ -669,70 +678,56 @@ onScroll();
     var pct=(video.currentTime/video.duration)*100;
     if(pb)pb.style.width=pct+'%';
     if(fb)fb.style.width=pct+'%';
-  });
-
-  // Click overlay: restart from beginning + unmute
-  if(overlay){
-    overlay.addEventListener('click',function(){
-      video.muted=false;
-      video.currentTime=0;
-      overlay.classList.add('hidden');
-      video.play().catch(function(){});
-    });
-  }
-
-  // Play/Pause button
-  if(playBtn){
-    playBtn.addEventListener('click',function(){
-      if(video.paused)video.play().catch(function(){});
-      else video.pause();
-    });
-  }
-
-  // Fullscreen button
-  if(fsBtn){
-    fsBtn.addEventListener('click',function(){
-      var el=area||video;
-      if(el.requestFullscreen)el.requestFullscreen();
-      else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
-      else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();
-    });
-  }
-
-  // Resume overlay logic (segundo aviso)
-  var STORAGE_KEY='vsl_progress_t';
-  var MIN_RESUME=8;
-  var resumeOv=document.getElementById('vslResumeOverlay');
-  var btnCont=document.getElementById('vslBtnContinue');
-  var btnRest=document.getElementById('vslBtnRestart');
-  var savedT=0;
-  try{savedT=parseInt(localStorage.getItem(STORAGE_KEY)||'0');}catch(e){}
-
-  // Salvar progresso
-  video.addEventListener('timeupdate',function(){
-    if(video.currentTime>MIN_RESUME&&!video.muted){
+    if(video.currentTime>MIN_RESUME){
       try{localStorage.setItem(STORAGE_KEY,String(Math.round(video.currentTime)));}catch(e){}
     }
   });
 
-  // Mostrar resume se tem progresso salvo
+  // Checar resume (z-index cobre o muted badge, não esconde com display:none)
+  var savedT=0;
+  try{savedT=parseInt(localStorage.getItem(STORAGE_KEY)||'0');}catch(e){}
   if(savedT>=MIN_RESUME&&resumeOv){
     resumeOv.removeAttribute('hidden');
-    if(overlay)overlay.style.display='none';
   }
 
-  if(btnCont)btnCont.addEventListener('click',function(){
-    video.muted=false;
-    video.currentTime=savedT;
-    if(resumeOv)resumeOv.setAttribute('hidden','');
+  // Muted badge click → unmute + restart
+  if(overlay)overlay.addEventListener('click',function(){
+    doUnmute();
+    video.currentTime=0;
+    overlay.classList.add('hidden');
     video.play().catch(function(){});
   });
 
+  // Resume: Continuar
+  if(btnCont)btnCont.addEventListener('click',function(){
+    doUnmute();
+    video.currentTime=savedT;
+    if(resumeOv)resumeOv.setAttribute('hidden','');
+    if(overlay)overlay.classList.add('hidden');
+    video.play().catch(function(){});
+  });
+
+  // Resume: Recomeçar
   if(btnRest)btnRest.addEventListener('click',function(){
     try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
-    video.muted=false;
+    doUnmute();
     video.currentTime=0;
     if(resumeOv)resumeOv.setAttribute('hidden','');
+    if(overlay)overlay.classList.add('hidden');
     video.play().catch(function(){});
+  });
+
+  // Play/Pause
+  if(playBtn)playBtn.addEventListener('click',function(){
+    if(video.paused)video.play().catch(function(){});
+    else video.pause();
+  });
+
+  // Fullscreen
+  if(fsBtn)fsBtn.addEventListener('click',function(){
+    var el=area||video;
+    if(el.requestFullscreen)el.requestFullscreen();
+    else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+    else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();
   });
 })();
