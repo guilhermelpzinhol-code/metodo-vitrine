@@ -690,11 +690,12 @@ onScroll();
     resumeOv.removeAttribute('hidden');
   }
 
-  // Muted badge click → unmute (continua de onde está, sem reiniciar)
+  // Muted badge click → unmute + reinicia do começo com som
   if(overlay)overlay.addEventListener('click',function(){
     doUnmute();
+    video.currentTime=0;
     overlay.classList.add('hidden');
-    if(video.paused)video.play().catch(function(){});
+    video.play().catch(function(){});
   });
 
   // Resume: Continuar
