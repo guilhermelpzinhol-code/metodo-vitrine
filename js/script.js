@@ -746,3 +746,12 @@ onScroll();
     else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();
   });
 })();
+
+// Meta Pixel — evento Contact em todos os botões CTA
+document.querySelectorAll('.cta-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    if(typeof fbq==='function'){
+      fbq('track','Contact');
+    }
+  });
+});
