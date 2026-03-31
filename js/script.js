@@ -655,24 +655,9 @@ onScroll();
   video.addEventListener('play',syncIcon);
   video.addEventListener('pause',syncIcon);
 
-  // Web Audio API gain node — amplifica volume em mobile
-  var gainNode=null;
-  function boostAudio(){
-    if(gainNode)return;
-    try{
-      var ctx=new(window.AudioContext||window.webkitAudioContext)();
-      var src=ctx.createMediaElementSource(video);
-      gainNode=ctx.createGain();
-      gainNode.gain.value=1.6;
-      src.connect(gainNode);
-      gainNode.connect(ctx.destination);
-    }catch(e){}
-  }
-
   function doUnmute(){
     video.muted=false;
     video.volume=1;
-    boostAudio();
   }
 
   // Autoplay muted quando visível
