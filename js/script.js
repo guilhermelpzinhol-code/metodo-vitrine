@@ -663,7 +663,7 @@ onScroll();
       var ctx=new(window.AudioContext||window.webkitAudioContext)();
       var src=ctx.createMediaElementSource(video);
       gainNode=ctx.createGain();
-      gainNode.gain.value=2.5;
+      gainNode.gain.value=1.6;
       src.connect(gainNode);
       gainNode.connect(ctx.destination);
     }catch(e){}
