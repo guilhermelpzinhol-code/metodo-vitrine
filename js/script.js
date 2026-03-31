@@ -751,7 +751,7 @@ onScroll();
 document.querySelectorAll('.cta-btn').forEach(function(btn){
   btn.addEventListener('click',function(){
     if(typeof fbq==='function'){
-      fbq('track','Contact');
+      fbq('track','Purchase',{currency:'BRL',value:497.00});
     }
   });
 });
